@@ -7,18 +7,22 @@ import com.goldasil.pjv.enums.SpecialCardCase;
 import com.goldasil.pjv.enums.Suit;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RandomPlayer extends Player {
 
-    MoveDTO chooseMove(OpponentMoveDTO oppMove){
+    public MoveDTO chooseMove(OpponentMoveDTO oppMove){
         SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), oppMove.getOpponentCardCount());
         if (specialCase == SpecialCardCase.NO_SPECIAL_CARD_CASE) {
-            return chooseMoveFromHand(oppMove.getUpcard());
+            MoveDTO move = chooseMoveFromHand(oppMove.getUpcard());
+            checkOverKnaveGetSuit(move.getMove());
+            return move;
         }
         else {
             return chooseSpecialCaseMove(specialCase, oppMove);
         }
     }
+
 
     private MoveDTO chooseSpecialCaseMove(SpecialCardCase specialCase, OpponentMoveDTO oppMove) {
         switch(specialCase) {
@@ -28,7 +32,7 @@ public class RandomPlayer extends Player {
             case ACES_PLAYED:
                 ArrayList<Card> aces = getCardsOnHandOfRank(oppMove.getUpcard());
                 if (aces.size() == 0) {
-                    if (isMyTurnAfterAces(0, oppMove.getOpponentMove().size())) {
+                    if (isMyTurnAfterAces(0, oppMove.getMove().size())) {
                         return chooseMoveFromHand(oppMove.getUpcard());
                     }
                     else {
@@ -36,7 +40,7 @@ public class RandomPlayer extends Player {
                     }
                 }
                 else {
-                    if (isMyTurnAfterAces(aces.size(), oppMove.getOpponentMove().size())) {
+                    if (isMyTurnAfterAces(aces.size(), oppMove.getMove().size())) {
                         return new MoveDTO(MoveType.DOUBLE_PLAY, aces, 0);
                     }
                     else {
@@ -54,7 +58,7 @@ public class RandomPlayer extends Player {
                     ArrayList<Card> move = getCardsOnHandOfRank(new Card(Rank.UNDERKNAVE, Suit.LEAVES));
                     return new MoveDTO(MoveType.PLAY, move, 0);
                 } else {
-                    return new MoveDTO(MoveType.DRAW, null, 3*oppMove.getOpponentMove().size());
+                    return new MoveDTO(MoveType.DRAW, null, 3*oppMove.getMove().size());
                 }
 
             case RETURN_TO_GAME:
@@ -104,6 +108,29 @@ public class RandomPlayer extends Player {
         else {
             return new MoveDTO(MoveType.PLAY, getLargestArrayList(possibleMoves), 0);
         }
+    }
+
+    private Suit checkOverKnaveGetSuit(ArrayList<Card> move){
+        if (move.get(0).getRank() == Rank.OVERKNAVE) {
+            return getSuitForKnave();
+        }
+        return Suit.UNSPECIFIED;
+    }
+
+    private Suit getSuitForKnave() {
+        ArrayList<Suit> suits = new ArrayList<Suit>();
+        for (Card card : cards) {
+            if (card.getRank() != Rank.OVERKNAVE) {
+                suits.add(card.getSuit());
+            }
+        }
+        Random random = new Random();
+        if (suits.size() == 0) {
+            int randomNumber = random.nextInt(4);
+            return Suit.values()[randomNumber];
+        }
+        int randomNumber = random.nextInt(suits.size());
+        return suits.get(randomNumber);
     }
 
     private ArrayList<Card> getCardsOnHandOfRank(Card origCard) {

@@ -1,21 +1,39 @@
 package com.goldasil.pjv.dto;
 import com.goldasil.pjv.Card;
+import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Suit;
 import java.util.ArrayList;
 
-public class OpponentMoveDTO {
+public class OpponentMoveDTO extends MoveDTO {
 
-    Card upcard;
-    boolean isNewUpcard;
-    Suit requestedSuit;
-    ArrayList<Card> opponentMove;
-    int opponentCardCount;
 
-    public OpponentMoveDTO(Card upcard, boolean isNewUpcard, Suit requestedSuit, ArrayList<Card> opponentMove, int opponentCardCount) {
+    private int opponentCardCount;
+    private Card upcard;
+
+    public OpponentMoveDTO(MoveType moveType, ArrayList<Card> move, int drawCards, Suit requestedSuit, int opponentCardCount, Card upcard) {
+        super(moveType, move, drawCards, requestedSuit);
+        this.opponentCardCount = opponentCardCount;
         this.upcard = upcard;
-        this.isNewUpcard = isNewUpcard;
-        this.requestedSuit = requestedSuit;
-        this.opponentMove = opponentMove;
+    }
+
+    public OpponentMoveDTO(MoveDTO move, int opponentCardCount, Card upcard) {
+        super(move.getMoveType(), move.getMove(), move.getDrawCards(), move.getRequestedSuit());
+        this.opponentCardCount = opponentCardCount;
+        this.upcard = upcard;
+    }
+
+    public boolean isNewUpcard() {
+        if (moveType == MoveType.PLAY || moveType == MoveType.DOUBLE_PLAY) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getOpponentCardCount() {
+        return opponentCardCount;
+    }
+
+    public void setOpponentCardCount(int opponentCardCount) {
         this.opponentCardCount = opponentCardCount;
     }
 
@@ -27,35 +45,10 @@ public class OpponentMoveDTO {
         this.upcard = upcard;
     }
 
-    public boolean isNewUpcard() {
-        return isNewUpcard;
-    }
+    /*private Card upcard;
+    private boolean isNewUpcard;
+    private Suit requestedSuit;
+    private ArrayList<Card> opponentMove;
+    private int opponentCardCount;*/
 
-    public void setNewUpcard(boolean newUpcard) {
-        isNewUpcard = newUpcard;
-    }
-
-    public Suit getRequestedSuit() {
-        return requestedSuit;
-    }
-
-    public void setRequestedSuit(Suit requestedSuit) {
-        this.requestedSuit = requestedSuit;
-    }
-
-    public ArrayList<Card> getOpponentMove() {
-        return opponentMove;
-    }
-
-    public void setOpponentMove(ArrayList<Card> opponentMove) {
-        this.opponentMove = opponentMove;
-    }
-
-    public int getOpponentCardCount() {
-        return opponentCardCount;
-    }
-
-    public void setOpponentCardCount(int opponentCardCount) {
-        this.opponentCardCount = opponentCardCount;
-    }
 }

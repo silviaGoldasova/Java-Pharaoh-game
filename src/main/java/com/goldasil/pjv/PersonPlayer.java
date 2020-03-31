@@ -16,15 +16,21 @@ public class PersonPlayer extends Player{
 
         SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), oppMove.getOpponentCardCount());
 
-        if (specialCase != SpecialCardCase.NO_SPECIAL_CARD_CASE) {
+        if (specialCase == SpecialCardCase.NO_SPECIAL_CARD_CASE) {
+            if (plannedMove.getMoveType() == MoveType.PLAY) {
+                if (!areValidCards(oppMove.getUpcard(), plannedMove.getMove())) {
+                    return false;
+                }
+            }
+        }
+        else {
             if (!isSpecialCaseValid(specialCase, plannedMove, oppMove)){
                 return false;
             }
-        }
-
-        if (plannedMove.getMoveType() == MoveType.PLAY) {
-            if (!isMoveSameRank(plannedMove.getMove())){
-                return false;
+            if (plannedMove.getMoveType() == MoveType.PLAY) {
+                if (!isMoveSameRank(plannedMove.getMove())){
+                    return false;
+                }
             }
         }
         return true;
@@ -52,11 +58,11 @@ public class PersonPlayer extends Player{
                             return false;
                         }
                     }
-                    if (isMyTurnAfterAces(plannedMove.getMove().size(), oppMove.getOpponentMove().size())) {
+                    if (isMyTurnAfterAces(plannedMove.getMove().size(), oppMove.getMove().size())) {
                         plannedMove.setMoveType(MoveType.DOUBLE_PLAY);
                     }
                 } else {  // MoveType.PASS
-                    if (isMyTurnAfterAces(0, oppMove.getOpponentMove().size())) {
+                    if (isMyTurnAfterAces(0, oppMove.getMove().size())) {
                         plannedMove.setMoveType(MoveType.DOUBLE_PLAY);
                     }
                 }

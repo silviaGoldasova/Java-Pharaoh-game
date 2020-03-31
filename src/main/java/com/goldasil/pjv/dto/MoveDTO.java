@@ -1,19 +1,29 @@
 package com.goldasil.pjv.dto;
 import com.goldasil.pjv.Card;
 import com.goldasil.pjv.enums.MoveType;
+import com.goldasil.pjv.enums.Suit;
 
 import java.util.ArrayList;
 
 public class MoveDTO {
 
-    private MoveType moveType;
-    private ArrayList<Card> move;
-    private int drawCards;
+    protected MoveType moveType;
+    protected ArrayList<Card> move;
+    protected int drawCards;
+    protected Suit requestedSuit;
 
     public MoveDTO(MoveType moveType, ArrayList<Card> move, int drawCards) {
         this.moveType = moveType;
         this.move = move;
         this.drawCards = drawCards;
+        this.requestedSuit = Suit.UNSPECIFIED;
+    }
+
+    public MoveDTO(MoveType moveType, ArrayList<Card> move, int drawCards, Suit requestedSuit) {
+        this.moveType = moveType;
+        this.move = move;
+        this.drawCards = drawCards;
+        this.requestedSuit = requestedSuit;
     }
 
 
@@ -39,5 +49,13 @@ public class MoveDTO {
 
     public void setDrawCards(int drawCards) {
         this.drawCards = drawCards;
+    }
+
+    public Suit getRequestedSuit() {
+        return requestedSuit;
+    }
+
+    public void setRequestedSuit(Suit requestedSuit) {
+        this.requestedSuit = requestedSuit;
     }
 }

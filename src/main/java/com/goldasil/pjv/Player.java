@@ -4,11 +4,28 @@ import com.goldasil.pjv.enums.SpecialCardCase;
 import com.goldasil.pjv.enums.Suit;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Player {
 
     protected ArrayList<Card> cards;
     protected int cardsCount;
+
+    public void addCards(ArrayList<Card> move) {
+        for (Card card : move) {
+            cards.add(card);
+        }
+    }
+
+    public void addCard(Card card) {
+        cards.add(card);
+    }
+
+    public void removeCards(ArrayList<Card> move) {
+        for (Card card : move) {
+            cards.remove(card);
+        }
+    }
 
     private boolean isSameRank(Card card, Card otherCard){
         if (card.getRank() == otherCard.getRank()) {
