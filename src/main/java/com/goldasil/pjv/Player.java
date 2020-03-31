@@ -10,19 +10,6 @@ public class Player {
     protected ArrayList<Card> cards;
     protected int cardsCount;
 
-
-    //public ArrayList<Card> choose_move(){}
-
-
-    public boolean isValidMove(Card upcard, ArrayList<Card> move){
-        // is special case
-            //yes
-        //else
-            //compare
-        return true;
-    }
-
-
     private boolean isSameRank(Card card, Card otherCard){
         if (card.getRank() == otherCard.getRank()) {
             return true;
@@ -37,7 +24,7 @@ public class Player {
         return false;
     }
 
-    protected boolean isValidCard(Card upcard, ArrayList<Card> move){
+    protected boolean areValidCards(Card upcard, ArrayList<Card> move){
         if (!(isSameRank(upcard, move.get(0)) || isSameSuit(upcard, move.get(0)) || move.get(0).getRank() == Rank.OVERKNAVE || isUnderKnaveLeaves(move.get(0)) )) {
             return false;
         }
@@ -74,6 +61,22 @@ public class Player {
         return false;
     }
 
+    protected boolean hasTheCard(Card card){
+        for (Card handCard : cards){
+            if (handCard.getRank() == card.getRank() && handCard.getSuit() == card.getSuit()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected boolean compareItems(Card cardA, Card cardB) {
+        if (cardA.getRank() == cardB.getRank() && cardA.getSuit() == cardB.getSuit()) {
+            return true;
+        }
+        return false;
+    }
+
     protected SpecialCardCase specialCardCaseCheck(boolean isNewUpcard, Card upcard, int opponentCardCount){
 
         if (upcard.getRank() == Rank.UNDERKNAVE && upcard.getSuit() == Suit.LEAVES) {
@@ -102,6 +105,13 @@ public class Player {
 
         return SpecialCardCase.NO_SPECIAL_CARD_CASE;
 
+    }
+
+    protected boolean isMyTurnAfterAces(int myAcesCount, int oppAcesCount) {
+        if ((myAcesCount + oppAcesCount)% 2 == 1) {
+            return false;
+        }
+        return true;
     }
 
     public ArrayList<Card> getCards() {
