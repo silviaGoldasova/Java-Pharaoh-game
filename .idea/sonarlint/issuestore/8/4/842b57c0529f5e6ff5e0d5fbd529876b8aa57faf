@@ -1,7 +1,0 @@
-
-Žsquid:S13197"pThe type of the "cards" object should be an interface such as "List" rather than the implementation "ArrayList".(÷šÄ—8©¾ù¾’.
-nsquid:CommentedOutCodeLine
-"<This block of commented-out lines of code should be removed.(•²›ùÿÿÿÿ8÷—¾’.
-Isquid:S1172"&Remove these unused method parameters.(Ùà†¤ùÿÿÿÿ8¡–ª¾’.
-“squid:S13193"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(èÐ¥×øÿÿÿÿ8©¾ù¾’.
-’squid:S1319"oThe type of the "move" object should be an interface such as "List" rather than the implementation "ArrayList".(Ùà†¤ùÿÿÿÿ8»Ú¾’.

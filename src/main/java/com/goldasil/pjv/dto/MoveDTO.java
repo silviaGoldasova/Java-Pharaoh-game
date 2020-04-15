@@ -12,6 +12,10 @@ public class MoveDTO {
     protected int drawCards;
     protected Suit requestedSuit;
 
+
+    public MoveDTO(){
+    }
+
     public MoveDTO(MoveType moveType, ArrayList<Card> move, int drawCards) {
         this.moveType = moveType;
         this.move = move;
@@ -26,6 +30,10 @@ public class MoveDTO {
         this.requestedSuit = requestedSuit;
     }
 
+    @Override
+    public String toString() {
+        return "MoveType" + moveType + ", move: " + move + ", drawCards: " + drawCards;
+    }
 
     public MoveType getMoveType() {
         return moveType;

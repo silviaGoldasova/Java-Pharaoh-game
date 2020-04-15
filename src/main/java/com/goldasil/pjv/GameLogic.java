@@ -14,6 +14,7 @@ public class GameLogic {
     Player playerOpp;
     LinkedList <Card> stock;
     LinkedList <Card> waste;
+    static final int CARDS_TO_DEAL = 5;
 
     public void playMove(Player player, MoveDTO move) {
 
@@ -54,8 +55,8 @@ public class GameLogic {
 
         LinkedList<Card> pack = getPack();
         Collections.shuffle(pack);
-        playerMain.setCards(getCardsFromDeck(pack, 5));
-        playerOpp.setCards(getCardsFromDeck(pack, 5));
+        playerMain.setCards(getCardsFromDeck(pack, CARDS_TO_DEAL));
+        playerOpp.setCards(getCardsFromDeck(pack, CARDS_TO_DEAL));
         stock = new LinkedList<Card>();
         for (Card card : pack) {
             stock.add(card);

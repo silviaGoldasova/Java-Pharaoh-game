@@ -11,6 +11,9 @@ import java.util.Random;
 
 public class RandomPlayer extends Player {
 
+    static final int CARDS_TO_DRAW_PER_SEVEN = 3;
+    static final int NUM_OF_SUITS = 4;
+
     public MoveDTO chooseMove(OpponentMoveDTO oppMove){
         SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), oppMove.getOpponentCardCount());
         if (specialCase == SpecialCardCase.NO_SPECIAL_CARD_CASE) {
@@ -22,7 +25,6 @@ public class RandomPlayer extends Player {
             return chooseSpecialCaseMove(specialCase, oppMove);
         }
     }
-
 
     private MoveDTO chooseSpecialCaseMove(SpecialCardCase specialCase, OpponentMoveDTO oppMove) {
         switch(specialCase) {
@@ -58,11 +60,11 @@ public class RandomPlayer extends Player {
                     ArrayList<Card> move = getCardsOnHandOfRank(new Card(Rank.UNDERKNAVE, Suit.LEAVES));
                     return new MoveDTO(MoveType.PLAY, move, 0);
                 } else {
-                    return new MoveDTO(MoveType.DRAW, null, 3*oppMove.getMove().size());
+                    return new MoveDTO(MoveType.DRAW, null, CARDS_TO_DRAW_PER_SEVEN*oppMove.getMove().size());
                 }
 
             case RETURN_TO_GAME:
-                return (new MoveDTO(MoveType.DRAW, null, 3));
+                return (new MoveDTO(MoveType.DRAW, null, CARDS_TO_DRAW_PER_SEVEN * oppMove.getMove().size()));
 
             case OPPONENT_HAS_NO_CARDS:
                 Card sevenHearts = new Card(Rank.SEVEN, Suit.HEARTS);
@@ -126,7 +128,7 @@ public class RandomPlayer extends Player {
         }
         Random random = new Random();
         if (suits.size() == 0) {
-            int randomNumber = random.nextInt(4);
+            int randomNumber = random.nextInt(NUM_OF_SUITS);
             return Suit.values()[randomNumber];
         }
         int randomNumber = random.nextInt(suits.size());

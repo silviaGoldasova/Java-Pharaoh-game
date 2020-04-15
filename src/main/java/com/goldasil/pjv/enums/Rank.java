@@ -1,5 +1,7 @@
 package com.goldasil.pjv.enums;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Rank {
 
     SEVEN,
@@ -10,6 +12,11 @@ public enum Rank {
     OVERKNAVE,
     KING,
     ACE,
-    UNSPECIFIED
+    UNSPECIFIED;
+
+    /*@JsonValue
+    public String getName() {
+        return this.name();
+    }*/
 
 }

@@ -6,6 +6,6 @@ public enum MoveType {
     DOUBLE_PLAY,
     DRAW,
     PASS,
-    LOSE
-
+    LOSE;
+    
 }

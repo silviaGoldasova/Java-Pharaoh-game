@@ -8,6 +8,7 @@ public enum SpecialCardCase {
     ACES_PLAYED,
     OVER_KNAVE_PLAYED,
     UNDER_KNAVE_LEAVES_PLAYED,
-    NO_SPECIAL_CARD_CASE
+    NO_SPECIAL_CARD_CASE;
+
 
 }

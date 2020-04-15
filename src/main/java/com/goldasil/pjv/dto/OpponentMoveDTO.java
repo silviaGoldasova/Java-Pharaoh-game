@@ -1,14 +1,19 @@
 package com.goldasil.pjv.dto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.goldasil.pjv.Card;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Suit;
 import java.util.ArrayList;
+
 
 public class OpponentMoveDTO extends MoveDTO {
 
 
     private int opponentCardCount;
     private Card upcard;
+
+    public OpponentMoveDTO(){
+    }
 
     public OpponentMoveDTO(MoveType moveType, ArrayList<Card> move, int drawCards, Suit requestedSuit, int opponentCardCount, Card upcard) {
         super(moveType, move, drawCards, requestedSuit);
@@ -22,6 +27,12 @@ public class OpponentMoveDTO extends MoveDTO {
         this.upcard = upcard;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + ", opponentCardCount: " + opponentCardCount + ", upcard: " + upcard;
+    }
+
+    @JsonIgnore
     public boolean isNewUpcard() {
         if (moveType == MoveType.PLAY || moveType == MoveType.DOUBLE_PLAY) {
             return true;

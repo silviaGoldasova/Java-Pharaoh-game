@@ -1,0 +1,16 @@
+com\goldasil\pjv\Card.class
+com\goldasil\pjv\Player.class
+com\goldasil\pjv\dto\MoveDTO.class
+com\goldasil\pjv\dto\OpponentMoveDTO.class
+com\goldasil\pjv\enums\Suit.class
+com\goldasil\pjv\GameLogic.class
+com\goldasil\pjv\enums\EnumHelper.class
+com\goldasil\pjv\PersonPlayer$1.class
+com\goldasil\pjv\RandomPlayer.class
+com\goldasil\pjv\PersonPlayer.class
+com\goldasil\pjv\GameLogic$1.class
+com\goldasil\pjv\Main.class
+com\goldasil\pjv\enums\SpecialCardCase.class
+com\goldasil\pjv\enums\MoveType.class
+com\goldasil\pjv\enums\Rank.class
+com\goldasil\pjv\RandomPlayer$1.class

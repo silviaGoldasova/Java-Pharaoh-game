@@ -112,7 +112,7 @@ public class Player {
             return SpecialCardCase.OPPONENT_HAS_NO_CARDS;
         }
 
-        if (upcard.getRank() == Rank.SEVEN && cardsCount == 0) {
+        if (upcard.getRank() == Rank.SEVEN && upcard.getSuit() == Suit.HEARTS && cardsCount == 0) {
             return SpecialCardCase.RETURN_TO_GAME;
         }
 
