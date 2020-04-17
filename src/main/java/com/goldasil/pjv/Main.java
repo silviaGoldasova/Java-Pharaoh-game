@@ -41,7 +41,9 @@ public class Main {
         System.out.println(card.getSuit());
 
 
-        OpponentMoveDTO moveBack = mapper.readValue(jsonString, OpponentMoveDTO.class);
+
+
+            OpponentMoveDTO moveBack = mapper.readValue(jsonString, OpponentMoveDTO.class);
         System.out.println(moveBack);
     }
 }

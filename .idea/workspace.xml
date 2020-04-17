@@ -1,36 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d4ddab99-e5ba-4ffa-a274-ba8ec7330047" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/pharaon.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/d/3df913e9e28aee7e0b3adb38a07378b86e45b75b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/c/4c33ca5de33df9bbcb87535b3f2af2d58ab4213a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/82d3e469db9c73c35dbf1bf3389002d0266aa362" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/4/842b57c0529f5e6ff5e0d5fbd529876b8aa57faf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/8/98423efd5ab86f343cdc9ca4afd67ef295f6cc6e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/f/afbd82f9d862cf319adc3a8441ce5c3541d4d473" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d11f7195e3ec58c4dc15fc47ee0f3d8e430f6026" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/1/e14f367979e220468a733fecdafef14bc7db8d45" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="5ef8e6a3-f6c8-4413-9d37-0edfbb31ebac" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelGetClients.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/goldasil.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Card.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/GameLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/more/pharaon.ipr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/more/pharaon.iws" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/RandomPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/RandomPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/MoveDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/MoveDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/OpponentMoveDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/OpponentMoveDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/MoveType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/MoveType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Rank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Rank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/SpecialCardCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/SpecialCardCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Suit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Suit.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,85 +23,46 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
-              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            <state relative-caret-position="255">
+              <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChannelGetClients.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelGetClients.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#stopConnection#0;class#ChannelGetClients#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MoveType.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/MoveType.java">
+      <file leaf-file-name="ChannelSender.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelSender.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MoveDTO.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/MoveDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
+            <state relative-caret-position="238">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
               <folding>
-                <element signature="method#MoveDTO#1;class#MoveDTO#0" />
+                <element signature="method#sendMessage#0;class#ChannelSender#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Rank.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Rank.java">
+      <file leaf-file-name="ChannelClientHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelClientHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" selection-start-line="20" selection-end-line="20" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpecialCardCase.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/SpecialCardCase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Suit.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Suit.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/GameLogic.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding>
-                <element signature="method#playMove#0;class#GameLogic#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OpponentMoveDTO.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/OpponentMoveDTO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="34" column="15" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="15" />
+            <state relative-caret-position="136">
+              <caret line="11" column="40" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#OpponentMoveDTO#0;class#OpponentMoveDTO#0" />
-                <element signature="method#OpponentMoveDTO#1;class#OpponentMoveDTO#0" />
-                <element signature="method#toString#0;class#OpponentMoveDTO#0" />
+                <element signature="method#decodeReceivedMessage#0;class#ChannelClientHandler#0" />
+                <element signature="method#decodeReceivedMessageType#0;class#ChannelClientHandler#0" />
               </folding>
             </state>
           </provider>
@@ -131,11 +70,12 @@
       </file>
     </leaf>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>new</find>
-      <find>system</find>
-    </findStrings>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -143,16 +83,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/RandomPlayer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/PersonPlayer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Main.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/MoveDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/OpponentMoveDTO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Card.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/EnumHelper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/MoveType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Rank.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Suit.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/GameLogic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelFromServer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelFromClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelGetClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/CommunicationChannel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelGetClients.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelClientHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelSender.java" />
       </list>
     </option>
   </component>
@@ -176,7 +115,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -217,6 +156,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="pjv" type="462c0819:PsiDirectoryNode" />
+              <item name="communication" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pharaon" type="b2602c69:ProjectViewProjectNode" />
+              <item name="goldasil" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="pjv" type="462c0819:PsiDirectoryNode" />
               <item name="dto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -232,7 +180,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -242,7 +190,6 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../testApp/pom.xml" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -257,17 +204,6 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.goldasil.pjv.Main" />
-      <module name="pharaon" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.goldasil.pjv.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -309,28 +245,23 @@
       <properties />
       <listeners />
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d4ddab99-e5ba-4ffa-a274-ba8ec7330047" name="Default" comment="" />
-      <created>1586955161405</created>
+      <changelist id="5ef8e6a3-f6c8-4413-9d37-0edfbb31ebac" name="Default" comment="" />
+      <created>1586988477176</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1586955161405</updated>
-      <workItem from="1586955162522" duration="10990000" />
+      <updated>1586988477176</updated>
+      <workItem from="1586988478454" duration="16029000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10990000" />
+    <option name="totallyTimeSpent" value="16029000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -338,62 +269,60 @@
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.32897604" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info id="Image Layers" />
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.17102396" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21786493" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Version Control" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14872068" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16364606" />
       <window_info anchor="bottom" id="SonarLint" />
       <window_info anchor="right" id="Database" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" />
       <window_info anchor="right" id="Theme Preview" />
-      <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="0" />
-      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
-      <window_info anchor="bottom" id="Run" order="8" weight="0.21786493" />
+      <window_info anchor="bottom" id="Run" order="7" />
       <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
       <window_info anchor="bottom" id="SonarLint" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.14872068" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.16364606" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Theme Preview" order="2" />
-      <window_info anchor="bottom" id="TODO" order="12" />
+      <window_info anchor="bottom" id="TODO" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
       <window_info id="Image Layers" order="0" />
       <window_info id="Designer" order="1" />
-      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info id="UI Designer" order="2" />
-      <window_info anchor="bottom" id="Find" order="7" />
+      <window_info anchor="bottom" id="Debug" order="8" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="4" />
-      <window_info anchor="bottom" id="Debug" order="9" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
+      <window_info anchor="bottom" id="Version Control" order="4" weight="0.32897604" />
       <window_info id="Capture Tool" order="3" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="5" weight="0.32897604" />
+      <window_info anchor="bottom" id="Find" order="6" />
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info id="Favorites" order="4" side_tool="true" />
     </layout-to-restore>
@@ -406,121 +335,21 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="1" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-14.0.1/lib/src.zip!/java.base/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="521" selection-start-line="521" selection-end-line="521" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fasterxml/jackson/core/jackson-databind/2.9.8/jackson-databind-2.9.8.jar!/com/fasterxml/jackson/databind/exc/InvalidDefinitionException.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="748">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-14.0.1/lib/src.zip!/java.base/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="417">
-          <caret line="563" selection-start-line="563" selection-end-line="563" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/PersonPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/RandomPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
-          <folding>
-            <element signature="method#chooseMove#0;class#RandomPlayer#0" />
-            <element signature="method#chooseSpecialCaseMove#0;class#RandomPlayer#0" />
-            <element signature="method#chooseMoveFromHand#0;class#RandomPlayer#0" />
-            <element signature="method#checkOverKnaveGetSuit#0;class#RandomPlayer#0" />
-            <element signature="method#getSuitForKnave#0;class#RandomPlayer#0" />
-            <element signature="method#getCardsOnHandOfRank#0;class#RandomPlayer#0" />
-            <element signature="method#getLargestArrayList#0;class#RandomPlayer#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="23" column="22" lean-forward="true" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
-          <folding>
-            <element signature="method#Card#0;class#Card#0" />
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#663#664#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/EnumHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/SpecialCardCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Suit.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/Rank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/MoveDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="33" column="28" selection-start-line="33" selection-start-column="28" selection-end-line="33" selection-end-column="28" />
-          <folding>
-            <element signature="method#MoveDTO#1;class#MoveDTO#0" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="7" column="21" lean-forward="true" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/enums/MoveType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/OpponentMoveDTO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        <state relative-caret-position="68">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -528,21 +357,55 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/CommunicationChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="1" lean-forward="true" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
           <folding>
-            <element signature="method#playMove#0;class#GameLogic#0" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/dto/OpponentMoveDTO.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="34" column="15" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="15" />
+        <state relative-caret-position="255">
+          <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelClientHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#OpponentMoveDTO#0;class#OpponentMoveDTO#0" />
-            <element signature="method#OpponentMoveDTO#1;class#OpponentMoveDTO#0" />
-            <element signature="method#toString#0;class#OpponentMoveDTO#0" />
+            <element signature="method#decodeReceivedMessage#0;class#ChannelClientHandler#0" />
+            <element signature="method#decodeReceivedMessageType#0;class#ChannelClientHandler#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="method#sendMessage#0;class#ChannelSender#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/goldasil/pjv/communication/ChannelGetClients.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#stopConnection#0;class#ChannelGetClients#0" />
           </folding>
         </state>
       </provider>
