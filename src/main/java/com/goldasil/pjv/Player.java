@@ -27,6 +27,8 @@ public class Player {
         }
     }
 
+
+
     private boolean isSameRank(Card card, Card otherCard){
         if (card.getRank() == otherCard.getRank()) {
             return true;
@@ -87,7 +89,7 @@ public class Player {
         return false;
     }
 
-    protected boolean compareItems(Card cardA, Card cardB) {
+    protected boolean compareCards(Card cardA, Card cardB) {
         if (cardA.getRank() == cardB.getRank() && cardA.getSuit() == cardB.getSuit()) {
             return true;
         }
@@ -130,6 +132,9 @@ public class Player {
         }
         return true;
     }
+
+
+
 
     public ArrayList<Card> getCards() {
         return cards;

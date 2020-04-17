@@ -36,7 +36,6 @@ public class GameLogic {
                 break;
         }
 
-
     }
 
     private void addCardsToStock(ArrayList<Card> move) {
