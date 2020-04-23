@@ -24,7 +24,7 @@ public class RandomPlayer extends Player {
 
     /**
      * Generates a player with the specified ID and playing cards in hand.
-     * @param playerID
+     * @param playerID ID number of the player
      */
     public RandomPlayer(int playerID) {
         super(playerID);

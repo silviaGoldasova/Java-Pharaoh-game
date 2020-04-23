@@ -17,7 +17,7 @@ public class SceneModel extends Observable {
 
     /**
      * Gets the current scene.
-     * @return
+     * @return scene
      */
     public MenuScene getScene() {
         return currentScene;

@@ -29,7 +29,7 @@ public class ChannelClientHandler implements Runnable {
 
     /**
      * Creates a handler of a client.
-     * @param sender
+     * @param sender specifies the sender's socket got by the ChannelGetClients
      */
     public ChannelClientHandler(Socket sender) {
         this.sender = sender;
@@ -38,7 +38,7 @@ public class ChannelClientHandler implements Runnable {
 
     /**
      * Sets status variable isStopped to true to notify the thread that the listening is over.
-     * @param stopped
+     * @param stopped status variable isStopped
      */
     public void setStopped(boolean stopped) {
         isStopped = stopped;

@@ -17,8 +17,8 @@ public class ChannelSender {
 
     /**
      * Initializes a new connection to the recipient.
-     * @param ipAddress
-     * @param port
+     * @param ipAddress ipAddress of the recipient
+     * @param port port of the recipient
      */
     public ChannelSender(String ipAddress, int port) {
         startConnection(ipAddress, port);

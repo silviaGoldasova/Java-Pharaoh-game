@@ -19,8 +19,9 @@ public class Player {
     }
 
     /**
-     * Creates a player with the specified cards in hand.
+     * Creates a player with the specified cards in hand and player ID number.
      * @param cards cards that the player has in hand
+     * @param playerID ID number of the player
      */
     public Player(ArrayList<Card> cards, int playerID) {
         this.cards = cards;
@@ -47,7 +48,7 @@ public class Player {
 
     /**
      * Removes the cards passed in in an array from the cards in a player's hand.
-     * @param move
+     * @param move list of cards played in the move
      */
     public void removeCards(ArrayList<Card> move) {
         for (Card card : move) {

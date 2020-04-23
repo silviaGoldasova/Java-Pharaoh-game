@@ -26,7 +26,7 @@ public class GameSettingsDTO {
 
     /**
      * Sets the game type - new game or loaded game.
-     * @param gameType
+     * @param gameType a String, either a new game or loaded game
      */
     public void setGameType(String gameType) {
         this.gameType = gameType;
@@ -34,7 +34,7 @@ public class GameSettingsDTO {
 
     /**
      * Gets game mode - vsPerson or vsComputer
-     * @return
+     * @return game mode as a String
      */
     public String getGameMode() {
         return gameMode;
@@ -42,7 +42,7 @@ public class GameSettingsDTO {
 
     /**
      * Sets the game mode - vsPerson or vsComputer
-     * @param gameMode
+     * @param gameMode a String game mode
      */
     public void setGameMode(String gameMode) {
         this.gameMode = gameMode;
@@ -50,7 +50,7 @@ public class GameSettingsDTO {
 
     /**
      * Gets the number of players
-     * @return
+     * @return the number of players
      */
     public int getNumOfPlayers() {
         return numOfPlayers;
@@ -58,7 +58,7 @@ public class GameSettingsDTO {
 
     /**
      * Sets the number of players
-     * @param numOfPlayers
+     * @param numOfPlayers the number of players
      */
     public void setNumOfPlayers(int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
@@ -66,7 +66,7 @@ public class GameSettingsDTO {
 
     /**
      * Gets a list of IP addresses of players
-     * @returna list of IP addresses as Strings
+     * @return list of IP addresses as Strings
      */
     public List<String> getIPadresses() {
         return IPadresses;
@@ -74,7 +74,7 @@ public class GameSettingsDTO {
 
     /**
      * Sets a list of IP addresses of players
-     * @param IPadresses
+     * @param IPadresses a list of IP addresses
      */
     public void setIPadresses(List<String> IPadresses) {
         this.IPadresses = IPadresses;

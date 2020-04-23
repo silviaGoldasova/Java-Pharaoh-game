@@ -21,7 +21,7 @@ public class MenuView extends Application implements Observer, Runnable {
 
     /**
      * Creates a new MenuView based on the specified SceneModel.
-     * @param currentSceneModel
+     * @param currentSceneModel model carrying the current scene to be displayed
      */
     public MenuView(SceneModel currentSceneModel) {
         this.currentScene = currentSceneModel;
@@ -48,7 +48,7 @@ public class MenuView extends Application implements Observer, Runnable {
     /**
      * Sets the isUnprocessedUpdate instance variable to true, notifying of the change.
      * @param o scene
-     * @param arg
+     * @param arg arg
      */
     @Override
     public void update(Observable o, Object arg) {
@@ -86,8 +86,8 @@ public class MenuView extends Application implements Observer, Runnable {
 
     /**
      * Generates a new FXML application
-     * @param stage
-     * @throws Exception
+     * @param stage Stage stage
+     * @throws Exception e
      */
     @Override
     public void start(Stage stage) throws Exception {
