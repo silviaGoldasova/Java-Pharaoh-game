@@ -1,11 +1,11 @@
-package com.goldasil.pjv;
+package com.goldasil.pjv.models;
 
-import java.util.ArrayList;
+import com.goldasil.pjv.models.Player;
 
 /**
  * Represents a player played by a person.
  */
-public class PersonPlayer extends Player{
+public class PersonPlayer extends Player {
 
     /**
      * Creates a player to be played by a person.

@@ -1,5 +1,5 @@
-package com.goldasil.pjv;
-import com.goldasil.pjv.Card;
+package com.goldasil.pjv.models;
+import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Suit;
 

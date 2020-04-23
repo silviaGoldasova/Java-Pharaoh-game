@@ -1,10 +1,13 @@
-package com.goldasil.pjv;
+package com.goldasil.pjv.models;
 
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.SpecialCardCase;
 import com.goldasil.pjv.enums.Suit;
+import com.goldasil.pjv.models.Card;
+import com.goldasil.pjv.models.Move;
+import com.goldasil.pjv.models.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -27,8 +30,8 @@ public class RandomPlayer extends Player {
         super(playerID);
     }
 
-    public Move chooseMove(MoveDTO oppMove){
-        SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), oppMove.getOpponentCardCount());
+    public Move getMove(MoveDTO oppMove){
+        SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), 1);
         if (specialCase == SpecialCardCase.NO_SPECIAL_CARD_CASE) {
             Move move = chooseMoveFromHand(oppMove.getUpcard());
             checkOverKnaveGetSuit(move.getMove());
@@ -56,7 +59,7 @@ public class RandomPlayer extends Player {
                 }
                 else {
                     if (isMyTurnAfterAces(aces.size(), oppMove.getMove().size())) {
-                        return new Move(MoveType.DOUBLE_PLAY, aces, 0);
+                        return new Move(MoveType.PLAY, aces, 0);
                     }
                     else {
                         return new Move(MoveType.PLAY, aces, 0);
@@ -85,7 +88,7 @@ public class RandomPlayer extends Player {
                     ArrayList<Card> move = getCardsOnHandOfRank(sevenHearts);
                     return new Move(MoveType.PLAY, move, 0);
                 }
-                return new Move(MoveType.LOSE, null, 0);
+                return null;
 
             case UNDER_KNAVE_LEAVES_PLAYED:
                 ArrayList<ArrayList<Card>> possibleMoves = new ArrayList<ArrayList<Card>>();
@@ -103,6 +106,64 @@ public class RandomPlayer extends Player {
         return null;
     }
 
+    protected boolean isUnderKnaveLeavesInHand(){
+        for (Card card : cards) {
+            if (isUnderKnaveLeaves(card)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    protected boolean isUnderKnaveLeaves(Card card) {
+        if (card.getRank() == Rank.OVERKNAVE && card.getSuit() == Suit.LEAVES) {
+            return true;
+        }
+        return false;
+    }
+
+
+    protected SpecialCardCase specialCardCaseCheck(boolean isNewUpcard, Card upcard, int opponentCardCount){
+
+        if (upcard.getRank() == Rank.UNDERKNAVE && upcard.getSuit() == Suit.LEAVES) {
+            return SpecialCardCase.UNDER_KNAVE_LEAVES_PLAYED;
+        }
+
+        if (upcard.getRank() == Rank.OVERKNAVE) {
+            return SpecialCardCase.OVER_KNAVE_PLAYED;
+        }
+
+        if (!isNewUpcard) {
+            return SpecialCardCase.NO_SPECIAL_CARD_CASE;
+        }
+
+        if (opponentCardCount == 0){
+            return SpecialCardCase.OPPONENT_HAS_NO_CARDS;
+        }
+
+        if (upcard.getRank() == Rank.SEVEN && upcard.getSuit() == Suit.HEARTS && cardsCount == 0) {
+            return SpecialCardCase.RETURN_TO_GAME;
+        }
+
+        if (upcard.getRank() == Rank.SEVEN) {
+            return SpecialCardCase.SEVENS_PLAYED;
+        }
+
+        return SpecialCardCase.NO_SPECIAL_CARD_CASE;
+    }
+
+    protected boolean isMyTurnAfterAces(int myAcesCount, int oppAcesCount) {
+        if ((myAcesCount + oppAcesCount)% 2 == 1) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Generates a move just based on the same rank of the card on the top of the stock and rank of the cards in hand.
+     * @param upcard the current card on the top of the stock
+     * @return an option when most cards would be played if such exists
+     */
     private Move chooseMoveFromHand(Card upcard) {
         ArrayList<ArrayList<Card>> possibleMoves = new ArrayList<ArrayList<Card>>();
 

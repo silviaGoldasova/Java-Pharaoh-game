@@ -1,13 +1,10 @@
 package com.goldasil.pjv;
 
-import com.goldasil.pjv.Card;
-import com.goldasil.pjv.Move;
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.dto.MoveStateDTO;
 import com.goldasil.pjv.enums.MoveState;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Rank;
-import com.goldasil.pjv.enums.Suit;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 

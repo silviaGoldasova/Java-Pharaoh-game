@@ -3,4 +3,4 @@ com.goldasil.pjv.circularLinkedList
 com.goldasil.pjv.communication
 com.goldasil.pjv.dto
 com.goldasil.pjv.enums
-com.goldasil.pjv.gameControllers
+com.goldasil.pjv.controllers.gameControllers

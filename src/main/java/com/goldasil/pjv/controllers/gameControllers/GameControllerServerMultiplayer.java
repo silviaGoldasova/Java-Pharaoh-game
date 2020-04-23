@@ -1,6 +1,6 @@
-package com.goldasil.pjv.gameControllers;
+package com.goldasil.pjv.controllers.gameControllers;
 
-import com.goldasil.pjv.GameModel;
+import com.goldasil.pjv.models.GameModel;
 
 /**
  * Represents a Game Controller for the Person Vs Person mode from the perspective of a player playing on the device in the server role, operates based on the Finite State Machine concept.

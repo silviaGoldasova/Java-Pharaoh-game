@@ -1,6 +1,6 @@
-package com.goldasil.pjv.gameControllers;
+package com.goldasil.pjv.controllers.gameControllers;
 
-import com.goldasil.pjv.GameModel;
+import com.goldasil.pjv.models.GameModel;
 import com.goldasil.pjv.dto.MoveDTO;
 
 /**

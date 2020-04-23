@@ -1,4 +1,4 @@
-package com.goldasil.pjv;
+package com.goldasil.pjv.models;
 
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.enums.Rank;

@@ -1,7 +1,7 @@
 package com.goldasil.pjv.dto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.goldasil.pjv.Card;
-import com.goldasil.pjv.Move;
+import com.goldasil.pjv.models.Card;
+import com.goldasil.pjv.models.Move;
 import com.goldasil.pjv.enums.MoveState;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Rank;
