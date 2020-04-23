@@ -1,7 +1,8 @@
 package com.goldasil.pjv.enums;
 
-import com.fasterxml.jackson.annotation.JsonValue;
-
+/**
+ * Contains the ranks of cards in the German playing cards pack.
+ */
 public enum Rank {
 
     SEVEN,

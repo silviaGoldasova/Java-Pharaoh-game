@@ -5,6 +5,7 @@ C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\enums\Suit.j
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\Game\GameMultiplayer.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\circularLinkedList\ListNode.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\enums\SpecialCardCase.java
+C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\Game\MoveStateHandler.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\communication\ChannelGetClients.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\Main.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\Player.java
@@ -15,11 +16,11 @@ C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\Game\GameSer
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\Game\Game.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\circularLinkedList\CircularLinkedList.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\enums\MoveType.java
-C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\MoveState.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\Card.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\Game\GameClientMultiplayer.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\dto\OpponentMoveDTO.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\GameLogic.java
-C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\enums\MoveStates.java
+C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\enums\MoveState.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\PersonPlayer.java
+C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\dto\MoveStateDTO.java
 C:\Users\sisag\IdeaProjects\goldasil\src\main\java\com\goldasil\pjv\RandomPlayer.java

@@ -1,18 +1,40 @@
 package com.goldasil.pjv;
 
-import com.goldasil.pjv.dto.MoveDTO;
-import com.goldasil.pjv.dto.OpponentMoveDTO;
-import com.goldasil.pjv.enums.MoveType;
-import com.goldasil.pjv.enums.Rank;
-import com.goldasil.pjv.enums.SpecialCardCase;
-import com.goldasil.pjv.enums.Suit;
-
 import java.util.ArrayList;
 
-
+/**
+ * Represents a player played by a person.
+ */
 public class PersonPlayer extends Player{
 
-    public boolean isValidMove(MoveDTO plannedMove, OpponentMoveDTO oppMove){
+    /**
+     * Creates a player to be played by a person.
+     * @param playerId ID of the new player
+     */
+    public PersonPlayer(int playerId) {
+        super(playerId);
+    }
+
+
+    /*
+    private boolean isMoveSameRank(ArrayList<Card> move) {
+        Rank orig_rank = move.get(0).getRank();
+        for (int i = 1; i < move.size(); i++) {
+            if (move.get(i).getRank() != orig_rank) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isOfRank(Card card, Rank rank){
+        if (card.getRank() == rank) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isValidMove(Move plannedMove, MoveDTO oppMove){
 
         SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), oppMove.getOpponentCardCount());
 
@@ -36,7 +58,7 @@ public class PersonPlayer extends Player{
         return true;
     }
 
-    private boolean isSpecialCaseValid(SpecialCardCase specialCase, MoveDTO plannedMove, OpponentMoveDTO oppMove) {
+    private boolean isSpecialCaseValid(SpecialCardCase specialCase, Move plannedMove, MoveDTO oppMove) {
 
         switch(specialCase) {
             case OVER_KNAVE_PLAYED:
@@ -106,23 +128,7 @@ public class PersonPlayer extends Player{
                 return true;
         }
         return false;
-    }
+    }*/
 
-    private boolean isMoveSameRank(ArrayList<Card> move) {
-        Rank orig_rank = move.get(0).getRank();
-        for (int i = 1; i < move.size(); i++) {
-            if (move.get(i).getRank() != orig_rank) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    private boolean isOfRank(Card card, Rank rank){
-        if (card.getRank() == rank) {
-            return true;
-        }
-        return false;
-    }
 
 }

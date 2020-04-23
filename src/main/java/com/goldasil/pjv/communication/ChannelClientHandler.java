@@ -7,6 +7,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 
+/**
+ * A handler for each client (= another player) a server (= the main player) has and services.
+ * Each client is services in an own thread.
+ */
 public class ChannelClientHandler implements Runnable {
 
     private ServerSocket listeningSocket;
@@ -19,18 +23,32 @@ public class ChannelClientHandler implements Runnable {
         return ID;
     }
 
-    private ChannelClientHandler(Socket sender) {
-        this.sender = sender;
-    }
-
     public void setID(int ID) {
         this.ID = ID;
     }
 
+    /**
+     * Creates a handler of a client.
+     * @param sender
+     */
+    public ChannelClientHandler(Socket sender) {
+        this.sender = sender;
+    }
+
+
+    /**
+     * Sets status variable isStopped to true to notify the thread that the listening is over.
+     * @param stopped
+     */
     public void setStopped(boolean stopped) {
         isStopped = stopped;
     }
 
+    /**
+     * Processes a received message based on the decoded message type.
+     * @return message body
+     * @throws IOException
+     */
     private String handleReceived() throws IOException {
         String messageType = "MOVE";
 
@@ -43,8 +61,8 @@ public class ChannelClientHandler implements Runnable {
                 System.out.println("Error switch");
                 return "Error";
             case "OVER":
-                System.out.println("Game over");
-                return "Game over";
+                System.out.println("gameControllers over");
+                return "gameControllers over";
             default:
                 System.out.println("Error switch");
                 // request new communication
@@ -52,6 +70,9 @@ public class ChannelClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Keeps listening for any new data from the specified client/player until isStopped is set to true;
+     */
     @Override
     public void run() {
         try {
@@ -71,6 +92,10 @@ public class ChannelClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Decodes the body of the received messsage.
+     * @return the body of the received message as a String
+     */
     private String decodeReceivedMessage(){
         int dataLength = 0;
         try {
@@ -102,6 +127,12 @@ public class ChannelClientHandler implements Runnable {
         }
     }
 
+
+    /**
+     * Decodes the received message type.
+     * @return type of the message received as a String
+     * @throws IOException
+     */
     private String decodeReceivedMessageType() throws IOException {
         byte[] messageType = new byte[4];
         if (in.read(messageType, 0, 4) != 4){

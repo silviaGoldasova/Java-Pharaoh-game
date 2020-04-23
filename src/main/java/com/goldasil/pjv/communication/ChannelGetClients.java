@@ -4,7 +4,11 @@ import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
-public class ChannelGetClients implements Runnable{
+/**
+ * Represents a communication channel used only for initial listening on port 4444 and finding and connecting to the players willing to play a gameControllers.
+ * The channel runs in its own separate thread, and creates a new thread for communication with every player that connects.
+ */
+public class ChannelGetClients implements Runnable {
 
     private ServerSocket listeningSocket;
     private ArrayList<Socket> clients;
@@ -15,11 +19,20 @@ public class ChannelGetClients implements Runnable{
     // getClients.start();
     // Thread client0 = new Thread(new ChannelClientHandler(listOfSockets.get(i));
     // client0.start();
+
+    /**
+     * Creates a new channel for listenning.
+     * @param numOfClients number of clients for which to wait to connect
+     * @param clients emptry list of clients passed from the above thread, making the client a shared variable
+     */
     public ChannelGetClients(int numOfClients, ArrayList<Socket> clients) {
         this.numOfClients = numOfClients;
         this.clients = clients;
     }
 
+    /**
+     * Stops listening on the socket.
+     */
     public void stopConnection() {
         try {
             listeningSocket.close();
@@ -28,6 +41,10 @@ public class ChannelGetClients implements Runnable{
         }
     }
 
+    /**
+     * Listens for any connection, until all players connect.
+     * Adds any new client to a list of clients.
+     */
     @Override
     public void run() {
         try {
@@ -46,10 +63,11 @@ public class ChannelGetClients implements Runnable{
         stopConnection();
     }
 
+
+
     /*public void startConnection(int listeningPort){
         initializeListening(listeningPort);
     }
-
     protected void initializeListening(int listeningPort) {
         try {
             listeningSocket = new ServerSocket(listeningPort);
@@ -64,14 +82,12 @@ public class ChannelGetClients implements Runnable{
         catch(IOException e) {
             System.out.println(e.getMessage());
         }
-    }*/
-
+    }
     public static void main(String args[]) {
-        /*
+
         ChannelGetClients server = new ChannelFromClient();
         server.startConnection(4444);
         server.stopConnection();
-        */
-    }
+    }*/
 
 }

@@ -1,6 +1,6 @@
 package com.goldasil.pjv;
+
 import com.goldasil.pjv.dto.MoveDTO;
-import com.goldasil.pjv.dto.OpponentMoveDTO;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.SpecialCardCase;
@@ -9,15 +9,28 @@ import com.goldasil.pjv.enums.Suit;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Represents a random player for the mode of the gameControllers Player Vs Computer
+ * The random player can generate possible moves, evaluate them to some extend, but chooses randomly from the pool of possible moves narrowed down to the best ones.
+ * Eg., the random player prefers moves when he plays the most cards.
+ */
 public class RandomPlayer extends Player {
 
     static final int CARDS_TO_DRAW_PER_SEVEN = 3;
     static final int NUM_OF_SUITS = 4;
 
-    public MoveDTO chooseMove(OpponentMoveDTO oppMove){
+    /**
+     * Generates a player with the specified ID and playing cards in hand.
+     * @param playerID
+     */
+    public RandomPlayer(int playerID) {
+        super(playerID);
+    }
+
+    public Move chooseMove(MoveDTO oppMove){
         SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), oppMove.getOpponentCardCount());
         if (specialCase == SpecialCardCase.NO_SPECIAL_CARD_CASE) {
-            MoveDTO move = chooseMoveFromHand(oppMove.getUpcard());
+            Move move = chooseMoveFromHand(oppMove.getUpcard());
             checkOverKnaveGetSuit(move.getMove());
             return move;
         }
@@ -26,7 +39,7 @@ public class RandomPlayer extends Player {
         }
     }
 
-    private MoveDTO chooseSpecialCaseMove(SpecialCardCase specialCase, OpponentMoveDTO oppMove) {
+    private Move chooseSpecialCaseMove(SpecialCardCase specialCase, MoveDTO oppMove) {
         switch(specialCase) {
             case OVER_KNAVE_PLAYED:
                 return chooseMoveFromHand(new Card(Rank.UNSPECIFIED, oppMove.getRequestedSuit()));
@@ -38,15 +51,15 @@ public class RandomPlayer extends Player {
                         return chooseMoveFromHand(oppMove.getUpcard());
                     }
                     else {
-                        return new MoveDTO(MoveType.PASS, null, 0);
+                        return new Move(MoveType.PASS, null, 0);
                     }
                 }
                 else {
                     if (isMyTurnAfterAces(aces.size(), oppMove.getMove().size())) {
-                        return new MoveDTO(MoveType.DOUBLE_PLAY, aces, 0);
+                        return new Move(MoveType.DOUBLE_PLAY, aces, 0);
                     }
                     else {
-                        return new MoveDTO(MoveType.PLAY, aces, 0);
+                        return new Move(MoveType.PLAY, aces, 0);
                     }
                 }
 
@@ -54,25 +67,25 @@ public class RandomPlayer extends Player {
                 Card cardSeven = new Card(Rank.SEVEN, Suit.UNSPECIFIED);
                 ArrayList<Card> sevens = getCardsOnHandOfRank(cardSeven);
                 if (sevens.size() != 0) {
-                    MoveDTO move = new MoveDTO(MoveType.PLAY, sevens, 0);
+                    Move move = new Move(MoveType.PLAY, sevens, 0);
                     return move;
                 } else if (isUnderKnaveLeavesInHand()) {
                     ArrayList<Card> move = getCardsOnHandOfRank(new Card(Rank.UNDERKNAVE, Suit.LEAVES));
-                    return new MoveDTO(MoveType.PLAY, move, 0);
+                    return new Move(MoveType.PLAY, move, 0);
                 } else {
-                    return new MoveDTO(MoveType.DRAW, null, CARDS_TO_DRAW_PER_SEVEN*oppMove.getMove().size());
+                    return new Move(MoveType.DRAW, null, CARDS_TO_DRAW_PER_SEVEN*oppMove.getMove().size());
                 }
 
             case RETURN_TO_GAME:
-                return (new MoveDTO(MoveType.DRAW, null, CARDS_TO_DRAW_PER_SEVEN * oppMove.getMove().size()));
+                return (new Move(MoveType.DRAW, null, CARDS_TO_DRAW_PER_SEVEN * oppMove.getMove().size()));
 
             case OPPONENT_HAS_NO_CARDS:
                 Card sevenHearts = new Card(Rank.SEVEN, Suit.HEARTS);
                 if (hasTheCard(sevenHearts)) {
                     ArrayList<Card> move = getCardsOnHandOfRank(sevenHearts);
-                    return new MoveDTO(MoveType.PLAY, move, 0);
+                    return new Move(MoveType.PLAY, move, 0);
                 }
-                return new MoveDTO(MoveType.LOSE, null, 0);
+                return new Move(MoveType.LOSE, null, 0);
 
             case UNDER_KNAVE_LEAVES_PLAYED:
                 ArrayList<ArrayList<Card>> possibleMoves = new ArrayList<ArrayList<Card>>();
@@ -81,16 +94,16 @@ public class RandomPlayer extends Player {
                     possibleMoves.add(posMove);
                 }
                 if (possibleMoves.size() == 1) {
-                    return new MoveDTO(MoveType.PLAY, possibleMoves.get(0), 0);
+                    return new Move(MoveType.PLAY, possibleMoves.get(0), 0);
                 }
                 else {
-                    return new MoveDTO(MoveType.PLAY, getLargestArrayList(possibleMoves), 0);
+                    return new Move(MoveType.PLAY, getLargestArrayList(possibleMoves), 0);
                 }
         }
         return null;
     }
 
-    private MoveDTO chooseMoveFromHand(Card upcard) {
+    private Move chooseMoveFromHand(Card upcard) {
         ArrayList<ArrayList<Card>> possibleMoves = new ArrayList<ArrayList<Card>>();
 
         for (Card card : cards) {
@@ -102,15 +115,37 @@ public class RandomPlayer extends Player {
 
         int numOfPosMoves = possibleMoves.size();
         if (numOfPosMoves == 0) {
-            return new MoveDTO(MoveType.DRAW, null, 1);
+            return new Move(MoveType.DRAW, null, 1);
         }
         else if (numOfPosMoves == 1) {
-            return new MoveDTO(MoveType.PLAY, possibleMoves.get(0), 0);
+            return new Move(MoveType.PLAY, possibleMoves.get(0), 0);
         }
         else {
-            return new MoveDTO(MoveType.PLAY, getLargestArrayList(possibleMoves), 0);
+            return new Move(MoveType.PLAY, getLargestArrayList(possibleMoves), 0);
         }
     }
+
+    public boolean isValidMoveAccCards(Card upcard, ArrayList<Card> move){
+        if (!(upcard.isSameRank(move.get(0)) || upcard.isSameSuit(move.get(0)) || move.get(0).getRank() == Rank.OVERKNAVE || move.get(0).isUnderKnaveLeaves() )) {
+            return false;
+        }
+
+        Rank rank = move.get(0).getRank();
+        for (int i = 1; i < move.size(); i++) {
+            if (move.get(i).getRank() != rank) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean isValidCard(Card upcard, Card moveCard){
+        if (upcard.isSameRank(moveCard) || upcard.isSameSuit(moveCard) || moveCard.getRank() == Rank.OVERKNAVE || moveCard.isUnderKnaveLeaves()) {
+            return true;
+        }
+        return false;
+    }
+
 
     private Suit checkOverKnaveGetSuit(ArrayList<Card> move){
         if (move.get(0).getRank() == Rank.OVERKNAVE) {
