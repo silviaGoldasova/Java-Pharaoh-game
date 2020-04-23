@@ -4,3 +4,5 @@ target/
 pharaon.iml
 to_do.txt
 src/main/java/com/goldasil/pjv/circularLinkedList
+.idea
+.gitignore
