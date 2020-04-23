@@ -1,32 +1,37 @@
 package com.goldasil.pjv.models;
 
 import com.goldasil.pjv.dto.MoveDTO;
+import com.goldasil.pjv.enums.GameState;
 import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.Suit;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Represents model for the game play.
  * Holds the states of the basic entities in the game - players, a stock, a waste.
  */
-public class GameModel {
+public class GameModel extends Observable {
 
     List<Player> players; // set to the current player
     LinkedList <Card> stock;
     LinkedList <Card> waste;
+    GameState currentState;
     static final int CARDS_TO_DEAL = 5;
 
+    /**
+     * Creates a new game model with an initial state.
+     */
+    public GameModel() {
+        currentState = GameState.FIRST_MOVE;
+    }
 
     /**
      * Makes all changes (of the states of the entities of the game) caused by a specific move according to the type of the move.
      * @param playerID ID of the player who made the move
      * @param move the move to process
      */
-    public void playMove(int playerID, MoveDTO move) {
+    public synchronized void playMove(int playerID, MoveDTO move) {
         Player player = getPlayerByID(playerID);
         switch (move.getMoveType()) {
             case PLAY:
@@ -44,7 +49,7 @@ public class GameModel {
             case PASS:
                 break;
         }
-
+        notifyObservers();
     }
 
     /**
@@ -181,7 +186,6 @@ public class GameModel {
         return stock.getLast();
     }
 
-
     /**
      * Gets the players playing in the game.
      * @return a list of players
@@ -222,4 +226,19 @@ public class GameModel {
         this.waste = waste;
     }
 
+    /**
+     * Gets current state of the game.
+     * @return the current game state
+     */
+    public GameState getCurrentState() {
+        return currentState;
+    }
+
+    /**
+     * Sets the new state of the game.
+     * @param newState new state to which the game is to move
+     */
+    public void setCurrentState(GameState newState) {
+        this.currentState = newState;
+    }
 }

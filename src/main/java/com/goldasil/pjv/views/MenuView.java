@@ -1,5 +1,6 @@
 package com.goldasil.pjv.views;
 
+import com.goldasil.pjv.enums.MenuScene;
 import com.goldasil.pjv.models.SceneModel;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -27,11 +28,14 @@ public class MenuView extends Application implements Observer, Runnable {
         this.currentScene = currentSceneModel;
     }
 
+    /**
+     * Runs the menu view in a separate thread
+     */
     @Override
     public void run() {
         launch();
 
-        while (true) {
+        while (currentScene.getScene() != MenuScene.DONE) {
             if(isUnprocessedUpdate){
                 isUnprocessedUpdate = false;
                 getNewScene();

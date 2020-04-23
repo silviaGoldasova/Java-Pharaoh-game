@@ -16,6 +16,8 @@ import java.util.Random;
  * Represents a random player for the mode of the gameControllers Player Vs Computer
  * The random player can generate possible moves, evaluate them to some extend, but chooses randomly from the pool of possible moves narrowed down to the best ones.
  * Eg., the random player prefers moves when he plays the most cards.
+ *
+ * TO DO - rewrite the class with the MoveStates instead of SpecialCaseMove
  */
 public class RandomPlayer extends Player {
 
