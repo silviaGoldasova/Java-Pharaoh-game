@@ -3,6 +3,8 @@ package com.goldasil.pjv.models;
 import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.Suit;
 
+import java.util.ArrayList;
+
 /**
  * Represents a card from the German playing cards pack.
  * Contains a basic set of function for operations on cards.
@@ -29,12 +31,6 @@ public class Card {
         this.rank = rank;
         this.suit = suit;
     }
-
-    /*@JsonCreator
-    public Card(@JsonProperty("rank") Rank rank, @JsonProperty("suit") Suit suit) {
-        this.rank = rank;
-        this.suit = suit;
-    }*/
 
     @Override
     public String toString() {
@@ -78,6 +74,18 @@ public class Card {
             return true;
         }
         return false;
+    }
+
+    public static boolean arrAllCardsSameRank(Rank rank, ArrayList<Card> cardList){
+        if (cardList == null) {
+            return true;
+        }
+        for (Card card : cardList) {
+            if (card.getRank() != rank) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

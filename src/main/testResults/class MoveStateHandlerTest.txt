@@ -1,0 +1,5 @@
+Tested class name: class MoveStateHandlerTest.
+
+
+Number of all tests: 11
+Number of error tests: 0

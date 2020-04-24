@@ -10,10 +10,10 @@ public enum MoveState {
     ACES_ONLY (0),
     ACES_PLAYED (0),
     SEVENS_PLAYED (0),
-    UNDERKNAVE_LEAVES_PLAYED (0),
+    UNDERKNAVE_LEAVES_PLAYED (2),
 
     SEVEN_HEARTS_RETURN_PLAYED (0),
-    LOOKING_FOR_SEVEN_HEARTS_RETURN (1),
+    LOOKING_FOR_SEVEN_HEARTS_RETURN (2),
 
     OVERKNAVE (0),
     OVERKNAVE_HEARTS (0),
@@ -21,16 +21,25 @@ public enum MoveState {
     OVERKNAVE_BELLS (0),
     OVERKNAVE_ACORNS (0),
 
-    HEARTS_PLAYED (0),
-    LEAVES_PLAYED (0),
-    BELLS_PLAYED (0),
-    ACORNS_PLAYED (0),
+    HEARTS_PLAYED (1),
+    LEAVES_PLAYED (1),
+    BELLS_PLAYED (1),
+    ACORNS_PLAYED (1),
 
     WIN (0),
     DRAW (0),
     DRAW_PENIALTY (0),
     PASS (0),
-    QUARTET_PLAYED (0);
+    QUARTET_PLAYED (0),
+
+    SEVEN_PLAYED (1),
+    EIGHT_PLAYED (1),
+    NINE_PLAYED (1),
+    TEN_PLAYED (1),
+    UNDERKNAVE_PLAYED (1),
+    OVERKNAVE_PLAYED (1),
+    KING_PLAYED (1),
+    ACE_PLAYED (1);
 
     /*private static final Map<String, MoveStates> ENUM_MAP;
 

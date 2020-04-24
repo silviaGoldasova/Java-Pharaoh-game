@@ -1,5 +1,9 @@
 package com.goldasil.pjv;
 
+import com.goldasil.pjv.models.Card;
+import com.goldasil.pjv.models.Move;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.dto.MoveStateDTO;
 import com.goldasil.pjv.enums.MoveState;
@@ -19,7 +23,17 @@ public class MoveStateHandler {
     /*MoveState state;
     List<MoveState> posFollowUpStates;*/
 
+    private static final Logger logger = LoggerFactory.getLogger(MoveStateHandler.class);
     private static Map<MoveState, List<MoveState>> neighbours = new HashMap<MoveState, List<MoveState>>();
+    private static Collection<MoveState> allSuitMoveStates = new ArrayList<>();
+
+    public MoveStateHandler() {
+        initNeighbours();
+        allSuitMoveStates.add(MoveState.HEARTS_PLAYED);
+        allSuitMoveStates.add(MoveState.LEAVES_PLAYED);
+        allSuitMoveStates.add(MoveState.ACORNS_PLAYED);
+        allSuitMoveStates.add(MoveState.BELLS_PLAYED);
+    }
 
     public void initNeighbours() {
         ArrayList<MoveStateDTO> statesObj = null;
@@ -32,13 +46,23 @@ public class MoveStateHandler {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.out.println(statesObj.toString());
+        logger.info(statesObj.toString());
 
         for (MoveStateDTO stateDTO: statesObj) {
             if (stateDTO.getState() != null) {
                 neighbours.put(stateDTO.getState(), stateDTO.getNeighbours());
             }
         }
+        //logger.debug("Initialization of neighbours successful.");
+    }
+
+    public boolean isValidMove(MoveDTO prevMove, MoveDTO desiredMove) {
+        List<MoveState> previousStates = getMoveStatesPrev(prevMove);
+        List<MoveState> desiredStates = getMoveStatesDesired(desiredMove);
+        if (isValidTransition(previousStates, desiredStates) && Card.arrAllCardsSameRank(prevMove.getUpcard().getRank(), desiredMove.getMove())) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -49,14 +73,51 @@ public class MoveStateHandler {
      * @return true is the move is valid to be performed
      */
     public static boolean isValidTransition(List<MoveState> previousStates, List<MoveState> desiredStates) {
-        for (MoveState desiredMoveState : desiredStates) {
-            for (MoveState previousState : previousStates) {
-                if (!isBetweenNeighbours(previousState, desiredMoveState)) {
-                    return false;
+
+        for (MoveState previousMoveState : previousStates) {
+            if (previousMoveState.getPriority() == 2) {
+                for (MoveState desiredMoveState : desiredStates) {
+                    if (isBetweenNeighbours(previousMoveState, desiredMoveState)) {
+                        logger.info("Special high priority transition from {} to {} -> valid transition.\n", previousStates, desiredStates);
+                        return true;
+                    }
                 }
             }
         }
+
+        if (shouldCheckRankORSuit(desiredStates)) {
+            logger.info("Checking if same rank or suit from {} to {}.", previousStates, desiredStates);
+            boolean returnValue = false;
+            for (MoveState previousMoveState : previousStates) {
+                if (previousMoveState.getPriority() == 1) {
+                    for (MoveState desiredMoveState : desiredStates) {
+                        if (isBetweenNeighbours(previousMoveState, desiredMoveState)) {
+                            logger.info("Same rank or suit from {} to {}.\n", previousStates, desiredStates);
+                            returnValue = true;
+                        }
+                    }
+                }
+            }
+            if (!returnValue) {
+                logger.info("Not the same rank or suit from {} to {}.\n", previousStates, desiredStates);
+                return false;
+            }
+        }
+
+        for (MoveState previousMoveState : previousStates) {
+            if (previousMoveState.getPriority() == 0) {
+                for (MoveState desiredMoveState : desiredStates) {
+                    if (desiredMoveState.getPriority() == 0 && !isBetweenNeighbours(previousMoveState, desiredMoveState)) {
+                        logger.info("Not a valid trasition from {} to {}.\n", previousStates, desiredStates);
+                        logger.info("Not a valid trasition from {} to {}.\n", previousMoveState, desiredMoveState);
+                        return false;
+                    }
+                }
+            }
+        }
+        logger.info("Valid trasition from {} to {}.\n", previousStates, desiredStates);
         return true;
+
     }
 
     /**
@@ -81,15 +142,19 @@ public class MoveStateHandler {
      * @param moveDTO data about the previous moves
      * @return list of all states currently active
      */
-    public List<MoveState> getMoveStatesPrev(MoveDTO moveDTO) {
+    public static List<MoveState> getMoveStatesPrev(MoveDTO moveDTO) {
         List<MoveState> states = new LinkedList<MoveState>();
 
         if (moveDTO.getUpcard().isUnderKnaveLeaves()) {
             states.add(MoveState.UNDERKNAVE_LEAVES_PLAYED);
+            states.add(MoveState.UNDERKNAVE_PLAYED);
+            states.addAll(allSuitMoveStates);
         }
 
         if (moveDTO.getUpcard().getRank() == Rank.OVERKNAVE) {
             states.add(moveDTO.getOverknaveState());
+            states.add(MoveState.OVERKNAVE_PLAYED);
+            states.add(moveDTO.getMoveStateFromSuit(moveDTO.getRequestedSuit()));
         }
 
         if (moveDTO.wasNonspecialMove()) {
@@ -112,6 +177,11 @@ public class MoveStateHandler {
             states.add(MoveState.ACES_ONLY);
         }
 
+        if (!(isStateInList(MoveState.UNDERKNAVE_LEAVES_PLAYED, states) || moveDTO.getUpcard().getRank() == Rank.OVERKNAVE)) {
+            states.add(moveDTO.getMoveStateForUpcardSuit());
+            states.add(moveDTO.getMoveStateFromUpcardRank());
+        }
+
         return states;
     }
 
@@ -120,15 +190,19 @@ public class MoveStateHandler {
      * @param moveDTO the desired move
      * @return list of all states that would be active after having performed the desired move
      */
-    public List<MoveState> getMoveStatesDesired(MoveDTO moveDTO) {
+    public static List<MoveState> getMoveStatesDesired(MoveDTO moveDTO) {
         List<MoveState> states = new LinkedList<MoveState>();
 
         if (moveDTO.getMoveType() == MoveType.PLAY && moveDTO.getMove().get(0).isUnderKnaveLeaves()) {
             states.add(MoveState.UNDERKNAVE_LEAVES_PLAYED);
+            states.add(MoveState.UNDERKNAVE_PLAYED);
+            states.addAll(allSuitMoveStates);
         }
 
         if (moveDTO.getMoveType() == MoveType.PLAY && moveDTO.getMove().get(0).getRank() == Rank.OVERKNAVE) {
             states.add(MoveState.OVERKNAVE);
+            states.addAll(allSuitMoveStates);
+            states.add(MoveState.OVERKNAVE_PLAYED);
         }
 
         if (moveDTO.isNonspecialMove()) {
@@ -159,8 +233,39 @@ public class MoveStateHandler {
             states.add(MoveState.DRAW);
         }
 
+        if (moveDTO.getMoveType() == MoveType.PLAY && !(isStateInList(MoveState.UNDERKNAVE_LEAVES_PLAYED, states) || moveDTO.getUpcard().getRank() == Rank.OVERKNAVE)) {
+            states.add(moveDTO.getMoveStateFromSuit(moveDTO.getMove().get(0).getSuit()));
+            states.add(moveDTO.getMoveStateFromRank(moveDTO.getMove().get(0).getRank()));
+        }
+
         return states;
     }
+
+
+    public static boolean isStateInList(MoveState seekedState, List<MoveState> statesList) {
+        for (MoveState state : statesList) {
+            if (state == seekedState) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean shouldCheckRankORSuit(List<MoveState> desiredStates)  {
+        int priorityOnes = 0;
+
+        for (MoveState state : desiredStates) {
+            if (state.getPriority() == 1) {
+                priorityOnes++;
+            }
+        }
+        if (priorityOnes >= 2) {
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 }

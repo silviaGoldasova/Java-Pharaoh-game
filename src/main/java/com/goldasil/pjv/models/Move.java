@@ -19,33 +19,45 @@ public class Move {
     }
 
     /**
-     * Creates a new move with specified type of the move, list of cards to be played in the move if applies, number of cards to draw if applies.
-     * @param moveType type of the move
-     * @param move list of cards to be played in the move if applies
+     * Creates a new move with the specified list of cards to be played in the move
+     * @param move list of cards to be played in the move
+     */
+    public Move(ArrayList<Card> move) {
+        moveType = MoveType.PLAY;
+        this.move = move;
+        drawCards = 0;
+        requestedSuit = Suit.UNSPECIFIED;
+    }
+
+    public Move(MoveType movetype) {
+        this.moveType = movetype;
+        this.move = null;
+        drawCards = 0;
+        requestedSuit = Suit.UNSPECIFIED;
+    }
+
+    /**
+     * Creates a new move - a player draws the specified number of cards
      * @param drawCards number of cards to draw if applies
      */
-    public Move(MoveType moveType, ArrayList<Card> move, int drawCards) {
-        this.moveType = moveType;
-        this.move = move;
+    public Move(int drawCards) {
+        this.moveType = MoveType.DRAW;
+        this.move = null;
         this.drawCards = drawCards;
         this.requestedSuit = Suit.UNSPECIFIED;
     }
 
     /**
-     * Creates a new move with specified type of the move, list of cards to be played in the move if applies, number of cards to draw if applies, suit requested if an OVERKNAVE was played.
-     * @param moveType type of the move
-     * @param move list of cards to be played in the move if applies to the move
-     * @param drawCards number of cards to draw if applies to the move
-     * @param requestedSuit suit requested if an OVERKNAVE was played
+     * Creates a new move with the specified list of cards to be played in the move and suit requested as an OVERKNAVE was played.
+     * @param move list of cards to be played in the move
+     * @param requestedSuit suit requested as an OVERKNAVE was played
      */
-    public Move(MoveType moveType, ArrayList<Card> move, int drawCards, Suit requestedSuit) {
+    public Move(ArrayList<Card> move, Suit requestedSuit) {
         this.moveType = moveType;
         this.move = move;
-        this.drawCards = drawCards;
+        this.drawCards = 0;
         this.requestedSuit = requestedSuit;
     }
-
-
 
     @Override
     public String toString() {

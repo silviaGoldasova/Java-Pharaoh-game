@@ -154,24 +154,54 @@ public class MoveDTO extends Move {
      * @return the state specified to the suit requested in the previous move
      */
     public MoveState getOverknaveState() {
-        try {
-            switch (requestedSuit) {
-                case HEARTS:
-                    return MoveState.OVERKNAVE_HEARTS;
-                case LEAVES:
-                    return MoveState.OVERKNAVE_LEAVES;
-                case BELLSS:
-                    return MoveState.OVERKNAVE_BELLS;
-                case ACORNS:
-                    return MoveState.OVERKNAVE_ACORNS;
-            }
-            throw new Exception("Undefined requested suit.");
-        }
-        catch (Exception e) {
-            System.out.println(e.getMessage());
-            return MoveState.NONSPECIAL_SITUATION;
-        }
+        return getMoveStateFromSuit(requestedSuit);
     }
+
+    public MoveState getMoveStateForUpcardSuit() {
+        return getMoveStateFromSuit(upcard.getSuit());
+    }
+
+    public MoveState getMoveStateFromSuit(Suit suit) {
+        switch(upcard.getSuit()) {
+            case HEARTS:
+                return MoveState.OVERKNAVE_HEARTS;
+            case LEAVES:
+                return MoveState.OVERKNAVE_LEAVES;
+            case BELLSS:
+                return MoveState.OVERKNAVE_BELLS;
+            case ACORNS:
+                return MoveState.OVERKNAVE_ACORNS;
+        }
+        return MoveState.NONSPECIAL_SITUATION;
+    }
+
+    public MoveState getMoveStateFromUpcardRank() {
+        return getMoveStateFromRank(upcard.getRank());
+    }
+
+    public MoveState getMoveStateFromRank(Rank rank) {
+        switch(rank) {
+            case SEVEN:
+                return MoveState.SEVEN_PLAYED;
+            case EIGHT:
+                return MoveState.EIGHT_PLAYED;
+            case NINE:
+                return MoveState.NINE_PLAYED;
+            case TEN:
+                return MoveState.TEN_PLAYED;
+            case UNDERKNAVE:
+                return MoveState.UNDERKNAVE_PLAYED;
+            case OVERKNAVE:
+                return MoveState.OVERKNAVE;
+            case KING:
+                return MoveState.KING_PLAYED;
+            case ACE:
+                return MoveState.ACE_PLAYED;
+        }
+        return MoveState.NONSPECIAL_SITUATION;
+    }
+
+
 
     /**
      * Checks whether any of the players is without cards.
