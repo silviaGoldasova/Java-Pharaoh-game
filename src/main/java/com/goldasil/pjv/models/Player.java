@@ -18,6 +18,10 @@ public class Player {
         this.playerID = playerID;
     }
 
+    public Player(ArrayList<Card> cards) {
+        this.cards = cards;
+    }
+
     /**
      * Creates a player with the specified cards in hand and player ID number.
      * @param cards cards that the player has in hand

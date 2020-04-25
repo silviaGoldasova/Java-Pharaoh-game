@@ -6,6 +6,8 @@ import com.goldasil.pjv.enums.*;
 import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.models.Move;
 import com.goldasil.pjv.models.Player;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,8 @@ import java.util.Random;
  * TO DO - rewrite the class with the MoveStates instead of SpecialCaseMove
  */
 public class RandomPlayer extends Player {
+
+    private static final Logger logger = LoggerFactory.getLogger(RandomPlayer.class);
 
     static final int CARDS_TO_DRAW_PER_SEVEN = 3;
     static final int NUM_OF_SUITS = 4;
@@ -175,7 +179,7 @@ public class RandomPlayer extends Player {
      * @param upcard the current card on the top of the stock
      * @return an option when most cards would be played if such exists
      */
-    private Move chooseMoveFromHand(Card upcard) {
+    public Move chooseMoveFromHand(Card upcard) {
         ArrayList<ArrayList<Card>> possibleMoves = new ArrayList<ArrayList<Card>>();
 
         for (Card card : cards) {
@@ -242,15 +246,15 @@ public class RandomPlayer extends Player {
     }
 
     private ArrayList<Card> getCardsOnHandOfRank(Card origCard) {
-        ArrayList<Card> cards = new ArrayList<Card>();
-        cards.add(origCard);
+        ArrayList<Card> moveCards = new ArrayList<>();
+        moveCards .add(origCard);
         Rank origCardRank = origCard.getRank();
         Suit origCardSuit = origCard.getSuit();
         for (Card card : cards) {
             if (card.getRank() == origCardRank && card.getSuit() != origCardSuit)
-                cards.add(card);
+                moveCards.add(card);
         }
-        return cards;
+        return moveCards ;
     }
 
     private ArrayList<Card> getCardsOnHandOfRank(Rank rank) {
@@ -272,6 +276,25 @@ public class RandomPlayer extends Player {
             }
         }
         return list.get(max_index);
+    }
+
+    public boolean compareMoves(Move moveA, Move moveB) {
+        if (moveA.moveType != moveB.moveType || moveA.drawCards != moveB.drawCards) {
+            return false;
+        }
+
+        if (moveA.moveType == MoveType.PLAY) {
+            int matches = 0;
+            for (Card cardFromBmove : moveB.move) {
+                for (Card cardFromAmove : moveA.move) {
+                    if (cardFromAmove.compareCards(cardFromBmove)) {
+                        matches++;
+                    }
+                }
+            }
+            return matches == moveA.move.size();
+        }
+        return false;
     }
 
     /*private Move chooseSpecialCaseMove(SpecialCardCase specialCase, MoveDTO oppMove) {

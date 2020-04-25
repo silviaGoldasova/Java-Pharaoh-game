@@ -1,3 +1,4 @@
+import com.goldasil.pjv.models.RandomPlayer;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
@@ -18,9 +19,13 @@ public class TestMain {
 
         logger.debug("TestMain method has started.");
 
-        Result result = JUnitCore.runClasses(MoveStateHandlerTest.class);
-        writeToFile(result, MoveStateHandlerTest.class.toString());
+        //Result result = JUnitCore.runClasses(MoveStateHandlerTest.class);
+        Result result = JUnitCore.runClasses(RandomPlayerTest.class);
+        writeToFile(result, RandomPlayerTest.class.toString());
+
+
     }
+
 
     private static void writeToFile(Result result, String testedClassName){
         File file = new File("src/main/testResults/" + testedClassName + ".txt");

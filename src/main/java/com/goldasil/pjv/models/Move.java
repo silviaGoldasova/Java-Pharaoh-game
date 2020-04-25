@@ -59,6 +59,13 @@ public class Move {
         this.requestedSuit = requestedSuit;
     }
 
+    public Move(MoveType movetype, ArrayList<Card> move, int drawCards, Suit requestedSuit) {
+        this.moveType = moveType;
+        this.move = move;
+        this.drawCards = drawCards;
+        this.requestedSuit = requestedSuit;
+    }
+
     @Override
     public String toString() {
         return "MoveType" + moveType + ", move: " + move + ", drawCards: " + drawCards;

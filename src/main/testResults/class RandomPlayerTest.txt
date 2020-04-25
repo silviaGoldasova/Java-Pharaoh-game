@@ -1,0 +1,5 @@
+Tested class name: class RandomPlayerTest.
+
+
+Number of all tests: 1
+Number of error tests: 0
