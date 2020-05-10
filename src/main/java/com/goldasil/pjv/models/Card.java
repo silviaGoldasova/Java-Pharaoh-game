@@ -99,6 +99,13 @@ public class Card {
         return false;
     }
 
+    public boolean isSevenHearts() {
+        if (this.getRank() == Rank.SEVEN && this.getSuit() == Suit.HEARTS) {
+            return true;
+        }
+        return false;
+    }
+
     /**
      * Gets the suit of the card.
      * @return suit of the card

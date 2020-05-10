@@ -1,7 +1,6 @@
 package com.goldasil.pjv;
 
 import com.goldasil.pjv.models.Card;
-import com.goldasil.pjv.models.Move;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.goldasil.pjv.dto.MoveDTO;
@@ -46,7 +45,7 @@ public class MoveStateHandler {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        logger.info(statesObj.toString());
+        //logger.info(statesObj.toString());
 
         for (MoveStateDTO stateDTO: statesObj) {
             if (stateDTO.getState() != null) {
@@ -152,9 +151,9 @@ public class MoveStateHandler {
         }
 
         if (moveDTO.getUpcard().getRank() == Rank.OVERKNAVE) {
-            states.add(moveDTO.getOverknaveState());
+            states.add(moveDTO.getMoveStateForSuit(moveDTO.getRequestedSuit()));
             states.add(MoveState.OVERKNAVE_PLAYED);
-            states.add(moveDTO.getMoveStateFromSuit(moveDTO.getRequestedSuit()));
+            states.add(moveDTO.getMoveStateForOverknave(moveDTO.getRequestedSuit()));
         }
 
         if (moveDTO.wasNonspecialMove()) {
@@ -165,7 +164,7 @@ public class MoveStateHandler {
             states.add(MoveState.SEVEN_HEARTS_RETURN_PLAYED);
         }
 
-        if (moveDTO.wasWithoutCards()) {
+        if (moveDTO.wasAnyoneWithoutCards()) {
             states.add(MoveState.LOOKING_FOR_SEVEN_HEARTS_RETURN);
         }
 
@@ -178,7 +177,7 @@ public class MoveStateHandler {
         }
 
         if (!(isStateInList(MoveState.UNDERKNAVE_LEAVES_PLAYED, states) || moveDTO.getUpcard().getRank() == Rank.OVERKNAVE)) {
-            states.add(moveDTO.getMoveStateForUpcardSuit());
+            states.add(moveDTO.getMoveStateForSuit(moveDTO.getUpcard().getSuit()));
             states.add(moveDTO.getMoveStateFromUpcardRank());
         }
 
@@ -234,7 +233,7 @@ public class MoveStateHandler {
         }
 
         if (moveDTO.getMoveType() == MoveType.PLAY && !(isStateInList(MoveState.UNDERKNAVE_LEAVES_PLAYED, states) || moveDTO.getUpcard().getRank() == Rank.OVERKNAVE)) {
-            states.add(moveDTO.getMoveStateFromSuit(moveDTO.getMove().get(0).getSuit()));
+            states.add(moveDTO.getMoveStateForSuit(moveDTO.getMove().get(0).getSuit()));
             states.add(moveDTO.getMoveStateFromRank(moveDTO.getMove().get(0).getRank()));
         }
 

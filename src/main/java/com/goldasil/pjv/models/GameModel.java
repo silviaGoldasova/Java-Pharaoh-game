@@ -48,6 +48,8 @@ public class GameModel extends Observable {
                 break;
             case PASS:
                 break;
+            case WIN:
+                break;
         }
         notifyObservers();
     }

@@ -1,5 +1,9 @@
 Tested class name: class RandomPlayerTest.
 
+areGetMoveStatesPrevCorrectForSEVENS_PLAYED(MoveStateHandlerTest): null
 
-Number of all tests: 1
-Number of error tests: 0
+areGetMoveStatesPrevCorrectForUNDERKNAVE_LEAVES_PLAYED(MoveStateHandlerTest): null
+
+
+Number of all tests: 13
+Number of error tests: 2

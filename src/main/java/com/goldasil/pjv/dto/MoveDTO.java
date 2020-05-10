@@ -26,6 +26,14 @@ public class MoveDTO extends Move {
 
     public MoveDTO(Move move) {
         super(move.getMoveType(), move.getMove(), move.getDrawCards(), move.getRequestedSuit());
+        states = new ArrayList<MoveState>();
+    }
+
+    public MoveDTO(Move move, Card upcard, int penaltyForSevens) {
+        super(move.getMoveType(), move.getMove(), move.getDrawCards(), move.getRequestedSuit());
+        this.upcard = upcard;
+        this.penaltyForSevens = penaltyForSevens;
+        states = new ArrayList<MoveState>();
     }
 
     public MoveDTO(Move move, Card upcard, int penaltyForSevens, ArrayList<MoveState> states) {
@@ -153,21 +161,28 @@ public class MoveDTO extends Move {
      * Gets the state specified for the situation when an OVERKNAVE has been played, and a suit is requested.
      * @return the state specified to the suit requested in the previous move
      */
-    public MoveState getOverknaveState() {
-        return getMoveStateFromSuit(requestedSuit);
+
+    public MoveState getMoveStateForSuit(Suit suit) {
+        switch(suit){
+            case HEARTS:
+                return MoveState.HEARTS_PLAYED;
+            case LEAVES:
+                return MoveState.LEAVES_PLAYED;
+            case BELLS:
+                return MoveState.BELLS_PLAYED;
+            case ACORNS:
+                return MoveState.ACORNS_PLAYED;
+        }
+        return MoveState.NONSPECIAL_SITUATION;
     }
 
-    public MoveState getMoveStateForUpcardSuit() {
-        return getMoveStateFromSuit(upcard.getSuit());
-    }
-
-    public MoveState getMoveStateFromSuit(Suit suit) {
-        switch(upcard.getSuit()) {
+    public MoveState getMoveStateForOverknave(Suit suit) {
+        switch(suit) {
             case HEARTS:
                 return MoveState.OVERKNAVE_HEARTS;
             case LEAVES:
                 return MoveState.OVERKNAVE_LEAVES;
-            case BELLSS:
+            case BELLS:
                 return MoveState.OVERKNAVE_BELLS;
             case ACORNS:
                 return MoveState.OVERKNAVE_ACORNS;
@@ -207,7 +222,7 @@ public class MoveDTO extends Move {
      * Checks whether any of the players is without cards.
      * @return true if there is a player in the gameControllers with no cards in hand since the beginning of the last round
      */
-    public boolean wasWithoutCards(){
+    public boolean wasAnyoneWithoutCards(){
         if (isActiveState(MoveState.LOOKING_FOR_SEVEN_HEARTS_RETURN)) {
             return true;
         }
@@ -265,7 +280,7 @@ public class MoveDTO extends Move {
                 return MoveState.LEAVES_PLAYED;
             case ACORNS:
                 return MoveState.ACORNS_PLAYED;
-            case BELLSS:
+            case BELLS:
                 return MoveState.BELLS_PLAYED;
         }
         return null;
@@ -315,6 +330,10 @@ public class MoveDTO extends Move {
 
     public void setStates(ArrayList<MoveState> states) {
         this.states = states;
+    }
+
+    public void addState(MoveState moveState){
+        states.add(moveState);
     }
 
 }

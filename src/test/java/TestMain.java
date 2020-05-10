@@ -9,11 +9,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
 
 public class TestMain {
 
     private static final Logger logger = LoggerFactory.getLogger(TestMain.class);
+    private static String pathToTestResultsFolder = "src/main/testResults/";
 
     public static void main(String[] args) {
 
@@ -23,12 +23,11 @@ public class TestMain {
         Result result = JUnitCore.runClasses(RandomPlayerTest.class);
         writeToFile(result, RandomPlayerTest.class.toString());
 
-
     }
 
 
     private static void writeToFile(Result result, String testedClassName){
-        File file = new File("src/main/testResults/" + testedClassName + ".txt");
+        File file = new File(pathToTestResultsFolder + testedClassName + ".txt");
         FileWriter fr = null;
         BufferedWriter br = null;
         try{

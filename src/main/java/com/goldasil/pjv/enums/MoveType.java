@@ -7,6 +7,7 @@ public enum MoveType {
 
     PLAY,
     DRAW,
-    PASS;
+    PASS,
+    WIN;
 
 }

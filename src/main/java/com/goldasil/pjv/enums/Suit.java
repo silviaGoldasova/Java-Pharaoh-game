@@ -6,7 +6,7 @@ package com.goldasil.pjv.enums;
 public enum Suit {
 
     HEARTS,
-    BELLSS,
+    BELLS,
     ACORNS,
     LEAVES,
     UNSPECIFIED;

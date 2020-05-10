@@ -1,10 +1,17 @@
 import com.goldasil.pjv.MoveStateHandler;
+import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.enums.MoveState;
+import com.goldasil.pjv.enums.MoveType;
+import com.goldasil.pjv.enums.Rank;
+import com.goldasil.pjv.enums.Suit;
+import com.goldasil.pjv.models.Card;
+import com.goldasil.pjv.models.Move;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MoveStateHandlerTest {
 
@@ -174,6 +181,46 @@ public class MoveStateHandlerTest {
         Assert.assertTrue("Transition from " + previousStates + " to " + desiredStates + " should be true, not false.", isValid);
     }
 
+    @Test
+    public void areGetMoveStatesPrevCorrectForUNDERKNAVE_LEAVES_PLAYED(){
+        Move move = new Move(MoveType.PLAY);
+        Card upcard = new Card(Rank.UNDERKNAVE, Suit.LEAVES);
+        MoveDTO moveDTO = new MoveDTO(move, upcard, 0, null);
+        List<MoveState> listPrevStates = handler.getMoveStatesPrev(moveDTO);
+
+        ArrayList<Card> moveDesired = new ArrayList<Card>();
+        moveDesired.add(new Card(Rank.EIGHT, Suit.HEARTS));
+        Card cardDesired2 = new Card(Rank.EIGHT, Suit.ACORNS);
+        moveDesired.add(cardDesired2);
+        MoveDTO moveDTODesired = new MoveDTO(new Move(moveDesired), cardDesired2, 0, null);
+        List<MoveState> listDesiredStates = handler.getMoveStatesDesired(moveDTODesired);
+
+        boolean isValid = handler.isValidTransition(listPrevStates, listDesiredStates);
+        Assert.assertTrue("Transition from " + listPrevStates + " to " + listDesiredStates + " should be true, not false.", isValid);
+
+    }
+
+    @Test
+    public void areGetMoveStatesPrevCorrectForSEVENS_PLAYED(){
+        Card cardPlayed = new Card(Rank.SEVEN, Suit.ACORNS);
+        ArrayList<Card> movePlayed = new ArrayList<Card>();
+        movePlayed.add(cardPlayed);
+        Move move = new Move(movePlayed);
+        Card upcard = cardPlayed;
+        MoveDTO moveDTO = new MoveDTO(move, upcard, 3, null);
+        List<MoveState> listPrevStates = handler.getMoveStatesPrev(moveDTO);
+
+        ArrayList<Card> moveDesired = new ArrayList<Card>();
+        moveDesired.add(new Card(Rank.EIGHT, Suit.HEARTS));
+        Card cardDesired2 = new Card(Rank.EIGHT, Suit.ACORNS);
+        moveDesired.add(cardDesired2);
+        MoveDTO moveDTODesired = new MoveDTO(new Move(moveDesired), cardDesired2, 0, null);
+        List<MoveState> listDesiredStates = handler.getMoveStatesDesired(moveDTODesired);
+
+        boolean isValid = handler.isValidTransition(listPrevStates, listDesiredStates);
+        Assert.assertFalse("Transition from " + listPrevStates + " to " + listDesiredStates + " should be true, not false.", isValid);
+
+    }
 
 
 

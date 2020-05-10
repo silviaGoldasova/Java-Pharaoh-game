@@ -3,6 +3,7 @@ import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Suit;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +24,7 @@ public class Move {
      * @param move list of cards to be played in the move
      */
     public Move(ArrayList<Card> move) {
-        moveType = MoveType.PLAY;
+        this.moveType = MoveType.PLAY;
         this.move = move;
         drawCards = 0;
         requestedSuit = Suit.UNSPECIFIED;
@@ -31,7 +32,7 @@ public class Move {
 
     public Move(MoveType movetype) {
         this.moveType = movetype;
-        this.move = null;
+        this.move = new ArrayList<Card>();
         drawCards = 0;
         requestedSuit = Suit.UNSPECIFIED;
     }
@@ -42,7 +43,7 @@ public class Move {
      */
     public Move(int drawCards) {
         this.moveType = MoveType.DRAW;
-        this.move = null;
+        this.move = new ArrayList<Card>();
         this.drawCards = drawCards;
         this.requestedSuit = Suit.UNSPECIFIED;
     }
@@ -53,22 +54,35 @@ public class Move {
      * @param requestedSuit suit requested as an OVERKNAVE was played
      */
     public Move(ArrayList<Card> move, Suit requestedSuit) {
-        this.moveType = moveType;
+        this.moveType = MoveType.PLAY;
         this.move = move;
         this.drawCards = 0;
         this.requestedSuit = requestedSuit;
     }
 
-    public Move(MoveType movetype, ArrayList<Card> move, int drawCards, Suit requestedSuit) {
+    public Move(MoveType moveType, ArrayList<Card> move, int drawCards, Suit requestedSuit) {
         this.moveType = moveType;
         this.move = move;
         this.drawCards = drawCards;
         this.requestedSuit = requestedSuit;
     }
 
+    public static Move getMoveWithPlayedCard(Card card) {
+        ArrayList<Card> playedCards = new ArrayList<>();
+        playedCards.add(card);
+        return new Move(playedCards);
+    }
+
+    public static Move getMoveWithPlayedCards(Card card1, Card card2) {
+        ArrayList<Card> playedCards = new ArrayList<>();
+        playedCards.add(card1);
+        playedCards.add(card2);
+        return new Move(playedCards);
+    }
+
     @Override
     public String toString() {
-        return "MoveType" + moveType + ", move: " + move + ", drawCards: " + drawCards;
+        return "Move{MoveType" + moveType + ", move: " + move + ", drawCards: " + drawCards + "]";
     }
 
     public MoveType getMoveType() {
