@@ -2,6 +2,7 @@ package com.goldasil.pjv.models;
 
 import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.Suit;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,12 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card obj: rank: " + rank + ", suit: " + suit;
+        //return "Card obj: rank: " + rank + ", suit: " + suit;
+        return "Card: " + StringUtils.capitalize(rank.toString().toLowerCase()) + ", " + StringUtils.capitalize(suit.toString().toLowerCase());
+    }
+
+    public String toStringForGUI(){
+        return StringUtils.capitalize(rank.toString().toLowerCase()) + " " + StringUtils.capitalize(suit.toString().toLowerCase());
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.goldasil.pjv.controllers.gameControllers;
 
 import com.goldasil.pjv.models.GameModel;
+import com.goldasil.pjv.views.GameView;
 
 /**
  * Represents a Game Controller for the Person Vs Computer mode, operates based on the Finite State Machine concept.
@@ -8,8 +9,8 @@ import com.goldasil.pjv.models.GameModel;
  */
 public class GameControllerVsComputer extends GameController {
 
-    public GameControllerVsComputer(GameModel game) {
-        super(game);
+    public GameControllerVsComputer(GameModel game, GameView view) {
+        super(game, view);
     }
 
 

@@ -38,7 +38,7 @@ public class RandomPlayer extends Player {
         stateHandler = new MoveStateHandler();
     }
 
-    public Move getMove(MoveDTO prevMove){
+    public Move chooseMove(MoveDTO prevMove){
         //SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), 1);
         List<MoveState> prevStates = MoveStateHandler.getMoveStatesPrev(prevMove);
         logger.debug("prevstates based on the arg MoveDTO prevMove: {}", prevStates);
@@ -137,7 +137,7 @@ public class RandomPlayer extends Player {
         }
         /*if (prevMove.wasAnyoneWithoutCards()) {
             for (Move move : posMoves) {
-                if (move.getMove().get(0).isSevenHearts()){
+                if (move.chooseMove().get(0).isSevenHearts()){
                     return move;
                 }
             }

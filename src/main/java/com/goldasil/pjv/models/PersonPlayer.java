@@ -40,7 +40,7 @@ public class PersonPlayer extends Player {
 
         if (specialCase == SpecialCardCase.NO_SPECIAL_CARD_CASE) {
             if (plannedMove.getMoveType() == MoveType.PLAY) {
-                if (!areValidCards(oppMove.getUpcard(), plannedMove.getMove())) {
+                if (!areValidCards(oppMove.getUpcard(), plannedMove.chooseMove())) {
                     return false;
                 }
             }
@@ -50,7 +50,7 @@ public class PersonPlayer extends Player {
                 return false;
             }
             if (plannedMove.getMoveType() == MoveType.PLAY) {
-                if (!isMoveSameRank(plannedMove.getMove())){
+                if (!isMoveSameRank(plannedMove.chooseMove())){
                     return false;
                 }
             }
@@ -63,7 +63,7 @@ public class PersonPlayer extends Player {
         switch(specialCase) {
             case OVER_KNAVE_PLAYED:
                 if (plannedMove.getMoveType() == MoveType.PLAY) {
-                    Card plannedCard = plannedMove.getMove().get(0);
+                    Card plannedCard = plannedMove.chooseMove().get(0);
                     if (oppMove.getRequestedSuit() == plannedCard.getSuit() || isOfRank(plannedCard, Rank.OVERKNAVE) || isUnderKnaveLeaves(plannedCard)) {
                         return true;
                     }
@@ -75,16 +75,16 @@ public class PersonPlayer extends Player {
             case ACES_PLAYED:
 
                 if (plannedMove.getMoveType() == MoveType.PLAY) {
-                    for (Card card : plannedMove.getMove()) {
+                    for (Card card : plannedMove.chooseMove()) {
                         if (!isOfRank(card, Rank.ACE)) {
                             return false;
                         }
                     }
-                    if (isMyTurnAfterAces(plannedMove.getMove().size(), oppMove.getMove().size())) {
+                    if (isMyTurnAfterAces(plannedMove.chooseMove().size(), oppMove.chooseMove().size())) {
                         plannedMove.setMoveType(MoveType.DOUBLE_PLAY);
                     }
                 } else {  // MoveType.PASS
-                    if (isMyTurnAfterAces(0, oppMove.getMove().size())) {
+                    if (isMyTurnAfterAces(0, oppMove.chooseMove().size())) {
                         plannedMove.setMoveType(MoveType.DOUBLE_PLAY);
                     }
                 }
@@ -94,10 +94,10 @@ public class PersonPlayer extends Player {
             case SEVENS_PLAYED:
 
                 if (plannedMove.getMoveType() == MoveType.PLAY) {
-                    if (isUnderKnaveLeaves(plannedMove.getMove().get(0))) {
+                    if (isUnderKnaveLeaves(plannedMove.chooseMove().get(0))) {
                         return true;
                     }
-                    for (Card card : plannedMove.getMove()) {
+                    for (Card card : plannedMove.chooseMove()) {
                         if (!isOfRank(card, Rank.SEVEN)) {
                             return false;
                         }
@@ -116,7 +116,7 @@ public class PersonPlayer extends Player {
 
             case OPPONENT_HAS_NO_CARDS:
 
-                if (plannedMove.getMove().get(0).getRank() == Rank.SEVEN && plannedMove.getMove().get(0).getSuit() == Suit.HEARTS) {
+                if (plannedMove.chooseMove().get(0).getRank() == Rank.SEVEN && plannedMove.chooseMove().get(0).getSuit() == Suit.HEARTS) {
                     return true;
                 }
                 if (plannedMove.getMoveType() == MoveType.DRAW) {

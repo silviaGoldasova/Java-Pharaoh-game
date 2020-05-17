@@ -1,6 +1,7 @@
 package com.goldasil.pjv.controllers.gameControllers;
 
 import com.goldasil.pjv.models.GameModel;
+import com.goldasil.pjv.views.GameView;
 
 /**
  * Represents a Game Controller for the Person Vs Person mode from the perspective of a player playing on the device in the server role, operates based on the Finite State Machine concept.
@@ -10,8 +11,8 @@ import com.goldasil.pjv.models.GameModel;
  */
 public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
 
-    public GameControllerServerMultiplayer(GameModel game) {
-        super(game);
+    public GameControllerServerMultiplayer(GameModel game, GameView view) {
+        super(game, view);
     }
 
 

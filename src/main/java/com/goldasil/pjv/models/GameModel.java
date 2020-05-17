@@ -4,6 +4,8 @@ import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.enums.GameState;
 import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.Suit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.*;
 
@@ -11,18 +13,22 @@ import java.util.*;
  * Represents model for the game play.
  * Holds the states of the basic entities in the game - players, a stock, a waste.
  */
-public class GameModel extends Observable {
+public class GameModel {
 
     List<Player> players; // set to the current player
     LinkedList <Card> stock;
     LinkedList <Card> waste;
-    GameState currentState;
+    LinkedList <Card> selectedCards;
+    GameState currentState = GameState.FIRST_MOVE;
     static final int CARDS_TO_DEAL = 5;
+
+    private static final Logger logger = LoggerFactory.getLogger(GameModel.class);
 
     /**
      * Creates a new game model with an initial state.
      */
     public GameModel() {
+        players = new ArrayList<Player>();
         currentState = GameState.FIRST_MOVE;
     }
 
@@ -31,11 +37,14 @@ public class GameModel extends Observable {
      * @param playerID ID of the player who made the move
      * @param move the move to process
      */
-    public synchronized void playMove(int playerID, MoveDTO move) {
+    public void playMove(int playerID, MoveDTO move) {
+        logger.debug("Move {} to be played.", move);
         Player player = getPlayerByID(playerID);
+
         switch (move.getMoveType()) {
             case PLAY:
                 player.removeCards(move.getMove());
+                logger.debug("move: {}, cards after the move: {}", move.getMove().toString(), player.getCards().toString());
                 addCardsToWaste(move.getMove());
                 break;
             case DRAW:
@@ -50,8 +59,23 @@ public class GameModel extends Observable {
                 break;
             case WIN:
                 break;
+
         }
-        notifyObservers();
+    }
+
+    public void initGame() {
+        Player p1 = new Player(1);
+        Player p2 = new RandomPlayer(2);
+        players.add(p1);
+        players.add(p2);
+
+        // initializes all players with cards and sets the rest of the cards of the pack to the stock
+        dealCardsAndSetStock();
+        logger.debug("Players and stock initialized.");
+    }
+
+    public Card getUpcard(){
+        return waste.peek();
     }
 
     /**
@@ -103,7 +127,7 @@ public class GameModel extends Observable {
      * Deals the cards to the players.
      * Additionally, it sets the stock and waste.
      */
-    public void dealCards() {
+    public void dealCardsAndSetStock() {
         LinkedList<Card> pack = getPack();
         Collections.shuffle(pack);
         for (Player player : players) {
@@ -113,7 +137,9 @@ public class GameModel extends Observable {
         for (Card card : pack) {
             stock.add(card);
         }
+        logger.debug("stock: {}", stock.toString());
         waste = new LinkedList<Card>();
+        selectedCards = new LinkedList<Card>();
     }
 
     /**
@@ -132,8 +158,15 @@ public class GameModel extends Observable {
      */
     private LinkedList<Card> getPack(){
         LinkedList<Card> pack = new LinkedList<Card>();
-        for (Rank rank : Rank.values()){
-            for (Suit suit : Suit.values()) {
+
+        List<Suit> suits = new ArrayList<>(Arrays.asList(Suit.values()));
+        suits.remove(Suit.UNSPECIFIED);
+
+        List<Rank> ranks = new ArrayList<>(Arrays.asList(Rank.values()));
+        ranks.remove(Rank.UNSPECIFIED);
+
+        for (Rank rank : ranks){
+            for (Suit suit : suits) {
                 pack.add(new Card(rank, suit));
             }
         }

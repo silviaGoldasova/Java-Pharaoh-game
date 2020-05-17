@@ -14,8 +14,6 @@ import org.junit.Test;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
 
 public class RandomPlayerTest {
 
@@ -65,7 +63,7 @@ public class RandomPlayerTest {
         MoveDTO moveDTO = new MoveDTO(new Move(prevMoveCards), upcard, 0);
 
         // generate move
-        Move generatedMove = player.getMove(moveDTO);
+        Move generatedMove = player.chooseMove(moveDTO);
 
         //right answer
         Move correctMove = Move.getMoveWithPlayedCards(new Card(Rank.KING, Suit.ACORNS), new Card(Rank.KING, Suit.LEAVES));
@@ -89,7 +87,7 @@ public class RandomPlayerTest {
         MoveDTO moveDTO = new MoveDTO(moveObj, upcard, 6);
 
         // generate move
-        Move generatedMove = player.getMove(moveDTO);
+        Move generatedMove = player.chooseMove(moveDTO);
 
         //right answer
         Move correctMove = new Move(6);
@@ -112,7 +110,7 @@ public class RandomPlayerTest {
         logger.debug("Prev moveDTO: {}", moveDTO.toString());
 
         // generate move
-        Move generatedMove = player.getMove(moveDTO);
+        Move generatedMove = player.chooseMove(moveDTO);
 
         //right answer
         Move correctMove = Move.getMoveWithPlayedCard(new Card(Rank.UNDERKNAVE, Suit.LEAVES));
@@ -134,7 +132,7 @@ public class RandomPlayerTest {
         MoveDTO moveDTO = new MoveDTO(moveObj, upcard, 3);
 
         // generate move
-        Move generatedMove = player.getMove(moveDTO);
+        Move generatedMove = player.chooseMove(moveDTO);
 
         //right answer
         Move correctMove = Move.getMoveWithPlayedCards(new Card(Rank.SEVEN, Suit.HEARTS), new Card(Rank.SEVEN, Suit.BELLS));
@@ -158,7 +156,7 @@ public class RandomPlayerTest {
         prevMoveDTO.addState(MoveState.ACES_ONLY);
 
         // generate move
-        Move generatedMove = player.getMove(prevMoveDTO);
+        Move generatedMove = player.chooseMove(prevMoveDTO);
 
         //right answer
         Move correctMove = new Move(MoveType.PASS);
@@ -182,7 +180,7 @@ public class RandomPlayerTest {
         prevMoveDTO.addState(MoveState.ACES_ONLY);
 
         // generate move
-        Move generatedMove = player.getMove(prevMoveDTO);
+        Move generatedMove = player.chooseMove(prevMoveDTO);
 
         //right answer
         Move correctMove = Move.getMoveWithPlayedCard(new Card(Rank.ACE, Suit.LEAVES));
@@ -204,7 +202,7 @@ public class RandomPlayerTest {
         MoveDTO prevMoveDTO = new MoveDTO(moveObj, upcard, 0);
 
         // generate move
-        Move generatedMove = player.getMove(prevMoveDTO);
+        Move generatedMove = player.chooseMove(prevMoveDTO);
 
         //right answer
         Move correctMove = Move.getMoveWithPlayedCards(new Card(Rank.KING, Suit.LEAVES), new Card(Rank.KING, Suit.ACORNS));
@@ -227,7 +225,7 @@ public class RandomPlayerTest {
         MoveDTO prevMoveDTO = new MoveDTO(moveObj, upcard, 0);
 
         // generate move
-        Move generatedMove = player.getMove(prevMoveDTO);
+        Move generatedMove = player.chooseMove(prevMoveDTO);
 
         //right answer
         Move correctMove = new Move(1);
@@ -250,7 +248,7 @@ public class RandomPlayerTest {
         prevMoveDTO.addState(MoveState.LOOKING_FOR_SEVEN_HEARTS_RETURN);
 
         // generate move
-        Move generatedMove = player.getMove(prevMoveDTO);
+        Move generatedMove = player.chooseMove(prevMoveDTO);
 
         //right answer
         Move correctMove = Move.getMoveWithPlayedCards(new Card(Rank.SEVEN, Suit.HEARTS), new Card(Rank.SEVEN, Suit.BELLS));
@@ -273,7 +271,7 @@ public class RandomPlayerTest {
         prevMoveDTO.addState(MoveState.LOOKING_FOR_SEVEN_HEARTS_RETURN);
 
         // generate move
-        Move generatedMove = player.getMove(prevMoveDTO);
+        Move generatedMove = player.chooseMove(prevMoveDTO);
 
         //right answer
         Move correctMove = new Move(1);

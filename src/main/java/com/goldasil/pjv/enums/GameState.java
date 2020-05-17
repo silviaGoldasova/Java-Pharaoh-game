@@ -5,6 +5,8 @@ package com.goldasil.pjv.enums;
  */
 public enum GameState {
 
+    MY_TURN,
+    OPP_TURN,
     FIRST_MOVE,
     QUARTET_PLAYED,
     WIN,

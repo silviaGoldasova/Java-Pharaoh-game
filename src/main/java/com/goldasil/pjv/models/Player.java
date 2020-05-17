@@ -2,9 +2,12 @@ package com.goldasil.pjv.models;
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.models.Card;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ArrayBlockingQueue;
 
 
 /**
@@ -13,9 +16,12 @@ import java.util.List;
  */
 public class Player {
 
-    protected ArrayList<Card> cards = new ArrayList<Card>();
+    protected volatile ArrayList<Card> cards = new ArrayList<Card>();
     protected int cardsCount;
     protected int playerID;
+
+    private static final Logger logger = LoggerFactory.getLogger(Player.class);
+
 
     public Player(int playerID) {
         this.playerID = playerID;
@@ -63,15 +69,20 @@ public class Player {
      * Removes the cards passed in in an array from the cards in a player's hand.
      * @param move list of cards played in the move
      */
-    public void removeCards(ArrayList<Card> move) {
-        for (Card card : move) {
-            cards.remove(card);
+     public void removeCards(ArrayList<Card> move) {
+        for (Card cardInMove : move) {
+            for (Card cardInHand : new ArrayList<>(cards) ) {
+                if (cardInHand.compareCards(cardInMove)) {
+                    cards.remove(cardInHand);
+                }
+            }
         }
+        logger.debug("rest of the cards: {}", cards);
         cardsCount = cards.size();
+
     }
 
-
-    public Move getMove(MoveDTO prevMove) {
+    public Move chooseMove(MoveDTO prevMove) {
         return null;
     }
 
