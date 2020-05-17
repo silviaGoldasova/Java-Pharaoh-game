@@ -17,7 +17,9 @@ public class MoveDTO extends Move {
 
     private Card upcard;
     private int penaltyForSevens;
+    private int numAcesPlayed = 0;
     private ArrayList<MoveState> states;
+    private int playerIdAcesStarter;
 
     private static final int NUM_OF_CARDS_IN_QUARTET = 4;
 
@@ -336,4 +338,19 @@ public class MoveDTO extends Move {
         states.add(moveState);
     }
 
+    public int getNumAcesPlayed() {
+        return numAcesPlayed;
+    }
+
+    public void setNumAcesPlayed(int numAcesPlayed) {
+        this.numAcesPlayed = numAcesPlayed;
+    }
+
+    public int getPlayerIdAcesStarter() {
+        return playerIdAcesStarter;
+    }
+
+    public void setPlayerIdAcesStarter(int playerIdAcesStarter) {
+        this.playerIdAcesStarter = playerIdAcesStarter;
+    }
 }

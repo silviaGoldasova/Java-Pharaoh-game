@@ -27,11 +27,9 @@ import javafx.scene.control.Label;
 import javafx.scene.text.*;
 
 
+import java.lang.reflect.Array;
 import java.net.URL;
-import java.util.List;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -126,8 +124,8 @@ public class GameView extends Application {
         Label wasteContent = new Label("Search");
         wasteContent.setGraphic(new ImageView(image));*/
         wasteCards = new HBox();
-        grid.add(wasteCards, 2, 6);
-
+        grid.add(wasteCards, 1, 6);
+        wasteCards.setSpacing(10);
 
 
         //String waste = game.getWaste();
@@ -159,7 +157,7 @@ public class GameView extends Application {
 
     }
 
-    private HBox getCardsBox(Player player) {
+    private HBox setCardsBox(Player player) {
         HBox cardsBox = new HBox();
         cardsBox.setSpacing(10);
         int playerID = player.getPlayerID();
@@ -174,6 +172,16 @@ public class GameView extends Application {
         }
         return cardsBox;
 
+    }
+
+    private void setWasteBox(LinkedList<Card> waste) {
+        wasteCards.getChildren().clear();
+        for (Card card : waste) {
+            ButtonCard buttonCard = new ButtonCard(card);
+            wasteCards.getChildren().add(buttonCard);
+            //logger.debug("card suit: {} vs suit {}", buttonCard.getButtonSuit(), card.getSuit());
+            //selectedCardsBox.getChildren().add(buttonCard);
+        }
     }
 
 
@@ -276,14 +284,15 @@ public class GameView extends Application {
             grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == 7 && GridPane.getColumnIndex(node) == 1);
             numDrawnCards = 0;
 
-
             p1CardsBox.getChildren().clear();
             grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == 1);
             grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == 5);
 
-            p1CardsBox = getCardsBox(players.get(0));
+            p1CardsBox = setCardsBox(players.get(0));
             grid.add(p1CardsBox, 1, 0);
-            grid.add(getCardsBox(players.get(1)), 1, 4);
+            grid.add(setCardsBox(players.get(1)), 1, 4);
+
+            setWasteBox(game.getWaste());
 
             /*for (Player player : players) {
                 HBox cardsBox = new HBox();

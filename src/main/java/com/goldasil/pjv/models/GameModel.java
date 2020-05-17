@@ -1,7 +1,9 @@
 package com.goldasil.pjv.models;
 
+import com.goldasil.pjv.MoveStateHandler;
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.enums.GameState;
+import com.goldasil.pjv.enums.MoveState;
 import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.Suit;
 import org.slf4j.Logger;
@@ -21,6 +23,11 @@ public class GameModel {
     LinkedList <Card> selectedCards;
     GameState currentState = GameState.FIRST_MOVE;
     static final int CARDS_TO_DEAL = 5;
+    Card upcard;
+    MoveStateHandler moveStateHandler;
+
+    MoveDTO lastMoveDTO;
+    MoveDTO currentMoveDTO;
 
     private static final Logger logger = LoggerFactory.getLogger(GameModel.class);
 
@@ -30,6 +37,7 @@ public class GameModel {
     public GameModel() {
         players = new ArrayList<Player>();
         currentState = GameState.FIRST_MOVE;
+        moveStateHandler = new MoveStateHandler();
     }
 
     /**
@@ -37,15 +45,27 @@ public class GameModel {
      * @param playerID ID of the player who made the move
      * @param move the move to process
      */
-    public void playMove(int playerID, MoveDTO move) {
+    public boolean playMove(int playerID, MoveDTO move) {
         logger.debug("Move {} to be played.", move);
+        logger.debug("PrevMoveDTO: {}", lastMoveDTO.toString());
         Player player = getPlayerByID(playerID);
+
+        move.setUpcard(upcard);
+        if (!moveStateHandler.isValidMove(getPrevFirstMoveDTO(), move)) {
+            logger.debug("Invalid move");
+            return false;
+        }
+        logger.debug("Valid move");
 
         switch (move.getMoveType()) {
             case PLAY:
                 player.removeCards(move.getMove());
                 logger.debug("move: {}, cards after the move: {}", move.getMove().toString(), player.getCards().toString());
                 addCardsToWaste(move.getMove());
+                upcard = waste.peek();
+
+                lastMoveDTO = currentMoveDTO;
+                logger.debug("move: {}, cards after the move: {}", move.getMove().toString(), player.getCards().toString());
                 break;
             case DRAW:
                 for (int i = 0; i < move.getDrawCards(); i++) {
@@ -59,8 +79,8 @@ public class GameModel {
                 break;
             case WIN:
                 break;
-
         }
+        return true;
     }
 
     public void initGame() {
@@ -74,8 +94,44 @@ public class GameModel {
         logger.debug("Players and stock initialized.");
     }
 
-    public Card getUpcard(){
-        return waste.peek();
+    private MoveDTO getPrevFirstMoveDTO(){
+
+        Card lastCard = stock.getLast();
+        Rank upcardRank = upcard.getRank();
+
+        if (upcardRank != lastCard.getRank() && upcardRank != Rank.OVERKNAVE) {
+            MoveDTO moveDTO = new MoveDTO(new Move(1));
+            moveDTO.setUpcard(upcard);
+            return moveDTO;
+        }
+
+        MoveDTO moveDTO = new MoveDTO();
+        moveDTO.setUpcard(upcard);
+        ArrayList<Card> moveCards = new ArrayList<>();
+
+        switch (upcard.getRank()) {
+            case SEVEN:
+                moveCards.add(lastCard);
+                moveCards.add(upcard);
+                moveDTO.setMove(moveCards);
+                moveDTO.setPenaltyForSevens(3);
+                break;
+            case OVERKNAVE:
+                moveCards.add(upcard);
+                moveDTO.setRequestedSuit(lastCard.getSuit());
+                break;
+            case ACE:
+                moveCards.add(upcard);
+                moveDTO.setMove(moveCards);
+                moveDTO.addState(MoveState.ACES_PLAYED);
+                moveDTO.setPlayerIdAcesStarter(1);
+                moveDTO.setNumAcesPlayed(1);
+                break;
+            default:
+                moveCards.add(upcard);
+        }
+        moveDTO.setMove(moveCards);
+        return moveDTO;
     }
 
     /**
@@ -133,13 +189,16 @@ public class GameModel {
         for (Player player : players) {
             player.setCards(getCardsFromDeck(pack, CARDS_TO_DEAL));
         }
+        upcard = pack.remove();
         stock = new LinkedList<Card>();
         for (Card card : pack) {
             stock.add(card);
         }
-        logger.debug("stock: {}", stock.toString());
+        logger.debug("stock size: {}, stock: {}", stock.size(), stock.toString());
         waste = new LinkedList<Card>();
+        waste.add(upcard);
         selectedCards = new LinkedList<Card>();
+        lastMoveDTO = getPrevFirstMoveDTO();
     }
 
     /**

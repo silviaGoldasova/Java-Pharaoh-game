@@ -24,10 +24,11 @@ public class MoveStateHandler {
 
     private static final Logger logger = LoggerFactory.getLogger(MoveStateHandler.class);
     private static Map<MoveState, List<MoveState>> neighbours = new HashMap<MoveState, List<MoveState>>();
-    private static Collection<MoveState> allSuitMoveStates = new ArrayList<>();
+    private static Collection<MoveState> allSuitMoveStates;
 
     public MoveStateHandler() {
         initNeighbours();
+        allSuitMoveStates = new ArrayList<>();
         allSuitMoveStates.add(MoveState.HEARTS_PLAYED);
         allSuitMoveStates.add(MoveState.LEAVES_PLAYED);
         allSuitMoveStates.add(MoveState.ACORNS_PLAYED);

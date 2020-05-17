@@ -23,8 +23,6 @@ public class GameController {
 
     GameModel game;
     GameView view;
-    MoveDTO lastMoveDTO;
-    MoveDTO currentMoveDTO;
 
     private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 
@@ -91,22 +89,6 @@ public class GameController {
 
     public void setGame(GameModel game) {
         this.game = game;
-    }
-
-    public MoveDTO getLastMoveDTO() {
-        return lastMoveDTO;
-    }
-
-    public void setLastMoveDTO(MoveDTO lastMoveDTO) {
-        this.lastMoveDTO = lastMoveDTO;
-    }
-
-    public MoveDTO getCurrentMoveDTO() {
-        return currentMoveDTO;
-    }
-
-    public void setCurrentMoveDTO(MoveDTO currentMoveDTO) {
-        this.currentMoveDTO = currentMoveDTO;
     }
 
 }
