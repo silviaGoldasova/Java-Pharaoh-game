@@ -64,17 +64,17 @@ public class GameController {
         return cards;
     }
 
-
-
-    public void submitMove(List<Node> cardButtons) {
+    public void submitMove(List<Node> cardButtons, Suit requestedSuit) {
         ArrayList<Card> moveCards = getSelectedCards(cardButtons);
-        MoveDTO moveDTO = new MoveDTO(new Move(moveCards));
+        MoveDTO moveDTO = new MoveDTO(new Move(moveCards, requestedSuit));
+        moveDTO.setUpcard(game.getUpcard());
         game.playMove(1, moveDTO);
         view.updateGameScene();
     }
 
     public void submitMove(int numberOfCardsDrawn) {
         MoveDTO moveDTO = new MoveDTO(new Move(numberOfCardsDrawn));
+        moveDTO.setUpcard(game.getUpcard());
         game.playMove(1, moveDTO);
         view.updateGameScene();
     }

@@ -2,6 +2,7 @@ package com.goldasil.pjv.views;
 
 import com.goldasil.pjv.controllers.gameControllers.GameController;
 import com.goldasil.pjv.enums.GameState;
+import com.goldasil.pjv.enums.Suit;
 import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.models.GameModel;
 import com.goldasil.pjv.models.Player;
@@ -46,6 +47,7 @@ public class GameView extends Application {
 
     private static volatile GridPane grid = new GridPane();
     private int numDrawnCards = 0;
+    private Suit requestedSuit = Suit.UNSPECIFIED;
     HBox selectedCardsBox, p1CardsBox, wasteCards;
     Button drawnCardsButton = new Button();
 
@@ -148,6 +150,9 @@ public class GameView extends Application {
         selectedCardsBox.setSpacing(10);
         grid.add(selectedCardsBox, 1, 2);
 
+        HBox suits = getRequestedSuitsBox();
+        grid.add(suits, 0, 8);
+
         //p1Cards.setText("text other");
 
         Scene scene = new Scene(grid, 1200, 700);
@@ -184,6 +189,28 @@ public class GameView extends Application {
         }
     }
 
+    private HBox getRequestedSuitsBox(){
+        HBox box = new HBox();
+        box.setSpacing(10);
+
+        ButtonCard hearts = new ButtonCard("Hearts");
+        ButtonCard leaves = new ButtonCard("Leaves");
+        ButtonCard acorns = new ButtonCard("Acorns");
+        ButtonCard bells = new ButtonCard("Bells");
+
+        hearts.setButtonSuit(Suit.HEARTS);
+        leaves.setButtonSuit(Suit.LEAVES);
+        acorns.setButtonSuit(Suit.ACORNS);
+        bells.setButtonSuit(Suit.BELLS);
+
+        hearts.setOnAction(selectRequestedSuitHandler);
+        leaves.setOnAction(selectRequestedSuitHandler);
+        acorns.setOnAction(selectRequestedSuitHandler);
+        bells.setOnAction(selectRequestedSuitHandler);
+
+        box.getChildren().addAll(hearts, leaves, acorns, bells);
+        return box;
+    }
 
     EventHandler<ActionEvent> selectCardToPlayHandler = new EventHandler<ActionEvent>() {
         @Override
@@ -197,7 +224,7 @@ public class GameView extends Application {
             //grid.getChildren().remove(butSelectedCard);
 
             event.consume();
-            logger.debug("Selected a card to play.");
+            //logger.debug("Selected a card to play.");
         }
     };
 
@@ -229,11 +256,11 @@ public class GameView extends Application {
             }
 
             if (selectedCardsBox.getChildren().size() != 0) {
-                gameController.submitMove(selectedCardsBox.getChildren());
+                gameController.submitMove(selectedCardsBox.getChildren(), requestedSuit);
             }
 
             event.consume();
-            logger.debug("Move submitted.");
+            //logger.debug("Move submitted.");
         }
     };
 
@@ -268,6 +295,19 @@ public class GameView extends Application {
         }
     };
 
+    EventHandler<ActionEvent> selectRequestedSuitHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+
+            ButtonCard requestedSuitBut = (ButtonCard) event.getSource();
+            requestedSuit = (Suit) requestedSuitBut.getButtonSuit();
+            logger.debug("Requested suit set: {}", requestedSuit);
+
+            event.consume();
+            //logger.debug("Move submitted.");
+        }
+    };
+
     /**
      * Updates the scene to the newly set scene (a result of a change in the game model).
      */
@@ -275,10 +315,9 @@ public class GameView extends Application {
         GameState gameState = game.getCurrentState();
         List<Player> players = game.getPlayers();
 
-        logger.debug("View-Update method called => Updating scene with new gameState: {}.", gameState.toString());
+        logger.debug("View-Update method called => Updating scene with new gameState: {}.\n\n\n", gameState.toString());
 
         Platform.runLater(() -> {
-            logger.debug("platform run later");
             selectedCardsBox.getChildren().clear();
             // cards to draw button
             grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == 7 && GridPane.getColumnIndex(node) == 1);
@@ -310,8 +349,6 @@ public class GameView extends Application {
             }
         });
     }
-
-
 
     public GameModel getGame() {
         return game;

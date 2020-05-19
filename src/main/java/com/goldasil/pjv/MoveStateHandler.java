@@ -59,7 +59,8 @@ public class MoveStateHandler {
     public boolean isValidMove(MoveDTO prevMove, MoveDTO desiredMove) {
         List<MoveState> previousStates = getMoveStatesPrev(prevMove);
         List<MoveState> desiredStates = getMoveStatesDesired(desiredMove);
-        if (isValidTransition(previousStates, desiredStates) && Card.arrAllCardsSameRank(prevMove.getUpcard().getRank(), desiredMove.getMove())) {
+
+        if (isValidTransition(previousStates, desiredStates) && Card.arrAllCardsSameRank(desiredMove.getMove()) && checkSevensPenalty(prevMove, desiredMove) ) {
             return true;
         }
         return false;
@@ -73,6 +74,7 @@ public class MoveStateHandler {
      * @return true is the move is valid to be performed
      */
     public static boolean isValidTransition(List<MoveState> previousStates, List<MoveState> desiredStates) {
+        logger.debug("going from {} to {}", previousStates.toString(), desiredStates.toString());
 
         for (MoveState previousMoveState : previousStates) {
             if (previousMoveState.getPriority() == 2) {
@@ -86,13 +88,12 @@ public class MoveStateHandler {
         }
 
         if (shouldCheckRankORSuit(desiredStates)) {
-            logger.info("Checking if same rank or suit from {} to {}.", previousStates, desiredStates);
             boolean returnValue = false;
             for (MoveState previousMoveState : previousStates) {
                 if (previousMoveState.getPriority() == 1) {
                     for (MoveState desiredMoveState : desiredStates) {
                         if (isBetweenNeighbours(previousMoveState, desiredMoveState)) {
-                            logger.info("Same rank or suit from {} to {}.\n", previousStates, desiredStates);
+                            //logger.info("Same rank or suit from {} to {}.\n", previousStates, desiredStates);
                             returnValue = true;
                         }
                     }
@@ -157,7 +158,7 @@ public class MoveStateHandler {
             states.add(moveDTO.getMoveStateForOverknave(moveDTO.getRequestedSuit()));
         }
 
-        if (moveDTO.wasNonspecialMove()) {
+        if (moveDTO.wasNonspecialMove(getUpperCard(moveDTO))) {
             states.add(MoveState.NONSPECIAL_SITUATION);
         }
 
@@ -177,12 +178,19 @@ public class MoveStateHandler {
             states.add(MoveState.ACES_ONLY);
         }
 
-        if (!(isStateInList(MoveState.UNDERKNAVE_LEAVES_PLAYED, states) || moveDTO.getUpcard().getRank() == Rank.OVERKNAVE)) {
-            states.add(moveDTO.getMoveStateForSuit(moveDTO.getUpcard().getSuit()));
-            states.add(moveDTO.getMoveStateFromUpcardRank());
+        if (!(isStateInList(MoveState.UNDERKNAVE_LEAVES_PLAYED, states) || getUpperCard(moveDTO).getRank() == Rank.OVERKNAVE)) {
+            states.add(moveDTO.getMoveStateForSuit(getUpperCard(moveDTO).getSuit()));
+            states.add(moveDTO.getMoveStateFromRank(getUpperCard(moveDTO).getRank()));
         }
 
         return states;
+    }
+
+    private static Card getUpperCard(MoveDTO moveDTO) {
+        if(moveDTO.getMoveType() == MoveType.PLAY) {
+            return moveDTO.getMove().get(moveDTO.getMove().size()-1);
+        }
+        return moveDTO.getUpcard();
     }
 
     /**
@@ -229,8 +237,12 @@ public class MoveStateHandler {
             states.add(moveDTO.getSuitMoveState());
         }
 
-        if (moveDTO.getMoveType() == MoveType.DRAW) {
+        if (moveDTO.getMoveType() == MoveType.DRAW && moveDTO.getDrawCards() == 1) {
             states.add(MoveState.DRAW);
+        }
+
+        if (moveDTO.getMoveType() == MoveType.DRAW && moveDTO.getDrawCards() > 1){
+            states.add(MoveState.DRAW_PENALTY);
         }
 
         if (moveDTO.getMoveType() == MoveType.PLAY && !(isStateInList(MoveState.UNDERKNAVE_LEAVES_PLAYED, states) || moveDTO.getUpcard().getRank() == Rank.OVERKNAVE)) {
@@ -265,7 +277,16 @@ public class MoveStateHandler {
         return false;
     }
 
-
+    private boolean checkSevensPenalty(MoveDTO prevMoveDTO, MoveDTO desiredMoveDTO){
+        if (prevMoveDTO.wasSevenPlayed() && desiredMoveDTO.getMoveType() == MoveType.DRAW) {
+            if (prevMoveDTO.getPenaltyForSevens() == desiredMoveDTO.getDrawCards()) {
+                return true;
+            }
+            logger.debug("Wrong penalty set.");
+            return false;
+        }
+        return true;
+    }
 
 
 }

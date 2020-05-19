@@ -6,6 +6,9 @@ import com.goldasil.pjv.enums.MoveState;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.Suit;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.ArrayList;
 
 /**
@@ -22,8 +25,11 @@ public class MoveDTO extends Move {
     private int playerIdAcesStarter;
 
     private static final int NUM_OF_CARDS_IN_QUARTET = 4;
+    private static final Logger logger = LoggerFactory.getLogger(MoveDTO.class);
+
 
     public MoveDTO(){
+        states = new ArrayList<MoveState>();
     }
 
     public MoveDTO(Move move) {
@@ -109,7 +115,7 @@ public class MoveDTO extends Move {
      * @return true if a card of rank of seven is active
      */
     public boolean wasSevenPlayed() {
-        if (upcard.getRank() == Rank.SEVEN && moveType == MoveType.PLAY && !isSevenHeartsPlayed()) {
+        if (moveType == MoveType.PLAY && move.get(0).getRank() == Rank.SEVEN && !isSevenHeartsPlayed()) {
             return true;
         }
         return false;
@@ -130,8 +136,8 @@ public class MoveDTO extends Move {
      * Checks whether in the previous move was any special card played.
      * @return true if no special card was played
      */
-    public boolean wasNonspecialMove(){
-        Rank upRank = upcard.getRank();
+    public boolean wasNonspecialMove(Card uppperCard){
+        Rank upRank = uppperCard.getRank();
         if (upRank == Rank.EIGHT || upRank == Rank.NINE || upRank == Rank.TEN || upRank == Rank.KING) {
             return true;
         }
@@ -190,10 +196,6 @@ public class MoveDTO extends Move {
                 return MoveState.OVERKNAVE_ACORNS;
         }
         return MoveState.NONSPECIAL_SITUATION;
-    }
-
-    public MoveState getMoveStateFromUpcardRank() {
-        return getMoveStateFromRank(upcard.getRank());
     }
 
     public MoveState getMoveStateFromRank(Rank rank) {
@@ -268,6 +270,24 @@ public class MoveDTO extends Move {
             }
         }
         return false;
+    }
+
+    public int getPenaltyForDesired(int numPenaltyCardsFromPrev) {
+        if (moveType == MoveType.DRAW) {
+            return numPenaltyCardsFromPrev;
+        }
+
+        if (moveType == MoveType.PLAY) {
+            if (isSevenPlayed()) {
+                int numSevens = getMove().size();
+                int foundPenaltyForSevens = numPenaltyCardsFromPrev + 3*numSevens;
+                return foundPenaltyForSevens;
+            }
+            if (move.get(0).isUnderKnaveLeaves()) {
+                return 0;
+            }
+        }
+        return 0;
     }
 
     /**

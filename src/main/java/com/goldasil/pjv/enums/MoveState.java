@@ -30,7 +30,7 @@ public enum MoveState {
 
     WIN (0),
     DRAW (0),
-    DRAW_PENIALTY (0),
+    DRAW_PENALTY (0),
     PASS (0),
     QUARTET_PLAYED (0),
 

@@ -82,10 +82,11 @@ public class Card {
         return false;
     }
 
-    public static boolean arrAllCardsSameRank(Rank rank, ArrayList<Card> cardList){
-        if (cardList == null) {
+    public static boolean arrAllCardsSameRank(ArrayList<Card> cardList){
+        if (cardList == null || cardList.size() == 0) {
             return true;
         }
+        Rank rank = cardList.get(0).getRank();
         for (Card card : cardList) {
             if (card.getRank() != rank) {
                 return false;
@@ -99,7 +100,7 @@ public class Card {
      * @return true if the card is of rank UNDERKNAVE and of suit LEAVES
      */
     public boolean isUnderKnaveLeaves() {
-        if (this.getRank() == Rank.OVERKNAVE && this.getSuit() == Suit.LEAVES) {
+        if (this.getRank() == Rank.UNDERKNAVE && this.getSuit() == Suit.LEAVES) {
             return true;
         }
         return false;

@@ -46,6 +46,10 @@ public class ButtonCard extends Button {
                 otherwise(""));*/
     }
 
+    public ButtonCard(String label) {
+        super(label);
+    }
+
     public ButtonCard(Card card) {
         super(card.toStringForGUI());
         setButtonRank(card.getRank());

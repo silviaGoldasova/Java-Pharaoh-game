@@ -2,10 +2,7 @@ package com.goldasil.pjv.models;
 
 import com.goldasil.pjv.MoveStateHandler;
 import com.goldasil.pjv.dto.MoveDTO;
-import com.goldasil.pjv.enums.GameState;
-import com.goldasil.pjv.enums.MoveState;
-import com.goldasil.pjv.enums.Rank;
-import com.goldasil.pjv.enums.Suit;
+import com.goldasil.pjv.enums.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,6 +22,7 @@ public class GameModel {
     static final int CARDS_TO_DEAL = 5;
     Card upcard;
     MoveStateHandler moveStateHandler;
+    int currentPlayerIdTurn = 1;
 
     MoveDTO lastMoveDTO;
     MoveDTO currentMoveDTO;
@@ -46,12 +44,12 @@ public class GameModel {
      * @param move the move to process
      */
     public boolean playMove(int playerID, MoveDTO move) {
-        logger.debug("Move {} to be played.", move);
-        logger.debug("PrevMoveDTO: {}", lastMoveDTO.toString());
         Player player = getPlayerByID(playerID);
-
+        move.setPenaltyForSevens(move.getPenaltyForDesired(lastMoveDTO.getPenaltyForSevens()));
         move.setUpcard(upcard);
-        if (!moveStateHandler.isValidMove(getPrevFirstMoveDTO(), move)) {
+        logger.debug("Move {} to be played. Prev Move: {}", move, lastMoveDTO.toString());
+
+        if (!moveStateHandler.isValidMove(lastMoveDTO, move)) {
             logger.debug("Invalid move");
             return false;
         }
@@ -60,11 +58,10 @@ public class GameModel {
         switch (move.getMoveType()) {
             case PLAY:
                 player.removeCards(move.getMove());
-                logger.debug("move: {}, cards after the move: {}", move.getMove().toString(), player.getCards().toString());
                 addCardsToWaste(move.getMove());
-                upcard = waste.peek();
+                upcard = waste.getLast();
 
-                lastMoveDTO = currentMoveDTO;
+                lastMoveDTO = move;
                 logger.debug("move: {}, cards after the move: {}", move.getMove().toString(), player.getCards().toString());
                 break;
             case DRAW:
@@ -74,6 +71,8 @@ public class GameModel {
                     }
                     player.addCard(stock.remove());
                 }
+                move.setPenaltyForSevens(0);
+                lastMoveDTO = move;
                 break;
             case PASS:
                 break;
@@ -108,6 +107,7 @@ public class GameModel {
         MoveDTO moveDTO = new MoveDTO();
         moveDTO.setUpcard(upcard);
         ArrayList<Card> moveCards = new ArrayList<>();
+        moveDTO.setMoveType(MoveType.PLAY);
 
         switch (upcard.getRank()) {
             case SEVEN:
@@ -223,6 +223,7 @@ public class GameModel {
 
         List<Rank> ranks = new ArrayList<>(Arrays.asList(Rank.values()));
         ranks.remove(Rank.UNSPECIFIED);
+        ranks.remove(Rank.ACE);
 
         for (Rank rank : ranks){
             for (Suit suit : suits) {
@@ -334,5 +335,13 @@ public class GameModel {
      */
     public void setCurrentState(GameState newState) {
         this.currentState = newState;
+    }
+
+    public Card getUpcard() {
+        return upcard;
+    }
+
+    public void setUpcard(Card upcard) {
+        this.upcard = upcard;
     }
 }
