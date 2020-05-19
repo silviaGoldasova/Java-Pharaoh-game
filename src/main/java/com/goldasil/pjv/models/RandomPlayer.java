@@ -41,13 +41,17 @@ public class RandomPlayer extends Player {
     public Move chooseMove(MoveDTO prevMove){
         //SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), 1);
         List<MoveState> prevStates = MoveStateHandler.getMoveStatesPrev(prevMove);
-        logger.debug("prevstates based on the arg MoveDTO prevMove: {}", prevStates);
+        if (cards.size() == 0)
+            prevStates.add(MoveState.AM_I_WITHOUT_CARDS);
+        logger.debug("cards: {}", cards);
+        logger.debug("prevstates based on the arg MoveDTO prevMove: {} based on the prevMove: {}", prevStates, prevMove.toString());
         List<Move> posssibleMoves = getPossibleMoves(prevMove, prevStates);
         logger.debug("list of pos moves: {}", posssibleMoves);
-        return getBestPosssibleMove(posssibleMoves, prevMove);
+
+        Move selectedMove = getBestPosssibleMove(posssibleMoves, prevMove);
+        selectedMove.setRequestedSuit(checkOverKnaveGetSuit(selectedMove.getMove()));
+        return selectedMove;
     }
-
-
 
     private List<Move> getPossibleMoves(MoveDTO prevMove, List<MoveState> prevStates) {
         List<Move> possibleMoves = new ArrayList<>();
@@ -111,7 +115,7 @@ public class RandomPlayer extends Player {
                     possibleMoves.add(new Move(getLargestArrayList(posMovesForUnderknave)));
                     break;
                 case NONSPECIAL_SITUATION:
-                    Card upcard = prevMove.getUpcard();
+                    Card upcard = MoveStateHandler.getUpperCard(prevMove);
                     possibleMoves.add(chooseMoveFromHand(new Card(upcard.getRank(), upcard.getSuit())));
                     break;
                 case OVERKNAVE_HEARTS:
@@ -255,6 +259,9 @@ public class RandomPlayer extends Player {
     }
 
     private Suit checkOverKnaveGetSuit(ArrayList<Card> move){
+        if (move == null || move.size() == 0) {
+            return Suit.UNSPECIFIED;
+        }
         if (move.get(0).getRank() == Rank.OVERKNAVE) {
             return getSuitForKnave();
         }

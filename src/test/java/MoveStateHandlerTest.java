@@ -193,7 +193,7 @@ public class MoveStateHandlerTest {
         Card cardDesired2 = new Card(Rank.EIGHT, Suit.ACORNS);
         moveDesired.add(cardDesired2);
         MoveDTO moveDTODesired = new MoveDTO(new Move(moveDesired), cardDesired2, 0, null);
-        List<MoveState> listDesiredStates = handler.getMoveStatesDesired(moveDTODesired);
+        List<MoveState> listDesiredStates = handler.getMoveStatesDesired(moveDTODesired, 4);
 
         boolean isValid = handler.isValidTransition(listPrevStates, listDesiredStates);
         Assert.assertTrue("Transition from " + listPrevStates + " to " + listDesiredStates + " should be true, not false.", isValid);
@@ -215,7 +215,7 @@ public class MoveStateHandlerTest {
         Card cardDesired2 = new Card(Rank.EIGHT, Suit.ACORNS);
         moveDesired.add(cardDesired2);
         MoveDTO moveDTODesired = new MoveDTO(new Move(moveDesired), cardDesired2, 0, null);
-        List<MoveState> listDesiredStates = handler.getMoveStatesDesired(moveDTODesired);
+        List<MoveState> listDesiredStates = handler.getMoveStatesDesired(moveDTODesired, 4);
 
         boolean isValid = handler.isValidTransition(listPrevStates, listDesiredStates);
         Assert.assertFalse("Transition from " + listPrevStates + " to " + listDesiredStates + " should be true, not false.", isValid);

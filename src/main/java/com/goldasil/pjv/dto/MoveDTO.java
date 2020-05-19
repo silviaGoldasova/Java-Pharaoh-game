@@ -141,7 +141,10 @@ public class MoveDTO extends Move {
         if (upRank == Rank.EIGHT || upRank == Rank.NINE || upRank == Rank.TEN || upRank == Rank.KING) {
             return true;
         }
-        if (upRank == Rank.UNDERKNAVE && upcard.getSuit() != Suit.LEAVES) {
+        if (upRank == Rank.UNDERKNAVE && uppperCard.getSuit() != Suit.LEAVES) {
+            return true;
+        }
+        if (upRank == Rank.SEVEN && !wasSevenPlayed() ) {
             return true;
         }
         return false;
@@ -219,8 +222,7 @@ public class MoveDTO extends Move {
         }
         return MoveState.NONSPECIAL_SITUATION;
     }
-
-
+    
 
     /**
      * Checks whether any of the players is without cards.

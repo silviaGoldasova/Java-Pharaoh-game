@@ -1,6 +1,7 @@
 package com.goldasil.pjv;
 
 import com.goldasil.pjv.models.Card;
+import com.goldasil.pjv.models.Player;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.goldasil.pjv.dto.MoveDTO;
@@ -56,9 +57,9 @@ public class MoveStateHandler {
         //logger.debug("Initialization of neighbours successful.");
     }
 
-    public boolean isValidMove(MoveDTO prevMove, MoveDTO desiredMove) {
+    public boolean isValidMove(MoveDTO prevMove, MoveDTO desiredMove, int cardsCount) {
         List<MoveState> previousStates = getMoveStatesPrev(prevMove);
-        List<MoveState> desiredStates = getMoveStatesDesired(desiredMove);
+        List<MoveState> desiredStates = getMoveStatesDesired(desiredMove, cardsCount);
 
         if (isValidTransition(previousStates, desiredStates) && Card.arrAllCardsSameRank(desiredMove.getMove()) && checkSevensPenalty(prevMove, desiredMove) ) {
             return true;
@@ -75,6 +76,10 @@ public class MoveStateHandler {
      */
     public static boolean isValidTransition(List<MoveState> previousStates, List<MoveState> desiredStates) {
         logger.debug("going from {} to {}", previousStates.toString(), desiredStates.toString());
+
+        // check if has won
+        if (checkIfWon(previousStates, desiredStates))
+            return true;
 
         for (MoveState previousMoveState : previousStates) {
             if (previousMoveState.getPriority() == 2) {
@@ -146,13 +151,13 @@ public class MoveStateHandler {
     public static List<MoveState> getMoveStatesPrev(MoveDTO moveDTO) {
         List<MoveState> states = new LinkedList<MoveState>();
 
-        if (moveDTO.getUpcard().isUnderKnaveLeaves()) {
+        if (MoveStateHandler.getUpperCard(moveDTO).isUnderKnaveLeaves()) {
             states.add(MoveState.UNDERKNAVE_LEAVES_PLAYED);
             states.add(MoveState.UNDERKNAVE_PLAYED);
             states.addAll(allSuitMoveStates);
         }
 
-        if (moveDTO.getUpcard().getRank() == Rank.OVERKNAVE) {
+        if (MoveStateHandler.getUpperCard(moveDTO).getRank() == Rank.OVERKNAVE) {
             states.add(moveDTO.getMoveStateForSuit(moveDTO.getRequestedSuit()));
             states.add(MoveState.OVERKNAVE_PLAYED);
             states.add(moveDTO.getMoveStateForOverknave(moveDTO.getRequestedSuit()));
@@ -186,20 +191,33 @@ public class MoveStateHandler {
         return states;
     }
 
-    private static Card getUpperCard(MoveDTO moveDTO) {
+    public static Card getUpperCard(MoveDTO moveDTO) {
         if(moveDTO.getMoveType() == MoveType.PLAY) {
             return moveDTO.getMove().get(moveDTO.getMove().size()-1);
         }
         return moveDTO.getUpcard();
     }
 
+    private static boolean checkIfWon(List<MoveState> previousStates, List<MoveState> desiredStates){
+        if (!isStateInList(MoveState.SEVEN_HEARTS_RETURN_PLAYED, previousStates) && isStateInList(MoveState.WIN, desiredStates)) {
+            return true;
+        }
+        return false;
+    }
+
+
     /**
      * Gets the list of all states that would be activated a the desired move would be performed.
      * @param moveDTO the desired move
      * @return list of all states that would be active after having performed the desired move
      */
-    public static List<MoveState> getMoveStatesDesired(MoveDTO moveDTO) {
+    public static List<MoveState> getMoveStatesDesired(MoveDTO moveDTO, int cardsCount) {
         List<MoveState> states = new LinkedList<MoveState>();
+
+        if (moveDTO.getMoveType() == MoveType.WIN && cardsCount == 0) {
+            states.add(MoveState.WIN);
+            return states;
+        }
 
         if (moveDTO.getMoveType() == MoveType.PLAY && moveDTO.getMove().get(0).isUnderKnaveLeaves()) {
             states.add(MoveState.UNDERKNAVE_LEAVES_PLAYED);

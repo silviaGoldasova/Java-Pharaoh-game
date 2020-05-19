@@ -8,6 +8,10 @@ import com.goldasil.pjv.models.GameModel;
 import com.goldasil.pjv.models.Player;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +20,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -50,6 +55,9 @@ public class GameView extends Application {
     private Suit requestedSuit = Suit.UNSPECIFIED;
     HBox selectedCardsBox, p1CardsBox, wasteCards;
     Button drawnCardsButton = new Button();
+
+    private BooleanProperty changedSuit = new SimpleBooleanProperty();
+
 
     public GameView() {
         setGameView(this);
@@ -160,6 +168,22 @@ public class GameView extends Application {
         stage.show();
         logger.debug("Showing scene.");
 
+        // set change listener on request buttons
+        setChangedSuit(false);
+        changedSuitProperty().addListener(new ChangeListener(){
+            @Override public void changed(ObservableValue o, Object oldVal, Object newVal){
+                logger.debug("changedSuitProperty() has been changed!");
+                for (Node button : suits.getChildren()) {
+                    ButtonCard requestedSuitBut = (ButtonCard) button;
+                    if (requestedSuitBut.getButtonSuit() == requestedSuit) {
+                        requestedSuitBut.setEffect(new DropShadow());
+                    }
+                    else {
+                        requestedSuitBut.setEffect(null);
+                    }
+                }
+            }
+        });
     }
 
     private HBox setCardsBox(Player player) {
@@ -171,7 +195,7 @@ public class GameView extends Application {
             cardsBox.getChildren().add(buttonCard);
             //logger.debug("card suit: {} vs suit {}", buttonCard.getButtonSuit(), card.getSuit());
             //selectedCardsBox.getChildren().add(buttonCard);
-            if (playerID == 1) {
+            if (playerID == game.getThisPlayerId()) {
                 buttonCard.setOnAction(selectCardToPlayHandler);
             }
         }
@@ -211,6 +235,8 @@ public class GameView extends Application {
         box.getChildren().addAll(hearts, leaves, acorns, bells);
         return box;
     }
+
+
 
     EventHandler<ActionEvent> selectCardToPlayHandler = new EventHandler<ActionEvent>() {
         @Override
@@ -252,11 +278,11 @@ public class GameView extends Application {
             }
 
             if (numDrawnCards != 0) {
-                gameController.submitMove(numDrawnCards);
+                gameController.submitMoveFromView(numDrawnCards);
             }
 
             if (selectedCardsBox.getChildren().size() != 0) {
-                gameController.submitMove(selectedCardsBox.getChildren(), requestedSuit);
+                gameController.submitMoveFromView(selectedCardsBox.getChildren(), requestedSuit);
             }
 
             event.consume();
@@ -325,7 +351,7 @@ public class GameView extends Application {
 
             p1CardsBox.getChildren().clear();
             grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == 1);
-            grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == 5);
+            grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == 4);
 
             p1CardsBox = setCardsBox(players.get(0));
             grid.add(p1CardsBox, 1, 0);
@@ -366,4 +392,24 @@ public class GameView extends Application {
         Application.launch(args);
     }
 
+    public boolean isChangedSuit() {
+        return changedSuit.get();
+    }
+
+    public BooleanProperty changedSuitProperty() {
+        return changedSuit;
+    }
+
+    public void setChangedSuit(boolean changedSuit) {
+        this.changedSuit.set(changedSuit);
+    }
+
+    public Suit getRequestedSuit() {
+        return requestedSuit;
+    }
+
+    public void setRequestedSuit(Suit requestedSuit) {
+        this.requestedSuit = requestedSuit;
+        setChangedSuit(!changedSuit.get());
+    }
 }

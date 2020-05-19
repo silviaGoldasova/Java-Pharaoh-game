@@ -9,6 +9,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Set;
 
+import static java.lang.Thread.sleep;
+
 public class Main {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
@@ -38,7 +40,20 @@ public class Main {
         // set controller
         GameController controller = new GameController(gameModel, gameView);
         gameView.setGameController(controller);
-        controller.initializeGame();
+        controller.initializeGame(2);
+
+
+        /*boolean value = true;
+        for(int i = 0; i < 100; i++) {
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            value = !value;
+            gameView.setIsChange(value);
+        }*/
+
     }
 
 
