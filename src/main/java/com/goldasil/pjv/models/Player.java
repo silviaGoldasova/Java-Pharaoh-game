@@ -42,6 +42,15 @@ public class Player {
         this.cardsCount = cards.size();
     }
 
+    @Override
+    public String toString() {
+        return "Player{" +
+                "cards=" + cards +
+                ", cardsCount=" + cardsCount +
+                ", playerID=" + playerID +
+                '}';
+    }
+
     /** Adds cards passes in in an array into the hand of the player.
      * @param move list of cards to be added to the hand of the player
      */
@@ -77,7 +86,7 @@ public class Player {
                 }
             }
         }
-        logger.debug("rest of the cards: {}", cards);
+        //logger.debug("rest of the cards: {}", cards);
         cardsCount = cards.size();
 
     }

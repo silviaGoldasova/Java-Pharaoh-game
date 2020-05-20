@@ -27,8 +27,8 @@ public class GameModel {
     int currentPlayerIdTurn = 0;
     int thisPlayerId = 0;
 
-    MoveDTO lastMoveDTO;
-    MoveDTO currentMoveDTO;
+    MoveDTO lastMoveDTO = null;
+    volatile MoveDTO currentMoveDTO = null;
 
     private static final Logger logger = LoggerFactory.getLogger(GameModel.class);
 
@@ -301,9 +301,21 @@ public class GameModel {
         /*if (waste.size() == 0) {
             return false;
         }*/
-        for (Card card : waste) {
-            stock.add(waste.remove());
+
+        for (Card card : new LinkedList<>(waste)) {
+            stock.add(card);
+            waste.remove(card);
         }
+
+        /*for (Card card : waste) {
+            stock.add(new Card(card.getRank(), card.getSuit()));
+        }
+
+        upcard = new Card(waste.getLast().getRank(), waste.getLast().getSuit());
+
+        for (Card card : new LinkedList<>(waste)) {
+            stock.add(waste.remove());
+        }*/
     }
 
     /**

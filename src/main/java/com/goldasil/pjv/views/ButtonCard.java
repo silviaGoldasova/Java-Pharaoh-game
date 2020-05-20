@@ -13,6 +13,8 @@ public class ButtonCard extends Button {
     public final ObjectProperty<Enum<?>> buttonRank = new SimpleObjectProperty<>(Rank.UNSPECIFIED);
     public final ObjectProperty<Enum<?>> buttonSuit = new SimpleObjectProperty<>(Suit.UNSPECIFIED);
 
+    private boolean selected;
+
 
     public final ObjectProperty<Enum<?>> buttonRankProperty() {
         return this.buttonRank;
@@ -40,6 +42,7 @@ public class ButtonCard extends Button {
 
     public ButtonCard() {
         super();
+        selected = false;
         /*styleProperty().bind(Bindings.
                 when(buttonState.isEqualTo(ButtonState.CRITICAL)).
                 then("-fx-base: red;").
@@ -48,16 +51,19 @@ public class ButtonCard extends Button {
 
     public ButtonCard(String label) {
         super(label);
+        selected = false;
     }
 
     public ButtonCard(Card card) {
         super(card.toStringForGUI());
+        selected = false;
         setButtonRank(card.getRank());
         setButtonSuit(card.getSuit());
     }
 
     public ButtonCard(ButtonCard cardButton) {
         super(cardButton.getText());
+        selected = false;
         setButtonRank(cardButton.getButtonRank());
         setButtonSuit(cardButton.getButtonSuit());
     }

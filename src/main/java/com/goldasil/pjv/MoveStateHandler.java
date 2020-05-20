@@ -75,17 +75,21 @@ public class MoveStateHandler {
      * @return true is the move is valid to be performed
      */
     public static boolean isValidTransition(List<MoveState> previousStates, List<MoveState> desiredStates) {
-        logger.debug("going from {} to {}", previousStates.toString(), desiredStates.toString());
+        //logger.debug("going from {} to {}", previousStates.toString(), desiredStates.toString());
 
         // check if has won
         if (checkIfWon(previousStates, desiredStates))
             return true;
 
+        if (desiredStates.size() == 0) {
+            return false;
+        }
+
         for (MoveState previousMoveState : previousStates) {
             if (previousMoveState.getPriority() == 2) {
                 for (MoveState desiredMoveState : desiredStates) {
                     if (isBetweenNeighbours(previousMoveState, desiredMoveState)) {
-                        logger.info("Special high priority transition from {} to {} -> valid transition.\n", previousStates, desiredStates);
+                        logger.info("Special high priority transition from {} to {} -> valid transition.", previousStates, desiredStates);
                         return true;
                     }
                 }
@@ -105,7 +109,7 @@ public class MoveStateHandler {
                 }
             }
             if (!returnValue) {
-                logger.info("Not the same rank or suit from {} to {}.\n", previousStates, desiredStates);
+                logger.info("Not the same rank or suit from {} to {}.", previousStates, desiredStates);
                 return false;
             }
         }
@@ -114,8 +118,8 @@ public class MoveStateHandler {
             if (previousMoveState.getPriority() == 0) {
                 for (MoveState desiredMoveState : desiredStates) {
                     if (desiredMoveState.getPriority() == 0 && !isBetweenNeighbours(previousMoveState, desiredMoveState)) {
-                        logger.info("Not a valid trasition from {} to {}.\n", previousStates, desiredStates);
-                        logger.info("Not a valid trasition from {} to {}.\n", previousMoveState, desiredMoveState);
+                        logger.info("Not a valid trasition from {} to {}.", previousStates, desiredStates);
+                        logger.info("Not a valid trasition from {} to {}.", previousMoveState, desiredMoveState);
                         return false;
                     }
                 }

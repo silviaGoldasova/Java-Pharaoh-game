@@ -14,8 +14,10 @@ import javafx.scene.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.*;
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -39,7 +41,6 @@ public class GameController {
      */
     public void initializeGame(int numberOfRandomPlayers) {
         game.initGame(numberOfRandomPlayers);
-        view.updateGameScene();
 
         try {
             sleep(1000);
@@ -48,7 +49,6 @@ public class GameController {
         }
 
         view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
-        //view.updateGameScene(game.getCurrentState(), game.getPlayers());
     }
 
     /**
@@ -67,7 +67,9 @@ public class GameController {
 
         if (game.runOppTurn()) {
 
-            view.updateGameScene();
+            //view.updateGameScene();
+            view.updatePlayersBoxFromView();
+            view.setNewUpdate();
             setChangedSuit();
             game.setNextPlayersTurn();
             logger.debug("Player's turn has been played (id = {}).", game.getCurrentPlayerIdTurn());
@@ -95,7 +97,9 @@ public class GameController {
 
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
             setChangedSuit();
-            view.updateGameScene();
+            //view.updateGameScene();
+            view.setNewUpdate();
+
             game.setNextPlayersTurn();
             logger.debug("randomplayer's move follows");
             playTurn();
@@ -111,14 +115,28 @@ public class GameController {
 
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
             setChangedSuit();
-            view.updateGameScene();
+            //view.updateGameScene();
+            view.setNewUpdate();
             game.setNextPlayersTurn();
             playTurn();
         }
     }
 
+    public void submitMoveFromView(MoveDTO moveDTO) {
+        if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
+            return;
+        }
+        // WIN move
+        moveDTO.setUpcard(game.getUpcard());
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)) {
+            //view.updateGameScene();
+            //game.setNextPlayersTurn();
+            //playTurn();
+        }
+    }
+
     private void setChangedSuit(){
-        view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
+       view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
     }
 
     public LinkedList<Card> getWaste() {

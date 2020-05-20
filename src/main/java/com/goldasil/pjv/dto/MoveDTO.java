@@ -222,7 +222,7 @@ public class MoveDTO extends Move {
         }
         return MoveState.NONSPECIAL_SITUATION;
     }
-    
+
 
     /**
      * Checks whether any of the players is without cards.
