@@ -10,6 +10,7 @@ import com.goldasil.pjv.models.Move;
 import com.goldasil.pjv.models.Player;
 import com.goldasil.pjv.views.ButtonCard;
 import com.goldasil.pjv.views.GameView;
+import javafx.application.Platform;
 import javafx.scene.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,7 +59,8 @@ public class GameController {
      * The game ends when it gets to the Final State.
      */
 
-    public void playTurn(){
+    // play for randomplayer
+    public void playOneTurn(){
         if (game.getCurrentPlayerIdTurn() == game.getThisPlayerId()) {
             return;
         }
@@ -66,16 +68,51 @@ public class GameController {
         logger.debug("\n\nStart of the randomplayer's move.");
 
         if (game.runOppTurn()) {
-
-            //view.updateGameScene();
-            view.updatePlayersBoxFromView();
-            view.setNewUpdate();
             setChangedSuit();
-            game.setNextPlayersTurn();
-            logger.debug("Player's turn has been played (id = {}).", game.getCurrentPlayerIdTurn());
-        }
-        playTurn();
 
+            Platform.runLater(()->{
+                view.updatePlayersBoxFromView();
+                view.setNewUpdate();
+            });
+
+            try {
+                sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            logger.debug("Player's turn has been played (id = {}).", game.getCurrentPlayerIdTurn());
+            game.setNextPlayersTurn();
+
+            Platform.runLater(()->{
+                view.setPenaltyAndTurnLabel();
+            });
+
+        }
+
+        playOneTurn();
+    }
+
+    public void updateAndPlayNextTurn() {
+
+        Runnable runnable = () -> {
+
+            Platform.runLater(()-> {
+                view.setNewUpdate();
+                game.setNextPlayersTurn();
+                view.setPenaltyAndTurnLabel();
+            });
+
+            try {
+                sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            playOneTurn();
+        };
+        Thread playTurn = new Thread(runnable);
+        playTurn.start();
     }
 
     public ArrayList<Card> getSelectedCards(List<Node> cardButtons){
@@ -97,12 +134,11 @@ public class GameController {
 
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
             setChangedSuit();
-            //view.updateGameScene();
-            view.setNewUpdate();
 
-            game.setNextPlayersTurn();
+            //view.setNewUpdate();
+            //game.setNextPlayersTurn();
             logger.debug("randomplayer's move follows");
-            playTurn();
+            updateAndPlayNextTurn();
         }
     }
 
@@ -115,10 +151,10 @@ public class GameController {
 
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
             setChangedSuit();
-            //view.updateGameScene();
-            view.setNewUpdate();
-            game.setNextPlayersTurn();
-            playTurn();
+
+            //view.setNewUpdate();
+            //game.setNextPlayersTurn();
+            updateAndPlayNextTurn();
         }
     }
 
@@ -129,7 +165,7 @@ public class GameController {
         // WIN move
         moveDTO.setUpcard(game.getUpcard());
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)) {
-            //view.updateGameScene();
+            view.setNewUpdate();
             //game.setNextPlayersTurn();
             //playTurn();
         }

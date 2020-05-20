@@ -302,10 +302,15 @@ public class GameModel {
             return false;
         }*/
 
+        //upcard = new Card(waste.getLast().getRank(), waste.getLast().getSuit());
+
         for (Card card : new LinkedList<>(waste)) {
             stock.add(card);
             waste.remove(card);
         }
+
+        waste.add(stock.removeLast());
+        logger.debug("waste turned over");
 
         /*for (Card card : waste) {
             stock.add(new Card(card.getRank(), card.getSuit()));

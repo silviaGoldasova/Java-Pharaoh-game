@@ -35,9 +35,12 @@ public class GameLayout {
     private GridPane thisPlayerBox;
     private HBox thisPlayerCardsBox;
     private HBox selectedCardsBox;
-
-
     private Button drawnCardsButton;
+
+    private Label setPenalty;
+    private Label turnLabel;
+
+    private static int WASTE_DISPLAY_SIZE = 4;
 
     private static final Logger logger = LoggerFactory.getLogger(GameLayout.class);
 
@@ -112,9 +115,17 @@ public class GameLayout {
 
     public void setWasteBox(LinkedList<Card> waste) {
         wasteBox.getChildren().clear();
-        for (Card card : waste) {
-            ButtonCard buttonCard = new ButtonCard(card);
-            wasteBox.getChildren().add(buttonCard);
+        if (waste.size() <= WASTE_DISPLAY_SIZE) {
+          for (Card card : waste) {
+              ButtonCard buttonCard = new ButtonCard(card);
+              wasteBox.getChildren().add(buttonCard);
+          }
+        } else {
+            int index = waste.size() - WASTE_DISPLAY_SIZE;
+            for (int i = index; i < waste.size(); i++) {
+                ButtonCard buttonCard = new ButtonCard(waste.get(i));
+                wasteBox.getChildren().add(buttonCard);
+            }
         }
     }
 
@@ -128,7 +139,10 @@ public class GameLayout {
         Button winGame = new Button("Win Game");
         winGame.setOnAction(view.winGameButtonHandler);
 
-        moveControlBox.getChildren().addAll(submit, winGame, suitsBox);
+        setPenalty = new Label("Set Penalty: ");
+        turnLabel = new Label("Turn of the player #: ");
+
+        moveControlBox.getChildren().addAll(submit, winGame, setPenalty, turnLabel, suitsBox);
     }
 
     private void setStockBox(){
@@ -183,7 +197,7 @@ public class GameLayout {
 
     ChangeListener displayChangedRequestedSuitHandler = new ChangeListener() {
         @Override public void changed(ObservableValue o, Object oldVal, Object newVal){
-            logger.debug("changedSuitProperty() has been changed!");
+            //logger.debug("changedSuitProperty() has been changed!");
             for (Node button : suitsBox.getChildren()) {
                 ButtonCard requestedSuitBut = (ButtonCard) button;
                 if (requestedSuitBut.getButtonSuit() == view.getRequestedSuit()) {
@@ -306,5 +320,21 @@ public class GameLayout {
 
     public void setSelectedCardsBox(HBox selectedCardsBox) {
         this.selectedCardsBox = selectedCardsBox;
+    }
+
+    public Label getSetPenalty() {
+        return setPenalty;
+    }
+
+    public void setPenaltyText(String penalty) {
+        this.setPenalty.setText(penalty);
+    }
+
+    public Label getTurnLabel() {
+        return turnLabel;
+    }
+
+    public void setTurnLabelText(String text) {
+        turnLabel.setText(text);
     }
 }

@@ -40,7 +40,7 @@ public class ViewTest extends Application {
     }
 
     public void printSomething() {
-        System.out.println("You called a method on the application");
+        logger.debug("You called a method on the application");
     }
 
     @Override

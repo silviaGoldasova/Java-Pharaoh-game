@@ -9,6 +9,7 @@ import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.models.GameModel;
 import com.goldasil.pjv.models.Move;
 import com.goldasil.pjv.models.Player;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
@@ -81,6 +82,10 @@ public class GameView extends Application {
         latch.countDown();
     }
 
+    public void print() {
+       logger.debug("in which thread");
+    }
+
 
     /**
      * Generates a new FXML application
@@ -141,8 +146,21 @@ public class GameView extends Application {
         layout.initializePlayersBox(game.getPlayers(), game.getThisPlayerId());
         updateGameScene();
 
-        logger.debug("Showing scene.");
+        /*new AnimationTimer() {
+            @Override
+            public void handle(long now) {
+                updateGameScene();
+            }
+        }.start();*/
+        /*new Timer().scheduleAtFixedRate(new TimerTask() {
+            public void run() {
+                Platform.runLater(()->{
+                    setNewUpdate();
+                });
+            }
+        }, 2000, 2000);*/
 
+        logger.debug("Showing scene.");
     }
 
     private void setThisPlayerCardsBox(Player player) {
@@ -256,12 +274,7 @@ public class GameView extends Application {
         GameState gameState = game.getCurrentState();
         List<Player> players = game.getPlayers();
 
-        logger.debug("View-Update method called => Updating scene with new gameState: {}.\n\n\n", gameState.toString());
-
-        if (layout.getPlayersBox().getChildren().size() == 0) {
-            //logger.debug("initializePlayersSection: players: {}, this player id: {}", players.toString(), game.getThisPlayerId());
-            //layout.initializePlayersBox(players, game.getThisPlayerId());
-        }
+        logger.debug("View-Update method called => Updating scene with new gameState: {}.\n", gameState.toString());
 
         // cards to draw button
         layout.getDrawnCardsButton().setVisible(false);
@@ -277,13 +290,29 @@ public class GameView extends Application {
         // set waste box
         layout.setWasteBox(game.getWaste());
 
+        setPenaltyAndTurnLabel();
+
         switch (gameState) {
             case MY_TURN:
                 break;
             case OPP_TURN:
                 break;
         }
+        logger.debug("end of the update GUI");
+    }
 
+    public void setPenaltyAndTurnLabel(){
+        // set panalty counter:
+        int penalty = game.getCurrentMoveDTO().getPenaltyForSevens();
+        layout.setPenaltyText("Set Penalty: " + penalty);
+        if (penalty != 0) {
+            layout.getSetPenalty().setStyle("-fx-background-color: #d7efef; -fx-border-width: 1px; -fx-border-color: #acbfbf;");
+        } else {
+            layout.getSetPenalty().setStyle("");
+        }
+
+        // set turn of the player #
+        layout.setTurnLabelText("Turn of the player #: " + game.getCurrentPlayerIdTurn());
     }
 
     public GameModel getGame() {

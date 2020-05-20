@@ -35,6 +35,7 @@ public class Main {
         guiLaunchThread.start();
         GameView gameView = GameView.getGameViewAppInstance();
         gameView.setGame(gameModel);
+        //gameView.getprint();
         logger.debug("View has been launched.");
 
         // set controller

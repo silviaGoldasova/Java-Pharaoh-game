@@ -162,7 +162,7 @@ public class MoveDTO extends Move {
         if (upRank == Rank.EIGHT || upRank == Rank.NINE || upRank == Rank.TEN || upRank == Rank.KING) {
             return true;
         }
-        if (upRank == Rank.UNDERKNAVE && upcard.getSuit() != Suit.LEAVES) {
+        if (upRank == Rank.UNDERKNAVE && move.get(0).getSuit() != Suit.LEAVES) {
             return true;
         }
         return false;
