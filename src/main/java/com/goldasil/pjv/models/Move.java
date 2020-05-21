@@ -48,6 +48,13 @@ public class Move {
         this.requestedSuit = Suit.UNSPECIFIED;
     }
 
+    public Move(int drawCards, Suit requestedSuit) {
+        this.moveType = MoveType.DRAW;
+        this.move = new ArrayList<Card>();
+        this.drawCards = drawCards;
+        this.requestedSuit = requestedSuit;
+    }
+
     /**
      * Creates a new move with the specified list of cards to be played in the move and suit requested as an OVERKNAVE was played.
      * @param move list of cards to be played in the move

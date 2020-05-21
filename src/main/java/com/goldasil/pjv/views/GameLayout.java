@@ -1,6 +1,7 @@
 package com.goldasil.pjv.views;
 
 import com.goldasil.pjv.dto.MoveDTO;
+import com.goldasil.pjv.enums.Rank;
 import com.goldasil.pjv.enums.Suit;
 import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.models.Player;
@@ -9,10 +10,13 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.effect.DropShadow;
+import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -21,6 +25,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Optional;
 
 public class GameLayout {
 
@@ -35,10 +40,11 @@ public class GameLayout {
     private GridPane thisPlayerBox;
     private HBox thisPlayerCardsBox;
     private HBox selectedCardsBox;
-    private Button drawnCardsButton;
+    private ControlButton drawnCardsButton;
 
-    private Label setPenalty;
-    private Label turnLabel;
+    private GameLabel selectedCardsLabel;
+    private GameLabel setPenalty;
+    private GameLabel turnLabel;
 
     private static int WASTE_DISPLAY_SIZE = 4;
 
@@ -57,7 +63,7 @@ public class GameLayout {
 
     private void setPlayersBox(){
         playersBox = new HBox();
-        playersBox.setSpacing(30);
+        playersBox.setSpacing(70);
     }
 
     public void initializePlayersBox(List<Player> players, int thisPlayerId){
@@ -66,8 +72,9 @@ public class GameLayout {
             if (player.getPlayerID() == thisPlayerId) {
                 continue;
             }
-            Label playerLabel = new Label("player #" + player.getPlayerID() + ". Cards count: " + player.getCards().size());
-            Label lastMove = new Label("-");
+            GameLabel playerLabel = new GameLabel("player #" + player.getPlayerID() + ". Cards count: " + player.getCards().size());
+            GameLabel lastMove = new GameLabel("");
+            lastMove.setVisible(false);
 
             GameVBox playerBox = new GameVBox(player.getPlayerID(), playerLabel, lastMove);
 
@@ -89,17 +96,19 @@ public class GameLayout {
     private void setThisPlayerBox(){
         thisPlayerBox = new GridPane();
         //thisPlayerBox.setPadding(new Insets(25, 25, 25, 25));
-        thisPlayerBox.setHgap(10);
+        thisPlayerBox.setHgap(25);
         thisPlayerBox.setVgap(10);
+        thisPlayerBox.setAlignment(Pos.CENTER);
 
-        Label selectedCardsLabel = new Label("Selected Cards ");
+        selectedCardsLabel = new GameLabel("Selected Cards ");
+        selectedCardsLabel.setVisible(false);
         thisPlayerBox.add(selectedCardsLabel, 0, 0);
 
         selectedCardsBox = new HBox();
         selectedCardsBox.setSpacing(10);
         thisPlayerBox.add(selectedCardsBox, 1, 0);
 
-        Label myCardsLabel = new Label("My Cards: ");
+        GameLabel myCardsLabel = new GameLabel("My Cards: ");
         thisPlayerBox.add(myCardsLabel, 0, 1);
 
         thisPlayerCardsBox = new HBox();
@@ -117,13 +126,16 @@ public class GameLayout {
         wasteBox.getChildren().clear();
         if (waste.size() <= WASTE_DISPLAY_SIZE) {
           for (Card card : waste) {
-              ButtonCard buttonCard = new ButtonCard(card);
+              ButtonCard buttonCard = new ButtonCard(card.getRank(), card.getSuit());
+              buttonCard.setGraphic(getCardImageView(card.getRank(), card.getSuit()));
               wasteBox.getChildren().add(buttonCard);
           }
         } else {
             int index = waste.size() - WASTE_DISPLAY_SIZE;
             for (int i = index; i < waste.size(); i++) {
-                ButtonCard buttonCard = new ButtonCard(waste.get(i));
+                Card card = waste.get(i);
+                ButtonCard buttonCard = new ButtonCard(card.getRank(), card.getSuit());
+                buttonCard.setGraphic(getCardImageView(card.getRank(), card.getSuit()));
                 wasteBox.getChildren().add(buttonCard);
             }
         }
@@ -131,32 +143,64 @@ public class GameLayout {
 
     private void setMoveControlBox() {
         moveControlBox = new VBox();
-        moveControlBox.setSpacing(10);
+        moveControlBox.setSpacing(20);
 
-        Button submit = new Button("Submit Move");
+        ControlButton pauseButton = new ControlButton();
+        pauseButton.setGraphic(getCardBackgroundImageView("home.png", 40));
+        pauseButton.setOnAction(view.pauseGameDialogBoxHandler);
+
+        ControlButton submit = new ControlButton("Submit Move");
+        submit.setMinWidth(200);
         submit.setOnAction(view.submitSelectCardHandler);
 
-        Button winGame = new Button("Win Game");
+        ControlButton winGame = new ControlButton("Win Game");
+        winGame.setMinWidth(200);
         winGame.setOnAction(view.winGameButtonHandler);
 
-        setPenalty = new Label("Set Penalty: ");
-        turnLabel = new Label("Turn of the player #: ");
+        setPenalty = new GameLabel("Set Penalty: ");
+        setPenalty.setMinWidth(200);
+        turnLabel = new GameLabel("Turn of the player #");
+        turnLabel.setMinWidth(200);
 
-        moveControlBox.getChildren().addAll(submit, winGame, setPenalty, turnLabel, suitsBox);
+        moveControlBox.getChildren().addAll(pauseButton, submit, winGame, setPenalty, turnLabel, suitsBox);
     }
 
     private void setStockBox(){
         stockBox = new VBox();
         stockBox.setSpacing(10);
 
-        Button stockButton = new Button("Stock (draw a card)");
+        ControlButton stockButton = new ControlButton("Stock (draw a card)");
         stockButton.setOnAction(drawCardsHandler);
 
-        drawnCardsButton = new Button();
+        drawnCardsButton = new ControlButton();
         drawnCardsButton.setOnAction(drawCardsSubstractHandler);
         drawnCardsButton.setVisible(false);
 
+        //Button button = new Button();
+        //button.setGraphic(getCardImageView(Rank.KING, Suit.HEARTS));
+
         stockBox.getChildren().addAll(stockButton, drawnCardsButton);
+    }
+
+    public ImageView getCardImageView(Rank rank, Suit suit){
+
+        String path = "/cards/" + rank.toString().toLowerCase() + "_" + suit.toString().toLowerCase() + ".jpg";
+        Image image = new Image(GameLayout.class.getResourceAsStream(path));
+        //Image image = new Image(this.getClass().getResourceAsStream("/cards/king_hearts.jpg"));
+        ImageView imageView = new ImageView(image);
+        //imageView.fitHeightProperty().bind(thisPlayerCardsBox.heightProperty());
+        imageView.setFitHeight(210);
+        imageView.setPreserveRatio(true);
+        return imageView;
+    }
+
+    public static ImageView getCardBackgroundImageView(String name, double size){
+        String path = "/cards/" + name;
+        Image image = new Image(GameLayout.class.getResourceAsStream(path));
+        ImageView imageView = new ImageView(image);
+        imageView.setFitHeight(size);
+        imageView.setPreserveRatio(true);
+        return imageView;
     }
 
     EventHandler<ActionEvent> drawCardsHandler = new EventHandler<ActionEvent>() {
@@ -201,10 +245,13 @@ public class GameLayout {
             for (Node button : suitsBox.getChildren()) {
                 ButtonCard requestedSuitBut = (ButtonCard) button;
                 if (requestedSuitBut.getButtonSuit() == view.getRequestedSuit()) {
-                    colorButton(requestedSuitBut);
+                    //colorButton(requestedSuitBut);
+                    requestedSuitBut.highlightButton();
+                    requestedSuitBut.setPadding(new Insets(10, 10, 10, 10));
                 }
                 else {
-                    requestedSuitBut.setStyle("");
+                    requestedSuitBut.unHighlightButton();
+                    requestedSuitBut.setPadding(new Insets(4, 4, 4, 4));
                 }
             }
         }
@@ -213,16 +260,16 @@ public class GameLayout {
     private HBox getRequestedSuitsBox(){
         HBox box = new HBox();
         box.setSpacing(10);
+        box.setAlignment(Pos.CENTER);
 
-        ButtonCard hearts = new ButtonCard("Hearts");
-        ButtonCard leaves = new ButtonCard("Leaves");
-        ButtonCard acorns = new ButtonCard("Acorns");
-        ButtonCard bells = new ButtonCard("Bells");
-
-        hearts.setButtonSuit(Suit.HEARTS);
-        leaves.setButtonSuit(Suit.LEAVES);
-        acorns.setButtonSuit(Suit.ACORNS);
-        bells.setButtonSuit(Suit.BELLS);
+        ButtonCard hearts = new ButtonCard(Suit.HEARTS);
+        hearts.setGraphic(getCardBackgroundImageView("hearts.jpg", 40));
+        ButtonCard leaves = new ButtonCard(Suit.LEAVES);
+        leaves.setGraphic(getCardBackgroundImageView("leaves.jpg", 40));
+        ButtonCard acorns = new ButtonCard(Suit.ACORNS);
+        acorns.setGraphic(getCardBackgroundImageView("acorns.jpg", 40));
+        ButtonCard bells = new ButtonCard(Suit.BELLS);
+        bells.setGraphic(getCardBackgroundImageView("bells.jpg", 40));
 
         hearts.setOnAction(selectRequestedSuitHandler);
         leaves.setOnAction(selectRequestedSuitHandler);
@@ -240,9 +287,21 @@ public class GameLayout {
             ButtonCard requestedSuitBut = (ButtonCard) event.getSource();
             view.setRequestedSuit( (Suit) requestedSuitBut.getButtonSuit() );
             logger.debug("Requested suit set: {}", view.getRequestedSuit());
+            requestedSuitBut.setOnAction(unselectRequestedSuitHandler);
 
             event.consume();
-            //logger.debug("Move submitted.");
+        }
+    };
+
+    EventHandler<ActionEvent> unselectRequestedSuitHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+
+            ButtonCard requestedSuitBut = (ButtonCard) event.getSource();
+            view.setRequestedSuit(Suit.UNSPECIFIED);
+            logger.debug("Requested suit set: {}", Suit.UNSPECIFIED);
+            requestedSuitBut.setOnAction(selectRequestedSuitHandler);
+            event.consume();
         }
     };
 
@@ -302,7 +361,7 @@ public class GameLayout {
         return drawnCardsButton;
     }
 
-    public void setDrawnCardsButton(Button drawnCardsButton) {
+    public void setDrawnCardsButton(ControlButton drawnCardsButton) {
         this.drawnCardsButton = drawnCardsButton;
     }
 
@@ -322,7 +381,7 @@ public class GameLayout {
         this.selectedCardsBox = selectedCardsBox;
     }
 
-    public Label getSetPenalty() {
+    public GameLabel getSetPenalty() {
         return setPenalty;
     }
 
@@ -330,11 +389,19 @@ public class GameLayout {
         this.setPenalty.setText(penalty);
     }
 
-    public Label getTurnLabel() {
+    public GameLabel getTurnLabel() {
         return turnLabel;
     }
 
     public void setTurnLabelText(String text) {
         turnLabel.setText(text);
+    }
+
+    public GameLabel getSelectedCardsLabel() {
+        return selectedCardsLabel;
+    }
+
+    public void setSelectedCardsLabel(GameLabel selectedCardsLabel) {
+        this.selectedCardsLabel = selectedCardsLabel;
     }
 }

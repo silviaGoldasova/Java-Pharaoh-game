@@ -1,9 +1,15 @@
 package com.goldasil.pjv.views;
 
+import ch.qos.logback.core.Layout;
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.enums.MoveType;
+import com.goldasil.pjv.enums.Rank;
+import com.goldasil.pjv.enums.Suit;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 public class GameVBox extends VBox {
@@ -21,13 +27,17 @@ public class GameVBox extends VBox {
         this.playerId = playerId;
     }
 
-    public GameVBox(int playerId, Label lastMoveLabel, Label nameAndCardsCountLabel) {
+    public GameVBox(int playerId, Label nameAndCardsCountLabel, Label lastMoveLabel) {
         super();
         this.playerId = playerId;
         this.lastMoveLabel = lastMoveLabel;
         this.nameAndCardsCountLabel = nameAndCardsCountLabel;
-        Button button = new Button("-");
-        this.getChildren().addAll(lastMoveLabel, button, nameAndCardsCountLabel);
+
+        ButtonCard backgroundCard = new ButtonCard(Rank.UNSPECIFIED, Suit.UNSPECIFIED);
+        backgroundCard.setGraphic(GameLayout.getCardBackgroundImageView("background.jpg", 120.0));
+
+        this.setAlignment(Pos.CENTER);
+        this.getChildren().addAll(nameAndCardsCountLabel, backgroundCard, lastMoveLabel);
         setSpacing(10);
     }
 
@@ -36,6 +46,7 @@ public class GameVBox extends VBox {
     }
 
     public void setLastMoveLabelText(MoveDTO moveDTO) {
+        lastMoveLabel.setVisible(true);
         String moveText;
         if (moveDTO.getMoveType() == MoveType.PLAY) {
             moveText = moveDTO.getMove().toString();

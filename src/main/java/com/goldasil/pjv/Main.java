@@ -1,30 +1,38 @@
 package com.goldasil.pjv;
 
 import com.goldasil.pjv.controllers.gameControllers.GameController;
+import com.goldasil.pjv.entity.GameEntity;
+import com.goldasil.pjv.entity.GameRepository;
+import com.goldasil.pjv.entity.GameService;
 import com.goldasil.pjv.models.GameModel;
 import com.goldasil.pjv.views.GameView;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Set;
-
 import static java.lang.Thread.sleep;
 
+@SpringBootApplication
 public class Main {
 
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
 
-        logger.debug("Main method has started.");
+        SpringApplication.run(Main.class, args);
 
-        //set model
+        logger.info("Main method has started.");
+
+        startUpNewGameProcess(2);
+    }
+
+
+    public static void startUpNewGameProcess(int numOfRandomplayers){
         GameModel gameModel = new GameModel();
-        //GameView view = new GameView();
-        //view.setGame(gameModel);
 
-        // start view gui
+        //set view
         Thread guiLaunchThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -35,26 +43,12 @@ public class Main {
         guiLaunchThread.start();
         GameView gameView = GameView.getGameViewAppInstance();
         gameView.setGame(gameModel);
-        //gameView.getprint();
         logger.debug("View has been launched.");
 
         // set controller
         GameController controller = new GameController(gameModel, gameView);
         gameView.setGameController(controller);
-        controller.initializeGame(2);
-
-
-        /*boolean value = true;
-        for(int i = 0; i < 100; i++) {
-            try {
-                sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            value = !value;
-            gameView.setIsChange(value);
-        }*/
-
+        controller.initializeGame(numOfRandomplayers);
     }
 
 

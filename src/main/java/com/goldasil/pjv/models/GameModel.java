@@ -1,18 +1,30 @@
 package com.goldasil.pjv.models;
 
+import com.goldasil.pjv.ApplicationContextProvider;
 import com.goldasil.pjv.MoveStateHandler;
 import com.goldasil.pjv.dto.MoveDTO;
+import com.goldasil.pjv.entity.GameEntity;
+import com.goldasil.pjv.entity.GameRepository;
+import com.goldasil.pjv.entity.GameService;
 import com.goldasil.pjv.enums.*;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
+import java.sql.Timestamp;
 import java.util.*;
 
 /**
  * Represents model for the game play.
- * Holds the states of the basic entities in the game - players, a stock, a waste.
+ * Holds the states of the basic entity in the game - players, a stock, a waste.
  */
 public class GameModel {
 
@@ -21,7 +33,7 @@ public class GameModel {
     LinkedList <Card> waste;
     LinkedList <Card> selectedCards;
     GameState currentState = GameState.FIRST_MOVE;
-    static final int CARDS_TO_DEAL = 5;
+    static final int CARDS_TO_DEAL = 4;
     Card upcard;
     MoveStateHandler moveStateHandler;
     int currentPlayerIdTurn = 0;
@@ -29,6 +41,8 @@ public class GameModel {
 
     MoveDTO lastMoveDTO = null;
     volatile MoveDTO currentMoveDTO = null;
+
+    private IntegerProperty winnerID = new SimpleIntegerProperty();
 
     private static final Logger logger = LoggerFactory.getLogger(GameModel.class);
 
@@ -42,7 +56,7 @@ public class GameModel {
     }
 
     /**
-     * Makes all changes (of the states of the entities of the game) caused by a specific move according to the type of the move.
+     * Makes all changes (of the states of the entity of the game) caused by a specific move according to the type of the move.
      * @param playerID ID of the player who made the move
      * @param move the move to process
      */
@@ -81,9 +95,19 @@ public class GameModel {
                 break;
             case WIN:
                 logger.debug("Player with id {} has won!!!!!", playerID);
+                winnerID.setValue(playerID);
                 break;
         }
         return true;
+    }
+
+    @Bean
+    public void saveGame(String mainPlayerName, String password) {
+        GameService service  = ApplicationContextProvider.getBean(GameService.class);
+        service.save(mainPlayerName, currentPlayerIdTurn, players, password);
+
+        //GameRepository repo  = ApplicationContextProvider.getBean(GameRepository.class);
+        //repo.save(entity);
     }
 
     public void initGame(int numberOfRandomPlayers) {
@@ -97,12 +121,18 @@ public class GameModel {
 
         // initializes all players with cards and sets the rest of the cards of the pack to the stock
         dealCardsAndSetStock();
+        winnerID.setValue(-1);
         logger.debug("Players and stock initialized.");
     }
 
     private MoveDTO getPrevFirstMoveDTO(){
 
-        Card lastCard = stock.getLast();
+        Card lastCard;
+        if (stock.size() == 0) {
+            lastCard = upcard;
+        } else {
+            lastCard = stock.getLast();
+        }
         Rank upcardRank = upcard.getRank();
 
         if (upcardRank != lastCard.getRank() && upcardRank != Rank.OVERKNAVE) {
@@ -298,11 +328,11 @@ public class GameModel {
      * Leaves waste empty
      */
     private void turnWasteOver () {
-        /*if (waste.size() == 0) {
-            return false;
-        }*/
-
         //upcard = new Card(waste.getLast().getRank(), waste.getLast().getSuit());
+
+        if (waste.size() == 0) {
+            return;
+        }
 
         for (Card card : new LinkedList<>(waste)) {
             stock.add(card);
@@ -315,9 +345,7 @@ public class GameModel {
         /*for (Card card : waste) {
             stock.add(new Card(card.getRank(), card.getSuit()));
         }
-
         upcard = new Card(waste.getLast().getRank(), waste.getLast().getSuit());
-
         for (Card card : new LinkedList<>(waste)) {
             stock.add(waste.remove());
         }*/
@@ -417,5 +445,17 @@ public class GameModel {
 
     public void setCurrentMoveDTO(MoveDTO currentMoveDTO) {
         this.currentMoveDTO = currentMoveDTO;
+    }
+
+    public int getWinnerID() {
+        return winnerID.get();
+    }
+
+    public IntegerProperty winnerIDProperty() {
+        return winnerID;
+    }
+
+    public void setWinnerID(int winnerID) {
+        this.winnerID.set(winnerID);
     }
 }

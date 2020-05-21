@@ -6,14 +6,13 @@ import com.goldasil.pjv.models.Card;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 
 public class ButtonCard extends Button {
 
     public final ObjectProperty<Enum<?>> buttonRank = new SimpleObjectProperty<>(Rank.UNSPECIFIED);
     public final ObjectProperty<Enum<?>> buttonSuit = new SimpleObjectProperty<>(Suit.UNSPECIFIED);
-
-    private boolean selected;
 
 
     public final ObjectProperty<Enum<?>> buttonRankProperty() {
@@ -42,7 +41,6 @@ public class ButtonCard extends Button {
 
     public ButtonCard() {
         super();
-        selected = false;
         /*styleProperty().bind(Bindings.
                 when(buttonState.isEqualTo(ButtonState.CRITICAL)).
                 then("-fx-base: red;").
@@ -51,21 +49,45 @@ public class ButtonCard extends Button {
 
     public ButtonCard(String label) {
         super(label);
-        selected = false;
     }
 
     public ButtonCard(Card card) {
         super(card.toStringForGUI());
-        selected = false;
         setButtonRank(card.getRank());
         setButtonSuit(card.getSuit());
     }
 
+    public ButtonCard(Rank rank, Suit suit) {
+        super();
+        setStyle("-fx-border-width: 0px; -fx-background-radius: 12;");
+        setPadding(new Insets(4, 4, 4, 4));
+        setButtonRank(rank);
+        setButtonSuit(suit);
+    }
+
     public ButtonCard(ButtonCard cardButton) {
         super(cardButton.getText());
-        selected = false;
+        setStyle("-fx-border-width: 0px; -fx-background-radius: 12;");
+        setPadding(new Insets(4, 4, 4, 4));
         setButtonRank(cardButton.getButtonRank());
         setButtonSuit(cardButton.getButtonSuit());
+    }
+
+    public ButtonCard(Suit suit) {
+        setStyle("-fx-border-width: 0px; -fx-background-radius: 12;");
+        setPadding(new Insets(4, 4, 4, 4));
+        setButtonSuit(suit);
+        //setMaxHeight(10);
+        //setMaxWidth(10);
+    }
+
+
+    public void highlightButton() {
+        setStyle("-fx-background-color: #d6aaaa; -fx-border-width: 0px; -fx-background-radius: 12;");
+    }
+
+    public void unHighlightButton() {
+        setStyle("-fx-background-color: #faf0e6; -fx-border-width: 0px; -fx-background-radius: 12;");
     }
 
 }

@@ -27,7 +27,8 @@ public class RandomPlayer extends Player {
 
     static final int CARDS_TO_DRAW_PER_SEVEN = 3;
     static final int NUM_OF_SUITS = 4;
-    MoveStateHandler stateHandler;
+
+    static MoveStateHandler stateHandler;
 
     /**
      * Generates a player with the specified ID and playing cards in hand.
@@ -49,7 +50,8 @@ public class RandomPlayer extends Player {
         logger.debug("list of pos moves: {}", posssibleMoves);
 
         Move selectedMove = getBestPosssibleMove(posssibleMoves, prevMove);
-        selectedMove.setRequestedSuit(checkOverKnaveGetSuit(selectedMove.getMove()));
+        checkRequestedSuit(prevMove, selectedMove);
+        //selectedMove.setRequestedSuit(checkOverKnaveGetSuit(selectedMove.getMove()));
         return selectedMove;
     }
 
@@ -133,6 +135,15 @@ public class RandomPlayer extends Player {
             }
         }
         return possibleMoves;
+    }
+
+    private void checkRequestedSuit(MoveDTO prevMoveDTO, Move desiredMove){
+        if (desiredMove.getDrawCards() == 1) {
+            desiredMove.setRequestedSuit(prevMoveDTO.getRequestedSuit());
+        }
+        else {
+            desiredMove.setRequestedSuit(checkOverKnaveGetSuit(desiredMove.getMove()));
+        }
     }
 
     private Move getBestPosssibleMove(List<Move> posMoves, MoveDTO prevMove){

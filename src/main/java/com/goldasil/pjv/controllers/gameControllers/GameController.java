@@ -68,6 +68,9 @@ public class GameController {
         logger.debug("\n\nStart of the randomplayer's move.");
 
         if (game.runOppTurn()) {
+
+            checkIfWon();
+
             setChangedSuit();
 
             Platform.runLater(()->{
@@ -76,7 +79,7 @@ public class GameController {
             });
 
             try {
-                sleep(3000);
+                sleep(2500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -104,7 +107,7 @@ public class GameController {
             });
 
             try {
-                sleep(3000);
+                sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -165,10 +168,15 @@ public class GameController {
         // WIN move
         moveDTO.setUpcard(game.getUpcard());
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)) {
+            setChangedSuit();
             view.setNewUpdate();
             //game.setNextPlayersTurn();
             //playTurn();
         }
+    }
+
+    private void checkIfWon(){
+
     }
 
     private void setChangedSuit(){

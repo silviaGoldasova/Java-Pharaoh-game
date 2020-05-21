@@ -1,5 +1,6 @@
 package com.goldasil.pjv.views;
 
+import com.goldasil.pjv.Main;
 import com.goldasil.pjv.controllers.gameControllers.GameController;
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.enums.GameState;
@@ -13,6 +14,7 @@ import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,15 +25,15 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javafx.scene.control.Label;
 import javafx.scene.text.*;
 
 
@@ -43,7 +45,7 @@ import java.util.concurrent.CountDownLatch;
 import static java.lang.Thread.sleep;
 
 /**
- * Manages the game view of the cards of the players, stock, waste and other entities.
+ * Manages the game view of the cards of the players, stock, waste and other entity.
  */
 public class GameView extends Application {
 
@@ -57,12 +59,9 @@ public class GameView extends Application {
     private BooleanProperty changedSuit = new SimpleBooleanProperty();
     private BooleanProperty newUpdate = new SimpleBooleanProperty();
 
-
-    private static volatile GridPane grid = new GridPane();
     private static BorderPane pane;
     private int numDrawnCards = 0;
     private Suit requestedSuit = Suit.UNSPECIFIED;
-
 
     public GameView() {
         setGameView(this);
@@ -81,11 +80,6 @@ public class GameView extends Application {
         gameView = gameViewInst;
         latch.countDown();
     }
-
-    public void print() {
-       logger.debug("in which thread");
-    }
-
 
     /**
      * Generates a new FXML application
@@ -112,9 +106,17 @@ public class GameView extends Application {
         this.newUpdate.set(false);
         newUpdateProperty().addListener(displayUpdatedGUIHandler);
 
+        game.winnerIDProperty().addListener(winnerHandler);
+
         pane = new BorderPane();
         pane.setPadding(new Insets(30, 30, 30, 30) );
-        //layout.getMoveControlBox(), layout.getStockBox(), layout.getThisPlayerCards(), layout.getSuitsBox(), layout.getWasteBox()
+
+        //set background
+        String path = "/cards/table5.jpg";
+        Image backgroundImage = new Image(GameLayout.class.getResourceAsStream(path));
+        BackgroundImage background = new BackgroundImage(backgroundImage,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        pane.setBackground(new Background(background));
 
         pane.setTop(layout.getPlayersBox());
         layout.getPlayersBox().setAlignment(Pos.CENTER);
@@ -131,7 +133,7 @@ public class GameView extends Application {
         pane.setCenter(layout.getWasteBox());
         layout.getWasteBox().setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(pane, 1200, 700);
+        Scene scene = new Scene(pane, 1400, 900);
         stage.setScene(scene);
         stage.show();
 
@@ -163,17 +165,15 @@ public class GameView extends Application {
         logger.debug("Showing scene.");
     }
 
+
     private void setThisPlayerCardsBox(Player player) {
-        int playerID = player.getPlayerID();
         for (Card card : player.getCards()) {
-            ButtonCard buttonCard = new ButtonCard(card);
+            ButtonCard buttonCard = new ButtonCard(card.getRank(), card.getSuit());
+            buttonCard.setGraphic(layout.getCardImageView(card.getRank(), card.getSuit()));
             layout.getThisPlayerCards().getChildren().add(buttonCard);
             //logger.debug("card suit: {} vs suit {}", buttonCard.getButtonSuit(), card.getSuit());
-            if (playerID == game.getThisPlayerId()) {
-                buttonCard.setOnAction(selectCardToPlayHandler);
-            }
+            buttonCard.setOnAction(selectCardToPlayHandler);
         }
-
     }
 
     private void colorButton(Button button){
@@ -188,11 +188,13 @@ public class GameView extends Application {
 
             //colorButton(butSelectedCard);
 
+            layout.getSelectedCardsLabel().setVisible(true);
+
             layout.getSelectedCardsBox().getChildren().add(butSelectedCard);
             butSelectedCard.setOnAction(unSelectCardHandler);
 
             event.consume();
-            logger.debug("Selected a card to play.");
+            //logger.debug("Selected a card to play.");
         }
     };
 
@@ -206,8 +208,12 @@ public class GameView extends Application {
             butSelectedCard.setOnAction(selectCardToPlayHandler);
             //butSelectedCard.setStyle("");
 
+            if (layout.getSelectedCardsBox().getChildren().size() == 0) {
+                layout.getSelectedCardsLabel().setVisible(false);
+            }
+
             event.consume();
-            logger.debug("Unselected a card.");
+            //logger.debug("Unselected a card.");
         }
     };
 
@@ -262,9 +268,136 @@ public class GameView extends Application {
         }
     };
 
+    ChangeListener winnerHandler = new ChangeListener() {
+        @Override
+        public void changed(ObservableValue observableValue, Object o, Object t1) {
+            if (game.getWinnerID() != -1) {
+                wonProcess();
+            }
+        }
+    };
+
     public void updatePlayersBoxFromView(){
         logger.debug("Updating PlayersBox with data: {}, {}", game.getPlayerByID(game.getCurrentPlayerIdTurn()).toString(), game.getCurrentMoveDTO());
         layout.updatePlayersBox(game.getPlayerByID(game.getCurrentPlayerIdTurn()), game.getCurrentMoveDTO());
+    }
+
+    public void wonProcess(){
+
+        String winnerAnnouncement;
+        if (game.getThisPlayerId() == game.getThisPlayerId()) {
+            winnerAnnouncement = "You have won. Congratulations!\nHow do you wish to proceed?";
+        } else {
+            winnerAnnouncement = "Player with id " + game.getThisPlayerId() + "has won.\nHow do you wish to proceed?";
+        }
+
+        ButtonType optionNewGame = new ButtonType("New Game");
+        ButtonType optionGoToMenu = new ButtonType("Return to the menu");
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+        alert.setTitle("The end of the game.");
+        alert.setHeaderText(winnerAnnouncement);
+        alert.setContentText("Choose your option.");
+
+        alert.getButtonTypes().setAll(optionNewGame, optionGoToMenu);
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.get() == optionNewGame) {
+            //Platform.exit();
+            //Main.startUpNewGameProcess(game.getPlayers().size()-1);
+            logger.debug("New Game to play chosen");
+            game.initGame(game.getPlayers().size()-1);
+            setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
+        }
+        else if (result.get() == optionGoToMenu) {
+            //
+        }
+
+    }
+
+    EventHandler<ActionEvent> pauseGameDialogBoxHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            ButtonType continueGame = new ButtonType("Continue");
+            ButtonType saveAndContinue = new ButtonType("Save game and continue playing");
+            ButtonType saveAndLeave = new ButtonType("Save game and leave the game");
+
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+
+            alert.setTitle("The game has been paused.");
+            alert.setHeaderText("How do you wish to proceed?");
+
+            alert.getButtonTypes().setAll(continueGame, saveAndContinue, saveAndLeave);
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.get() == continueGame) {
+                logger.debug("continueGame was chosen");
+            }
+            else if (result.get() == saveAndContinue) {
+                logger.debug("saveAndContinue was chosen");
+                runSaveGameInputDialog();
+            }
+            else {
+                logger.debug("saveAndLeave was chosen");
+                runSaveGameInputDialog();
+                
+            }
+        }
+    };
+
+    private void runSaveGameInputDialog() {
+        // Create the custom dialog.
+        Dialog <Pair <String, String> > dialog = new Dialog<>();
+        dialog.setTitle("Save Game Dialog");
+        dialog.setHeaderText("Please, input the requested information about the game.");
+
+        ButtonType saveButton = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+        dialog.getDialogPane().getButtonTypes().addAll(saveButton, ButtonType.CANCEL);
+
+        // Create the username and password labels and fields.
+        GridPane grid = new GridPane();
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        TextField name = new TextField();
+        name.setPromptText("Name of the main player");
+        PasswordField password = new PasswordField();
+        password.setPromptText("Password");
+
+        grid.add(new Label("Name of the main player:"), 0, 0);
+        grid.add(name, 1, 0);
+        grid.add(new Label("Password:"), 0, 1);
+        grid.add(password, 1, 1);
+
+        // Enable/Disable login button depending on whether a username was entered.
+        Node saveButtonNode = dialog.getDialogPane().lookupButton(saveButton);
+        saveButtonNode.setDisable(true);
+
+        // Do some validation (using the Java 8 lambda syntax).
+        name.textProperty().addListener((observable, oldValue, newValue) -> {
+            saveButtonNode.setDisable(newValue.trim().isEmpty());
+        });
+
+        dialog.getDialogPane().setContent(grid);
+
+        // Request focus on the username field by default.
+        Platform.runLater(() -> name.requestFocus());
+
+        // Convert the result to a username-password-pair when the login button is clicked.
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == saveButton) {
+                return new Pair<>(name.getText(), password.getText());
+            }
+            return null;
+        });
+
+        Optional<Pair<String, String>> result = dialog.showAndWait();
+
+        result.ifPresent(usernamePassword -> {
+            game.saveGame(usernamePassword.getKey(), usernamePassword.getValue());
+        });
     }
 
     /**
@@ -282,6 +415,7 @@ public class GameView extends Application {
 
         // set selected cards box
         layout.getSelectedCardsBox().getChildren().clear();
+        layout.getSelectedCardsLabel().setVisible(false);
 
         // set this player's cards
         layout.getThisPlayerCards().getChildren().clear();
@@ -306,13 +440,18 @@ public class GameView extends Application {
         int penalty = game.getCurrentMoveDTO().getPenaltyForSevens();
         layout.setPenaltyText("Set Penalty: " + penalty);
         if (penalty != 0) {
-            layout.getSetPenalty().setStyle("-fx-background-color: #d7efef; -fx-border-width: 1px; -fx-border-color: #acbfbf;");
+            layout.getSetPenalty().highlightLabel();
         } else {
-            layout.getSetPenalty().setStyle("");
+            layout.getSetPenalty().unHighlightLabel();
         }
 
         // set turn of the player #
-        layout.setTurnLabelText("Turn of the player #: " + game.getCurrentPlayerIdTurn());
+        layout.setTurnLabelText("Turn of the player #" + game.getCurrentPlayerIdTurn());
+        if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
+            layout.getTurnLabel().highlightLabel();
+        } else {
+            layout.getTurnLabel().unHighlightLabel();
+        }
     }
 
     public GameModel getGame() {

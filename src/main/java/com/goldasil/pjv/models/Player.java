@@ -22,7 +22,6 @@ public class Player {
 
     private static final Logger logger = LoggerFactory.getLogger(Player.class);
 
-
     public Player(int playerID) {
         this.playerID = playerID;
     }
