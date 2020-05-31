@@ -1,44 +1,43 @@
 package com.goldasil.pjv.views;
 
-import com.goldasil.pjv.Main;
+import com.goldasil.pjv.ApplicationContextProvider;
 import com.goldasil.pjv.controllers.gameControllers.GameController;
 import com.goldasil.pjv.dto.MoveDTO;
+import com.goldasil.pjv.dto.NewGameDTO;
+import com.goldasil.pjv.entity.GameEntity;
+import com.goldasil.pjv.entity.GameService;
 import com.goldasil.pjv.enums.GameState;
+import com.goldasil.pjv.enums.GameType;
 import com.goldasil.pjv.enums.MoveType;
 import com.goldasil.pjv.enums.Suit;
 import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.models.GameModel;
 import com.goldasil.pjv.models.Move;
 import com.goldasil.pjv.models.Player;
-import javafx.animation.AnimationTimer;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import javafx.scene.text.*;
 
-
-import java.lang.reflect.Array;
-import java.net.URL;
+import java.lang.reflect.Type;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.CountDownLatch;
 
@@ -59,9 +58,14 @@ public class GameView extends Application {
     private BooleanProperty changedSuit = new SimpleBooleanProperty();
     private BooleanProperty newUpdate = new SimpleBooleanProperty();
 
-    private static BorderPane pane;
+    private static BorderPane pane = null;
     private int numDrawnCards = 0;
     private Suit requestedSuit = Suit.UNSPECIFIED;
+    private VBox optionsBox;
+    private NewGameDTO newGame = new NewGameDTO();
+    private Stage stage;
+    private Scene playingBoardScene, menuScene;
+
 
     public GameView() {
         setGameView(this);
@@ -88,18 +92,200 @@ public class GameView extends Application {
      */
     @Override
     public void start(Stage stage) throws Exception {
-        /*FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(new URL("game.fxml"));
-        VBox vbox = loader.<VBox>load();
+        this.stage = stage;
+        setChooseGameTypeScene();
+    }
 
-        Scene scene = new Scene(vbox);
+    private void setChooseGameTypeScene(){
+
+        BorderPane menuPane = new BorderPane();
+        setBackground(menuPane);
+
+        //HBox labelBox = new HBox();
+        GameLabel label = new GameLabel("Set Up a Game");
+        label.setStyle("-fx-background-color: #faf0e6; -fx-border-width: 0px; -fx-background-radius: 10; margin: 100px;");
+        label.setMinWidth(180);
+        //labelBox.getChildren().add(label);
+
+        optionsBox = new VBox();
+        optionsBox.setSpacing(30);
+        optionsBox.setAlignment(Pos.CENTER);
+        ControlButton butVsComputer = new ControlButton("vs Computer");
+        ControlButton butVsPlayer = new ControlButton("vs Player");
+        ControlButton loadGame = new ControlButton("Load a game");
+        butVsComputer.setOnAction(chooseOptionGameType);
+        butVsPlayer.setOnAction(chooseOptionGameType);
+        loadGame.setOnAction(chooseOptionGameType);
+        optionsBox.getChildren().addAll(butVsComputer, butVsPlayer, loadGame);
+
+        VBox container = new VBox();
+        container.setSpacing(100);
+        menuPane.setCenter(container);
+        container.setAlignment(Pos.CENTER);
+        container.getChildren().addAll(label, optionsBox);
+
+        Scene scene = new Scene(menuPane, 1400, 900);
         stage.setScene(scene);
-        stage.show();*/
+        stage.show();
+    }
 
-        /*Image image = new Image(getClass().getResourceAsStream("/card.jpg"));
-        Label wasteContent = new Label("Search");
-        wasteContent.setGraphic(new ImageView(image));*/
+    EventHandler<ActionEvent> chooseOptionGameType = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            ControlButton butSelected = (ControlButton) event.getSource();
+            String selectedText = butSelected.getText();
+            optionsBox.getChildren().clear();
 
+            if (selectedText.equals("vs Computer")) {
+                newGame.setGametype(GameType.VS_COMPUTER);
+
+                HBox hbox = new HBox();
+                hbox.setAlignment(Pos.CENTER);
+                hbox.setSpacing(10);
+                GameLabel chooseNumOppLabel = new GameLabel("Choose the number of opponents:");
+
+                ComboBox numOfOppBox = new ComboBox();
+                numOfOppBox.setPrefHeight(40);
+                numOfOppBox.getItems().addAll("1", "2", "3");
+                numOfOppBox.setValue("1");
+                newGame.setNumOfOpp(1);
+                numOfOppBox.valueProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue ov, String oldValue, String newValue) {
+                        newGame.setNumOfOpp(Integer.parseInt(newValue));;
+                        logger.info("setNumOfOpp: {}", newValue);
+                    }
+                });
+                hbox.getChildren().addAll(chooseNumOppLabel, numOfOppBox);
+
+                ControlButton submit = new ControlButton("Start Game");
+                submit.setOnAction(startGameButtonHandler);
+                optionsBox.getChildren().addAll(hbox, submit);
+            } else if (selectedText.equals("vs Player")) {
+                newGame.setGametype(GameType.VS_PLAYER);
+            } else {    // load a new game
+                logger.info("loading a new game");
+                newGame.setGametype(GameType.LOAD_GAME);
+                GameService service  = ApplicationContextProvider.getBean(GameService.class);
+                List<GameEntity> savedGames = service.getSavedGames();
+
+                VBox savedGamesBox = new VBox();
+                optionsBox.getChildren().add(savedGamesBox);
+                savedGamesBox.setAlignment(Pos.CENTER);
+                savedGamesBox.setSpacing(20);
+                for (GameEntity savedGame : savedGames){
+                    ControlButton butOption = new ControlButton(savedGame.getMainPlayerName() + ": " + getDateInProperFormat(savedGame.getPlayed_at()));
+                    butOption.setSavedGameInfo(savedGame);
+                    butOption.setOnAction(loadGameButtonHandler);
+                    savedGamesBox.getChildren().add(butOption);
+                }
+
+            }
+
+            event.consume();
+            //logger.debug("Selected a card to play.");
+        }
+    };
+
+    private String getDateInProperFormat(Date date){
+        SimpleDateFormat dateFormatDate = new SimpleDateFormat("E, dd.MM.yyyy");
+        String dateToStr = dateFormatDate.format(date);
+        dateToStr = dateToStr + " at ";
+
+        SimpleDateFormat dateFormatTime = new SimpleDateFormat("HH:mm");
+        dateToStr = dateToStr + dateFormatTime.format(date);
+
+        return dateToStr;
+    }
+
+    EventHandler<ActionEvent> loadGameButtonHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+
+            logger.info("loading a game");
+
+            ControlButton button = (ControlButton) event.getSource();
+            GameEntity savedGame = button.getSavedGameInfo();
+
+            // get players' info from String to List<Player>
+            Gson gson = new Gson();
+            Type playerType = new TypeToken<ArrayList<Player>>(){}.getType();
+            List<Player> players = gson.fromJson(savedGame.getPlayersInfo(), playerType);
+
+            Type cardListType = new TypeToken<LinkedList<Card>>(){}.getType();
+            LinkedList<Card> stock = gson.fromJson(savedGame.getStock(), cardListType);
+            LinkedList<Card> waste = gson.fromJson(savedGame.getWaste(), cardListType);
+
+            Type cardType = new TypeToken<Card>(){}.getType();
+            Card upcard = gson.fromJson(savedGame.getUpcard(), cardType);
+
+            Type moveDTOType = new TypeToken<MoveDTO>(){}.getType();
+            MoveDTO lastMove = gson.fromJson(savedGame.getLastMoveDTO(), moveDTOType);
+
+            gameController.initializeGame(players, stock, waste, upcard, lastMove, savedGame.getCurrentPlayerToPlay());
+            requestedSuit = lastMove.getRequestedSuit();
+
+            setPlayingBoardGui();
+
+            event.consume();
+            //logger.debug("Selected a card to play.");
+        }
+    };
+
+    private void setPlayingBoardGui() {
+        if (pane == null) {
+            logger.debug("pane is null");
+            setGameScene();
+
+            playingBoardScene = new Scene(pane, 1400, 900);
+            stage.setScene(playingBoardScene);
+            stage.show();
+        } else {
+            stage.setScene(playingBoardScene);
+            stage.show();
+            setPenaltyAndTurnLabel();
+        }
+
+        while (game.getCurrentMoveDTO() == null) {
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            logger.debug("Waiting for game.getCurrentMoveDTO() to be set.");
+        }
+
+        logger.debug("initializePlayersSection: players: {}, this player id: {}", game.getPlayers().toString(), game.getThisPlayerId());
+        layout.initializePlayersBox(game.getPlayers(), game.getThisPlayerId());
+        updatePlayersBoxFromView();
+
+        updateGameScene();
+        logger.debug("Showing scene.");
+
+    }
+
+    EventHandler<ActionEvent> startGameButtonHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+
+            logger.info("number of  opponents: {}", newGame.getNumOfOpp());
+            gameController.initializeGame(newGame.getNumOfOpp());
+
+            setPlayingBoardGui();
+
+            event.consume();
+        }
+    };
+
+    private void setBackground(BorderPane pane){
+        String path = "/cards/table5.jpg";
+        Image backgroundImage = new Image(GameLayout.class.getResourceAsStream(path));
+        BackgroundImage background = new BackgroundImage(backgroundImage,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        pane.setBackground(new Background(background));
+    }
+
+    private void setGameScene(){
         logger.debug("Block start() entered.");
         layout = new GameLayout(gameView);
 
@@ -112,11 +298,7 @@ public class GameView extends Application {
         pane.setPadding(new Insets(30, 30, 30, 30) );
 
         //set background
-        String path = "/cards/table5.jpg";
-        Image backgroundImage = new Image(GameLayout.class.getResourceAsStream(path));
-        BackgroundImage background = new BackgroundImage(backgroundImage,
-                BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        pane.setBackground(new Background(background));
+        setBackground(pane);
 
         pane.setTop(layout.getPlayersBox());
         layout.getPlayersBox().setAlignment(Pos.CENTER);
@@ -133,38 +315,7 @@ public class GameView extends Application {
         pane.setCenter(layout.getWasteBox());
         layout.getWasteBox().setAlignment(Pos.CENTER);
 
-        Scene scene = new Scene(pane, 1400, 900);
-        stage.setScene(scene);
-        stage.show();
-
-        while (game.getCurrentMoveDTO() == null) {
-            try {
-                sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        logger.debug("initializePlayersSection: players: {}, this player id: {}", game.getPlayers().toString(), game.getThisPlayerId());
-        layout.initializePlayersBox(game.getPlayers(), game.getThisPlayerId());
-        updateGameScene();
-
-        /*new AnimationTimer() {
-            @Override
-            public void handle(long now) {
-                updateGameScene();
-            }
-        }.start();*/
-        /*new Timer().scheduleAtFixedRate(new TimerTask() {
-            public void run() {
-                Platform.runLater(()->{
-                    setNewUpdate();
-                });
-            }
-        }, 2000, 2000);*/
-
-        logger.debug("Showing scene.");
     }
-
 
     private void setThisPlayerCardsBox(Player player) {
         for (Card card : player.getCards()) {
@@ -230,10 +381,13 @@ public class GameView extends Application {
                 gameController.submitMoveFromView(numDrawnCards);
             }
 
+            if (requestedSuit == Suit.UNSPECIFIED && ButtonCard.isOverKnaveSubmitted(layout.getSelectedCardsBox().getChildren())) {
+                return;
+            }
+
             if (layout.getSelectedCardsBox().getChildren().size() != 0) {
                 gameController.submitMoveFromView(layout.getSelectedCardsBox().getChildren(), requestedSuit);
             }
-
 
             /*List<ButtonCard> selectedCards = new ArrayList<>();
             for (Node card : p1CardsBox.getChildren()) {
@@ -277,7 +431,7 @@ public class GameView extends Application {
         }
     };
 
-    public void updatePlayersBoxFromView(){
+    public void updatePlayersBoxFromView() {
         logger.debug("Updating PlayersBox with data: {}, {}", game.getPlayerByID(game.getCurrentPlayerIdTurn()).toString(), game.getCurrentMoveDTO());
         layout.updatePlayersBox(game.getPlayerByID(game.getCurrentPlayerIdTurn()), game.getCurrentMoveDTO());
     }
@@ -285,34 +439,35 @@ public class GameView extends Application {
     public void wonProcess(){
 
         String winnerAnnouncement;
-        if (game.getThisPlayerId() == game.getThisPlayerId()) {
+        if (game.getWinnerID() == game.getThisPlayerId()) {
             winnerAnnouncement = "You have won. Congratulations!\nHow do you wish to proceed?";
         } else {
-            winnerAnnouncement = "Player with id " + game.getThisPlayerId() + "has won.\nHow do you wish to proceed?";
+            winnerAnnouncement = "Player with ID " + game.getWinnerID() + " has won.\nHow do you wish to proceed?";
         }
 
-        ButtonType optionNewGame = new ButtonType("New Game");
+        ButtonType optionNewGame = new ButtonType("New Game (vs Computer)");
         ButtonType optionGoToMenu = new ButtonType("Return to the menu");
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        Platform.runLater( ()-> {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("The end of the game.");
+            alert.setHeaderText(winnerAnnouncement);
+            alert.setContentText("Choose your option.");
 
-        alert.setTitle("The end of the game.");
-        alert.setHeaderText(winnerAnnouncement);
-        alert.setContentText("Choose your option.");
+            alert.getButtonTypes().setAll(optionNewGame, optionGoToMenu);
+            Optional<ButtonType> result = alert.showAndWait();
 
-        alert.getButtonTypes().setAll(optionNewGame, optionGoToMenu);
-        Optional<ButtonType> result = alert.showAndWait();
-
-        if (result.get() == optionNewGame) {
-            //Platform.exit();
-            //Main.startUpNewGameProcess(game.getPlayers().size()-1);
-            logger.debug("New Game to play chosen");
-            game.initGame(game.getPlayers().size()-1);
-            setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
-        }
-        else if (result.get() == optionGoToMenu) {
-            //
-        }
+            if (result.get() == optionNewGame) {
+                //Platform.exit();
+                //Main.startUpNewGameProcess(game.getPlayers().size()-1);
+                logger.debug("New Game to play chosen");
+                gameController.initializeGame(game.getPlayers().size()-1);
+                setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
+            }
+            else if (result.get() == optionGoToMenu) {
+                setChooseGameTypeScene();
+            }
+        });
 
     }
 
@@ -322,13 +477,14 @@ public class GameView extends Application {
             ButtonType continueGame = new ButtonType("Continue");
             ButtonType saveAndContinue = new ButtonType("Save game and continue playing");
             ButtonType saveAndLeave = new ButtonType("Save game and leave the game");
+            ButtonType leaveGame = new ButtonType("Leave the game");
 
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 
             alert.setTitle("The game has been paused.");
             alert.setHeaderText("How do you wish to proceed?");
 
-            alert.getButtonTypes().setAll(continueGame, saveAndContinue, saveAndLeave);
+            alert.getButtonTypes().setAll(continueGame, saveAndContinue, saveAndLeave, leaveGame);
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == continueGame) {
@@ -338,10 +494,12 @@ public class GameView extends Application {
                 logger.debug("saveAndContinue was chosen");
                 runSaveGameInputDialog();
             }
-            else {
+            else if(result.get() == saveAndLeave) {
                 logger.debug("saveAndLeave was chosen");
                 runSaveGameInputDialog();
-                
+                setChooseGameTypeScene();
+            } else {    // leave the game
+                setChooseGameTypeScene();
             }
         }
     };
@@ -396,7 +554,7 @@ public class GameView extends Application {
         Optional<Pair<String, String>> result = dialog.showAndWait();
 
         result.ifPresent(usernamePassword -> {
-            game.saveGame(usernamePassword.getKey(), usernamePassword.getValue());
+            game.saveGame(usernamePassword.getKey(), usernamePassword.getValue(), requestedSuit);
         });
     }
 
@@ -406,8 +564,6 @@ public class GameView extends Application {
     public void updateGameScene(/*GameState gameState, List<Player> players*/) {
         GameState gameState = game.getCurrentState();
         List<Player> players = game.getPlayers();
-
-        logger.debug("View-Update method called => Updating scene with new gameState: {}.\n", gameState.toString());
 
         // cards to draw button
         layout.getDrawnCardsButton().setVisible(false);
@@ -437,7 +593,15 @@ public class GameView extends Application {
 
     public void setPenaltyAndTurnLabel(){
         // set panalty counter:
-        int penalty = game.getCurrentMoveDTO().getPenaltyForSevens();
+        logger.info("game.getCurrentMoveDTO(): {}", game.getCurrentMoveDTO());
+
+        int penalty;
+        if (game.getCurrentMoveDTO() == null) {
+            penalty = 0;
+        } else {
+           penalty = game.getCurrentMoveDTO().getPenaltyForSevens();
+        }
+
         layout.setPenaltyText("Set Penalty: " + penalty);
         if (penalty != 0) {
             layout.getSetPenalty().highlightLabel();
@@ -453,6 +617,9 @@ public class GameView extends Application {
             layout.getTurnLabel().unHighlightLabel();
         }
     }
+
+
+    // getters and setters
 
     public GameModel getGame() {
         return game;

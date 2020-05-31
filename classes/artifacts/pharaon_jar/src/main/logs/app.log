@@ -1,0 +1,405 @@
+13:35:42 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 9600 (C:\Users\sisag\IdeaProjects\goldasil\classes\artifacts\pharaon_jar\pharaon.jar started by sisag in C:\Users\sisag\IdeaProjects\goldasil\classes\artifacts\pharaon_jar)
+13:35:42 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+13:35:42 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+13:35:45 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+13:35:45 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+13:35:45 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+13:35:45 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+13:35:46 ERROR [com.zaxxer.hikari.pool.HikariPool] - HikariPool-1 - Exception during pool initialization.
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database "C:/Users/sisag/IdeaProjects/goldasil/classes/artifacts/pharaon_jar/data/database" not found, and IFEXISTS=true, so we cant auto-create it [90146-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:617)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.engine.Engine.openSession(Engine.java:67)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.lambda$h2Console$0(H2ConsoleAutoConfiguration.java:73)
+	at org.springframework.beans.factory.ObjectProvider.ifAvailable(ObjectProvider.java:93)
+	at org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration.h2Console(H2ConsoleAutoConfiguration.java:72)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:211)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.getOrderedBeansOfType(ServletContextInitializerBeans.java:202)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.addServletContextInitializerBeans(ServletContextInitializerBeans.java:96)
+	at org.springframework.boot.web.servlet.ServletContextInitializerBeans.<init>(ServletContextInitializerBeans.java:85)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.getServletContextInitializerBeans(ServletWebServerApplicationContext.java:253)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.selfInitialize(ServletWebServerApplicationContext.java:227)
+	at org.springframework.boot.web.embedded.tomcat.TomcatStarter.onStartup(TomcatStarter.java:53)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5136)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909)
+	at org.apache.catalina.core.StandardHost.startInternal(StandardHost.java:841)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1384)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1374)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at org.apache.tomcat.util.threads.InlineExecutorService.execute(InlineExecutorService.java:75)
+	at java.base/java.util.concurrent.AbstractExecutorService.submit(AbstractExecutorService.java:140)
+	at org.apache.catalina.core.ContainerBase.startInternal(ContainerBase.java:909)
+	at org.apache.catalina.core.StandardEngine.startInternal(StandardEngine.java:262)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardService.startInternal(StandardService.java:421)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.core.StandardServer.startInternal(StandardServer.java:930)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:183)
+	at org.apache.catalina.startup.Tomcat.start(Tomcat.java:468)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.initialize(TomcatWebServer.java:123)
+	at org.springframework.boot.web.embedded.tomcat.TomcatWebServer.<init>(TomcatWebServer.java:104)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getTomcatWebServer(TomcatServletWebServerFactory.java:437)
+	at org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory.getWebServer(TomcatServletWebServerFactory.java:191)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.createWebServer(ServletWebServerApplicationContext.java:176)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.onRefresh(ServletWebServerApplicationContext.java:158)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:544)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.goldasil.pjv.Main.main(Main.java:24)
+13:35:46 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+13:35:48 ERROR [com.zaxxer.hikari.pool.HikariPool] - HikariPool-1 - Exception during pool initialization.
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database "C:/Users/sisag/IdeaProjects/goldasil/classes/artifacts/pharaon_jar/data/database" not found, and IFEXISTS=true, so we cant auto-create it [90146-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:617)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.engine.Engine.openSession(Engine.java:67)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:68)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:35)
+	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:101)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:237)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+	at org.hibernate.id.factory.internal.DefaultIdentifierGeneratorFactory.injectServices(DefaultIdentifierGeneratorFactory.java:152)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.injectDependencies(AbstractServiceRegistryImpl.java:286)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:243)
+	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:214)
+	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:176)
+	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:118)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1214)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1245)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+13:35:49 ERROR [com.zaxxer.hikari.pool.HikariPool] - HikariPool-1 - Exception during pool initialization.
+org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database "C:/Users/sisag/IdeaProjects/goldasil/classes/artifacts/pharaon_jar/data/database" not found, and IFEXISTS=true, so we cant auto-create it [90146-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:617)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.engine.Engine.openSession(Engine.java:67)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:43)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:60)
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:40)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:65)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:59)
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:155)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1249)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+13:35:49 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] - Database "C:/Users/sisag/IdeaProjects/goldasil/classes/artifacts/pharaon_jar/data/database" not found, and IFEXISTS=true, so we cant auto-create it [90146-199]
+13:35:49 INFO  [org.apache.catalina.core.StandardService] - Stopping service [Tomcat]
+13:35:49 ERROR [org.springframework.boot.SpringApplication] - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'requestMappingHandlerAdapter' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Unsatisfied dependency expressed through method 'requestMappingHandlerAdapter' parameter 1; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcConversionService' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.format.support.FormattingConversionService]: Factory method 'mvcConversionService' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'gameRepository' defined in com.goldasil.pjv.entity.GameRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaMappingContext' while setting bean property 'mappingContext'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaMappingContext': Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:798)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:539)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:895)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:878)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:758)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:750)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:397)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:315)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1237)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1226)
+	at com.goldasil.pjv.Main.main(Main.java:24)
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'mvcConversionService' defined in class path resource [org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration$EnableWebMvcConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.format.support.FormattingConversionService]: Factory method 'mvcConversionService' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'gameRepository' defined in com.goldasil.pjv.entity.GameRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaMappingContext' while setting bean property 'mappingContext'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaMappingContext': Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:656)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1338)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1177)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:557)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:276)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1306)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1226)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:885)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:789)
+	... 20 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.format.support.FormattingConversionService]: Factory method 'mvcConversionService' threw exception; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'gameRepository' defined in com.goldasil.pjv.entity.GameRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaMappingContext' while setting bean property 'mappingContext'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaMappingContext': Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:651)
+	... 34 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'gameRepository' defined in com.goldasil.pjv.entity.GameRepository defined in @EnableJpaRepositories declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Cannot resolve reference to bean 'jpaMappingContext' while setting bean property 'mappingContext'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaMappingContext': Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:342)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:113)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1699)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1444)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:594)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:207)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1114)
+	at org.springframework.data.repository.support.Repositories.cacheRepositoryFactory(Repositories.java:99)
+	at org.springframework.data.repository.support.Repositories.populateRepositoryFactoryInformation(Repositories.java:92)
+	at org.springframework.data.repository.support.Repositories.<init>(Repositories.java:85)
+	at org.springframework.data.repository.support.DomainClassConverter.setApplicationContext(DomainClassConverter.java:109)
+	at org.springframework.data.web.config.SpringDataWebConfiguration.addFormatters(SpringDataWebConfiguration.java:130)
+	at org.springframework.web.servlet.config.annotation.WebMvcConfigurerComposite.addFormatters(WebMvcConfigurerComposite.java:81)
+	at org.springframework.web.servlet.config.annotation.DelegatingWebMvcConfiguration.addFormatters(DelegatingWebMvcConfiguration.java:78)
+	at org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration$EnableWebMvcConfiguration.mvcConversionService(WebMvcAutoConfiguration.java:435)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154)
+	... 35 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'jpaMappingContext': Invocation of init method failed; nested exception is javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1796)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:595)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:517)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:323)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:226)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:321)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:330)
+	... 58 common frames omitted
+Caused by: javax.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:403)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+Caused by: org.hibernate.exception.JDBCConnectionException: Unable to open JDBC Connection for DDL execution
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:48)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:69)
+	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:60)
+	at org.hibernate.tool.schema.extract.internal.SequenceInformationExtractorLegacyImpl.extractMetadata(SequenceInformationExtractorLegacyImpl.java:40)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.initializeSequences(DatabaseInformationImpl.java:65)
+	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.<init>(DatabaseInformationImpl.java:59)
+	at org.hibernate.tool.schema.internal.Helper.buildDatabaseInformation(Helper.java:155)
+	at org.hibernate.tool.schema.internal.AbstractSchemaMigrator.doMigration(AbstractSchemaMigrator.java:96)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:184)
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:73)
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:314)
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:468)
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1249)
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:58)
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:365)
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:391)
+	... 4 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database "C:/Users/sisag/IdeaProjects/goldasil/classes/artifacts/pharaon_jar/data/database" not found, and IFEXISTS=true, so we cant auto-create it [90146-199]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:617)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:427)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.engine.Engine.openSession(Engine.java:67)
+	at org.h2.engine.Engine.openSession(Engine.java:201)
+	at org.h2.engine.Engine.createSessionAndValidate(Engine.java:178)
+	at org.h2.engine.Engine.createSession(Engine.java:161)
+	at org.h2.engine.Engine.createSession(Engine.java:31)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:336)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:169)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:148)
+	at org.h2.Driver.connect(Driver.java:69)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:138)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:358)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:206)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:477)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:560)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:115)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:112)
+	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
+	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:180)
+	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:43)
+	... 18 common frames omitted
+13:37:34 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 14756 (C:\Users\sisag\IdeaProjects\goldasil\classes\artifacts\pharaon_jar\pharaon.jar started by sisag in C:\Users\sisag\IdeaProjects\goldasil\classes\artifacts\pharaon_jar)
+13:37:34 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+13:37:34 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+13:37:36 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+13:37:36 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+13:37:36 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+13:37:36 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+13:37:36 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+13:37:38 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+13:37:38 INFO  [com.goldasil.pjv.Main] - Started Main in 4.291 seconds (JVM running for 4.72)
+13:37:38 INFO  [com.goldasil.pjv.Main] - Main method has started.
+13:38:20 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 17584 (C:\Users\sisag\IdeaProjects\goldasil\classes\artifacts\pharaon_jar\pharaon.jar started by sisag in C:\Users\sisag\IdeaProjects\goldasil\classes\artifacts\pharaon_jar)
+13:38:20 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+13:38:20 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+13:38:22 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+13:38:22 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+13:38:22 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+13:38:22 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+13:38:23 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+13:38:24 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+13:38:25 INFO  [com.goldasil.pjv.Main] - Started Main in 4.513 seconds (JVM running for 4.952)
+13:38:25 INFO  [com.goldasil.pjv.Main] - Main method has started.
+13:38:25 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+13:38:28 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 1
+13:38:28 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: King, Hearts, Card: Eight, Hearts, Card: Eight, Leaves, Card: Ten, Acorns, Card: Overknave, Bells, Card: King, Bells, Card: Underknave, Leaves, Card: Overknave, Acorns, Card: Seven, Acorns, Card: Ten, Hearts, Card: Nine, Acorns, Card: Underknave, Hearts, Card: Ten, Bells, Card: Nine, Hearts, Card: Underknave, Acorns, Card: Ten, Leaves, Card: Underknave, Bells, Card: Eight, Bells, Card: Eight, Acorns]
+13:38:28 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+13:38:28 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+13:38:28 DEBUG [com.goldasil.pjv.views.GameView] - pane is null
+13:38:28 DEBUG [com.goldasil.pjv.views.GameView] - Block start() entered.
+13:38:28 DEBUG [com.goldasil.pjv.views.GameView] - initializePlayersSection: players: [Player{cards=[Card: King, Leaves, Card: Overknave, Leaves, Card: Nine, Leaves, Card: Seven, Bells], cardsCount=4, playerID=0}, Player{cards=[Card: Seven, Hearts, Card: Seven, Leaves, Card: Overknave, Hearts, Card: Nine, Bells], cardsCount=4, playerID=1}], this player id: 0
+13:38:28 DEBUG [com.goldasil.pjv.views.GameLayout] - initialize PlayersBox
+13:38:28 DEBUG [com.goldasil.pjv.views.GameView] - Updating PlayersBox with data: Player{cards=[Card: King, Leaves, Card: Overknave, Leaves, Card: Nine, Leaves, Card: Seven, Bells], cardsCount=4, playerID=0}, MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+13:38:28 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+13:38:28 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+13:38:28 DEBUG [com.goldasil.pjv.views.GameView] - Showing scene.
+13:38:31 DEBUG [com.goldasil.pjv.models.GameModel] - Move MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: King, Leaves], drawCards=0, requestedSuit=UNSPECIFIED} to be played. Prev Move: MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+13:38:31 INFO  [com.goldasil.pjv.MoveStateHandler] - Valid trasition from [NONSPECIAL_SITUATION, ACORNS_PLAYED, KING_PLAYED] to [NONSPECIAL_SITUATION, LEAVES_PLAYED, LEAVES_PLAYED, KING_PLAYED].
+
+13:38:31 DEBUG [com.goldasil.pjv.models.GameModel] - Valid move
+13:38:31 DEBUG [com.goldasil.pjv.models.GameModel] - move: [Card: King, Leaves], cards after the move: [Card: Overknave, Leaves, Card: Nine, Leaves, Card: Seven, Bells]
+13:38:31 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameController] - randomplayer's move follows
+13:38:31 DEBUG [com.goldasil.pjv.views.GameView] - changedUpdateGUI has been changed!
+13:38:32 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: King, Leaves], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:32 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+13:38:32 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: King, Leaves], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:33 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameController] - 
+
+Start of the randomplayer's move.
+13:38:33 DEBUG [com.goldasil.pjv.models.RandomPlayer] - cards: [Card: Seven, Hearts, Card: Seven, Leaves, Card: Overknave, Hearts, Card: Nine, Bells]
+13:38:33 DEBUG [com.goldasil.pjv.models.RandomPlayer] - prevstates based on the arg MoveDTO prevMove: [NONSPECIAL_SITUATION, LEAVES_PLAYED, KING_PLAYED] based on the prevMove: MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: King, Leaves], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:33 DEBUG [com.goldasil.pjv.models.RandomPlayer] - list of pos moves: [Move{MoveTypePLAY, move: [Card: Seven, Leaves, Card: Seven, Hearts], drawCards: 0]]
+13:38:33 DEBUG [com.goldasil.pjv.models.GameModel] - move generated by randomplayer: 
+13:38:33 DEBUG [com.goldasil.pjv.models.GameModel] - Move MoveDTO{upcard=Card: King, Leaves, penaltyForSevens=6, states=[], moveType=PLAY, move=[Card: Seven, Leaves, Card: Seven, Hearts], drawCards=0, requestedSuit=UNSPECIFIED} to be played. Prev Move: MoveDTO{upcard=Card: King, Acorns, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: King, Leaves], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:33 INFO  [com.goldasil.pjv.MoveStateHandler] - Valid trasition from [NONSPECIAL_SITUATION, LEAVES_PLAYED, KING_PLAYED] to [SEVENS_PLAYED, LEAVES_PLAYED, LEAVES_PLAYED, SEVEN_PLAYED].
+
+13:38:33 DEBUG [com.goldasil.pjv.models.GameModel] - Valid move
+13:38:33 DEBUG [com.goldasil.pjv.models.GameModel] - move: [Card: Seven, Leaves, Card: Seven, Hearts], cards after the move: [Card: Overknave, Hearts, Card: Nine, Bells]
+13:38:33 DEBUG [com.goldasil.pjv.views.GameView] - Updating PlayersBox with data: Player{cards=[Card: Overknave, Hearts, Card: Nine, Bells], cardsCount=2, playerID=1}, MoveDTO{upcard=Card: King, Leaves, penaltyForSevens=6, states=[], moveType=PLAY, move=[Card: Seven, Leaves, Card: Seven, Hearts], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:33 DEBUG [com.goldasil.pjv.views.GameView] - changedUpdateGUI has been changed!
+13:38:33 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: King, Leaves, penaltyForSevens=6, states=[], moveType=PLAY, move=[Card: Seven, Leaves, Card: Seven, Hearts], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:33 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+13:38:35 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameController] - Player's turn has been played (id = 1).
+13:38:35 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: King, Leaves, penaltyForSevens=6, states=[], moveType=PLAY, move=[Card: Seven, Leaves, Card: Seven, Hearts], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:54 DEBUG [com.goldasil.pjv.models.GameModel] - Move MoveDTO{upcard=Card: Seven, Hearts, penaltyForSevens=9, states=[], moveType=PLAY, move=[Card: Seven, Bells], drawCards=0, requestedSuit=UNSPECIFIED} to be played. Prev Move: MoveDTO{upcard=Card: King, Leaves, penaltyForSevens=6, states=[], moveType=PLAY, move=[Card: Seven, Leaves, Card: Seven, Hearts], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:54 INFO  [com.goldasil.pjv.MoveStateHandler] - Valid trasition from [SEVENS_PLAYED, HEARTS_PLAYED, SEVEN_PLAYED] to [SEVENS_PLAYED, BELLS_PLAYED, BELLS_PLAYED, SEVEN_PLAYED].
+
+13:38:54 DEBUG [com.goldasil.pjv.models.GameModel] - Valid move
+13:38:54 DEBUG [com.goldasil.pjv.models.GameModel] - move: [Card: Seven, Bells], cards after the move: [Card: Overknave, Leaves, Card: Nine, Leaves]
+13:38:54 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameController] - randomplayer's move follows
+13:38:54 DEBUG [com.goldasil.pjv.views.GameView] - changedUpdateGUI has been changed!
+13:38:55 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: Seven, Hearts, penaltyForSevens=9, states=[], moveType=PLAY, move=[Card: Seven, Bells], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:55 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+13:38:55 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: Seven, Hearts, penaltyForSevens=9, states=[], moveType=PLAY, move=[Card: Seven, Bells], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:56 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameController] - 
+
+Start of the randomplayer's move.
+13:38:56 DEBUG [com.goldasil.pjv.models.RandomPlayer] - cards: [Card: Overknave, Hearts, Card: Nine, Bells]
+13:38:56 DEBUG [com.goldasil.pjv.models.RandomPlayer] - prevstates based on the arg MoveDTO prevMove: [SEVENS_PLAYED, BELLS_PLAYED, SEVEN_PLAYED] based on the prevMove: MoveDTO{upcard=Card: Seven, Hearts, penaltyForSevens=9, states=[], moveType=PLAY, move=[Card: Seven, Bells], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:56 DEBUG [com.goldasil.pjv.models.RandomPlayer] - list of pos moves: [Move{MoveTypeDRAW, move: [], drawCards: 9]]
+13:38:56 DEBUG [com.goldasil.pjv.models.GameModel] - move generated by randomplayer: 
+13:38:56 DEBUG [com.goldasil.pjv.models.GameModel] - Move MoveDTO{upcard=Card: Seven, Bells, penaltyForSevens=9, states=[], moveType=DRAW, move=[], drawCards=9, requestedSuit=UNSPECIFIED} to be played. Prev Move: MoveDTO{upcard=Card: Seven, Hearts, penaltyForSevens=9, states=[], moveType=PLAY, move=[Card: Seven, Bells], drawCards=0, requestedSuit=UNSPECIFIED}
+13:38:56 INFO  [com.goldasil.pjv.MoveStateHandler] - Valid trasition from [SEVENS_PLAYED, BELLS_PLAYED, SEVEN_PLAYED] to [DRAW_PENALTY].
+
+13:38:56 DEBUG [com.goldasil.pjv.models.GameModel] - Valid move
+13:38:56 DEBUG [com.goldasil.pjv.views.GameView] - Updating PlayersBox with data: Player{cards=[Card: Overknave, Hearts, Card: Nine, Bells, Card: King, Hearts, Card: Eight, Hearts, Card: Eight, Leaves, Card: Ten, Acorns, Card: Overknave, Bells, Card: King, Bells, Card: Underknave, Leaves, Card: Overknave, Acorns, Card: Seven, Acorns], cardsCount=2, playerID=1}, MoveDTO{upcard=Card: Seven, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=9, requestedSuit=UNSPECIFIED}
+13:38:56 DEBUG [com.goldasil.pjv.views.GameView] - changedUpdateGUI has been changed!
+13:38:56 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: Seven, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=9, requestedSuit=UNSPECIFIED}
+13:38:56 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+13:38:58 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameController] - Player's turn has been played (id = 1).
+13:38:58 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: Seven, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=9, requestedSuit=UNSPECIFIED}

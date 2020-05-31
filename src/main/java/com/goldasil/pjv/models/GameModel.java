@@ -19,6 +19,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import javax.swing.*;
 import java.sql.Timestamp;
 import java.util.*;
 
@@ -71,6 +72,7 @@ public class GameModel {
             return false;
         }
         logger.debug("Valid move");
+        checkRequestedSuit(lastMoveDTO, move);
         lastMoveDTO = move;
         currentMoveDTO = move;
 
@@ -101,16 +103,21 @@ public class GameModel {
         return true;
     }
 
-    @Bean
-    public void saveGame(String mainPlayerName, String password) {
-        GameService service  = ApplicationContextProvider.getBean(GameService.class);
-        service.save(mainPlayerName, currentPlayerIdTurn, players, password);
+    private void checkRequestedSuit(MoveDTO prevMoveDTO, Move desiredMove) {
+        if (desiredMove.getDrawCards() == 1) {
+            desiredMove.setRequestedSuit(prevMoveDTO.getRequestedSuit());
+        }
+    }
 
-        //GameRepository repo  = ApplicationContextProvider.getBean(GameRepository.class);
-        //repo.save(entity);
+    @Bean
+    public void saveGame(String mainPlayerName, String password, Suit requestedSuit) {
+        GameService service  = ApplicationContextProvider.getBean(GameService.class);
+        service.save(mainPlayerName, players, stock, waste, upcard, lastMoveDTO, currentPlayerIdTurn, password);
     }
 
     public void initGame(int numberOfRandomPlayers) {
+        players = new ArrayList<Player>();
+
         Player p1 = new Player(0);
         players.add(p1);
 
@@ -123,6 +130,31 @@ public class GameModel {
         dealCardsAndSetStock();
         winnerID.setValue(-1);
         logger.debug("Players and stock initialized.");
+    }
+
+    public void initGame(List<Player> players, LinkedList<Card> stock, LinkedList<Card> waste, Card upcard, MoveDTO move, int currentPlayerToPlay){
+        thisPlayerId = 0;
+        players = new ArrayList<Player>();
+
+        for (Player player : players) {
+            Player newPlayer;
+            if (player.getPlayerID() == 0) {
+                newPlayer = new Player(player.getCards(), player.getPlayerID());
+            } else {
+                newPlayer = new RandomPlayer(player.getCards(), player.getPlayerID());
+            }
+            this.players.add(newPlayer);
+        }
+
+        this.stock = stock;
+        this.waste = waste;
+        this.upcard = upcard;
+        this.lastMoveDTO = move;
+        this.currentMoveDTO = move;
+        currentPlayerIdTurn = currentPlayerToPlay;
+        winnerID.setValue(-1);
+        logger.debug("Players and stock initialized.");
+        logger.debug("Players initialized as follows: {}, current player id: {}, current move:{}", players.toString(), currentPlayerIdTurn, currentMoveDTO);
     }
 
     private MoveDTO getPrevFirstMoveDTO(){
@@ -349,6 +381,10 @@ public class GameModel {
         for (Card card : new LinkedList<>(waste)) {
             stock.add(waste.remove());
         }*/
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
     }
 
     /**

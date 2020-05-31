@@ -5,7 +5,7 @@ import java.net.*;
 import java.util.ArrayList;
 
 /**
- * Represents a communication channel used only for initial listening on port 4444 and finding and connecting to the players willing to play a gameControllers.
+ * Represents a communication channel used only for initial listening on port 4444 and finding and connecting to the players willing to play a game.
  * The channel runs in its own separate thread, and creates a new thread for communication with every player that connects.
  */
 public class ChannelGetClients implements Runnable {

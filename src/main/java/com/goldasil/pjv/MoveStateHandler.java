@@ -101,7 +101,7 @@ public class MoveStateHandler {
             for (MoveState previousMoveState : previousStates) {
                 if (previousMoveState.getPriority() == 1) {
                     for (MoveState desiredMoveState : desiredStates) {
-                        if (isBetweenNeighbours(previousMoveState, desiredMoveState)) {
+                        if (desiredMoveState.getPriority() == 1 && isBetweenNeighbours(previousMoveState, desiredMoveState)) {
                             //logger.info("Same rank or suit from {} to {}.\n", previousStates, desiredStates);
                             returnValue = true;
                         }

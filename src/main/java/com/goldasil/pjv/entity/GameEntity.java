@@ -24,8 +24,20 @@ public class GameEntity {
     @Column(name = "dateTime")
     private Timestamp played_at;
 
-    @Column(name = "data", columnDefinition = "text")
-    private String data;
+    @Column(name = "playersInfo", columnDefinition = "text")
+    private String playersInfo;
+
+    @Column(name = "stock", columnDefinition = "text")
+    private String stock;
+
+    @Column(name = "waste", columnDefinition = "text")
+    private String waste;
+
+    @Column(name = "upcard")
+    private String upcard;
+
+    @Column(name = "lastMoveDTO", columnDefinition = "text")
+    private String lastMoveDTO;
 
     @Column(name = "password", nullable = false)
     private String password;
@@ -33,19 +45,18 @@ public class GameEntity {
     public GameEntity() {
     }
 
-    public GameEntity(String mainPlayerName, int currentPlayerToPlay, String data, String password) {
-        this.mainPlayerName = mainPlayerName;
+    public GameEntity(String mainPlayerName, String playersInfo, String stock, String waste, String upcard, String lastMoveDTO, int currentPlayerToPlay, String password) {
         this.currentPlayerToPlay = currentPlayerToPlay;
+        this.mainPlayerName = mainPlayerName;
         this.played_at = getTime();
-        this.data = data;
+        this.playersInfo = playersInfo;
+        this.stock = stock;
+        this.waste = waste;
+        this.upcard = upcard;
+        this.lastMoveDTO = lastMoveDTO;
         this.password = password;
     }
 
-    private Timestamp getTime(){
-        Date date = new Date();
-        Timestamp time = new Timestamp(date.getTime());
-        return time;
-    }
 
     @Override
     public String toString() {
@@ -54,9 +65,52 @@ public class GameEntity {
                 ", currentPlayerToPlay=" + currentPlayerToPlay +
                 ", mainPlayerName='" + mainPlayerName + '\'' +
                 ", played_at=" + played_at +
-                ", data='" + data + '\'' +
+                ", playersInfo='" + playersInfo + '\'' +
+                ", stock='" + stock + '\'' +
+                ", waste='" + waste + '\'' +
+                ", upcard='" + upcard + '\'' +
+                ", lastMoveDTO='" + lastMoveDTO + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+
+    private Timestamp getTime(){
+        Date date = new Date();
+        Timestamp time = new Timestamp(date.getTime());
+        return time;
+    }
+
+
+    public String getPlayersInfo() {
+        return playersInfo;
+    }
+
+    public void setPlayersInfo(String playersInfo) {
+        this.playersInfo = playersInfo;
+    }
+
+    public String getStock() {
+        return stock;
+    }
+
+    public void setStock(String stock) {
+        this.stock = stock;
+    }
+
+    public String getUpcard() {
+        return upcard;
+    }
+
+    public void setUpcard(String upcard) {
+        this.upcard = upcard;
+    }
+
+    public String getLastMoveDTO() {
+        return lastMoveDTO;
+    }
+
+    public void setLastMoveDTO(String lastMoveDTO) {
+        this.lastMoveDTO = lastMoveDTO;
     }
 
     public long getId() {
@@ -83,14 +137,6 @@ public class GameEntity {
         this.played_at = played_at;
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -105,5 +151,13 @@ public class GameEntity {
 
     public void setCurrentPlayerToPlay(int currentPlayerToPlay) {
         this.currentPlayerToPlay = currentPlayerToPlay;
+    }
+
+    public String getWaste() {
+        return waste;
+    }
+
+    public void setWaste(String waste) {
+        this.waste = waste;
     }
 }

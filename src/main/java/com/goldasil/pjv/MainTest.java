@@ -22,23 +22,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.net.ServerSocket;
 
-@Controller
 public class MainTest {
 
-    private static final Logger logger = LoggerFactory.getLogger(MainTest.class);
-
-    @Autowired
-    GameService service;
-
-    @GetMapping("/home")
-    @ResponseBody
-    public String example() {
-        service.save();
-        System.out.println("saved");
-        return "Hello";
-    }
-
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         Thread guiLaunchThread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -50,9 +36,7 @@ public class MainTest {
         viewTest.printSomething();
 
 
-        logger.debug("after launch");
-
-    }*/
+    }
 
 
 }

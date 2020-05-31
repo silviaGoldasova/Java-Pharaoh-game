@@ -43,13 +43,21 @@ public class GameController {
     public void initializeGame(int numberOfRandomPlayers) {
         game.initGame(numberOfRandomPlayers);
 
-        try {
+        /*try {
             sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
 
         view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
+        playOneTurn();
+    }
+
+    public void initializeGame(List<Player> players, LinkedList<Card> stock, LinkedList<Card> waste, Card upcard, MoveDTO moveDTO, int currentPlayerToPlay){
+        game.initGame(players, stock, waste, upcard, moveDTO, currentPlayerToPlay);
+        playOneTurn();
+
+        // requested suit is already set in view, not needed: view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
     }
 
     /**
@@ -180,7 +188,7 @@ public class GameController {
     }
 
     private void setChangedSuit(){
-       view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
+        view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
     }
 
     public LinkedList<Card> getWaste() {

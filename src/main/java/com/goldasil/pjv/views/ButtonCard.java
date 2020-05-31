@@ -6,8 +6,12 @@ import com.goldasil.pjv.models.Card;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+
+import java.util.List;
 
 public class ButtonCard extends Button {
 
@@ -81,6 +85,14 @@ public class ButtonCard extends Button {
         //setMaxWidth(10);
     }
 
+    public static boolean isOverKnaveSubmitted(ObservableList<Node> buttonCards) {
+        for (Node butCard : buttonCards) {
+            if ( ((ButtonCard) butCard).getButtonRank() == Rank.OVERKNAVE) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public void highlightButton() {
         setStyle("-fx-background-color: #d6aaaa; -fx-border-width: 0px; -fx-background-radius: 12;");

@@ -25,11 +25,14 @@ public class Main {
 
         logger.info("Main method has started.");
 
-        startUpNewGameProcess(2);
+
+
+        startUpPharaoh();
     }
 
 
-    public static void startUpNewGameProcess(int numOfRandomplayers){
+
+    public static void startUpPharaoh(){
         GameModel gameModel = new GameModel();
 
         //set view
@@ -48,7 +51,6 @@ public class Main {
         // set controller
         GameController controller = new GameController(gameModel, gameView);
         gameView.setGameController(controller);
-        controller.initializeGame(numOfRandomplayers);
     }
 
 

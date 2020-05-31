@@ -68,6 +68,8 @@ public class GameLayout {
 
     public void initializePlayersBox(List<Player> players, int thisPlayerId){
         logger.debug("initialize PlayersBox");
+        playersBox.getChildren().clear();
+
         for (Player player : players) {
             if (player.getPlayerID() == thisPlayerId) {
                 continue;
@@ -86,7 +88,6 @@ public class GameLayout {
         for (Node node : playersBox.getChildren()){
             GameVBox playerBox = (GameVBox) node;
             if ( playerBox.getPlayerId() == player.getPlayerID()){
-                logger.debug("Found VBox for the player");
                 playerBox.setNameCountLabelText(player.getCards().size());
                 playerBox.setLastMoveLabelText(moveDTO);
             }

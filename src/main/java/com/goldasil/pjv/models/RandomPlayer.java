@@ -39,6 +39,11 @@ public class RandomPlayer extends Player {
         stateHandler = new MoveStateHandler();
     }
 
+    public RandomPlayer(ArrayList<Card> cards, int playerID) {
+        super(cards, playerID);
+        stateHandler = new MoveStateHandler();
+    }
+
     public Move chooseMove(MoveDTO prevMove){
         //SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), 1);
         List<MoveState> prevStates = MoveStateHandler.getMoveStatesPrev(prevMove);
