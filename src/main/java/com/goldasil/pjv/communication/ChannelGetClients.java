@@ -15,7 +15,6 @@ public class ChannelGetClients implements Runnable {
 
     private ServerSocket listeningSocket;
     private int numOfClients;
-    private int listeningPort;
     private ComResource resource;
 
     private static final Logger logger = LoggerFactory.getLogger(ChannelGetClients.class);
@@ -30,9 +29,9 @@ public class ChannelGetClients implements Runnable {
      * Creates a new channel for listenning.
      * @param numOfClients number of clients for which to wait to connect
      */
-    public ChannelGetClients(int numOfClients, int port, ComResource resource) {
+    public ChannelGetClients(int numOfClients, ServerSocket listeningSocket, ComResource resource) {
         this.numOfClients = numOfClients;
-        this.listeningPort = port;
+        this.listeningSocket = listeningSocket;
         this.resource = resource;
     }
 
@@ -54,7 +53,6 @@ public class ChannelGetClients implements Runnable {
     @Override
     public void run() {
         try {
-            listeningSocket = new ServerSocket(listeningPort);
             logger.debug("Listening for clients has started. Waiting for connection ...");
 
             int numOfFoundClients = 0;
@@ -77,7 +75,7 @@ public class ChannelGetClients implements Runnable {
             System.out.println(e.getMessage());
         }
 
-        stopConnection();
+        //stopConnection();
     }
 
 

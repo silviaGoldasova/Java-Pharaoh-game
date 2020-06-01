@@ -74,7 +74,7 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
         Sender sender = new Sender(clientSocket, serverIpAddress, Integer.parseInt(serverPort), clientPort, resource);
         Thread senderThread = new Thread(sender);
         senderThread.start();
-        resource.addTask(new ComTask(-1, "MOVE", "Hello world"));
+        //resource.addTask(new ComTask(-1, "MOVE", "Hello world"));
 
     }
 
@@ -129,7 +129,22 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
     }
 
 
-    public void playOneTurn(MoveDTO moveDTO){
+    private void playOneTurn(MoveDTO moveDTO){
+        logger.debug("\n\nStart of the received move.");
+
+        //moveDTO.setUpcard(game.getUpcard());
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
+            Platform.runLater(()->{
+                view.updatePlayersBoxFromView();
+            });
+            updateAndPlayNextTurn();
+        }
+
+        logger.debug("Player's turn has been played (id = {}).", game.getCurrentPlayerIdTurn());
+
+    }
+
+    /*public void playOneTurn(MoveDTO moveDTO){
         if (game.getCurrentPlayerIdTurn() == game.getThisPlayerId()) {
             logger.debug("Error, this player's move");
             return;
@@ -160,7 +175,7 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
             });
         }
 
-    }
+    }*/
 
     private void sendMoveDTO(MoveDTO moveDTO) {
         Gson gson = new Gson();

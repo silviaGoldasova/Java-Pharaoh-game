@@ -240,21 +240,6 @@ public class GameModel implements Cloneable {
 
     }
 
-    public boolean runOppTurn(MoveDTO moveDTO) {
-
-        Player player = getPlayerByID(currentPlayerIdTurn);
-        moveDTO.setUpcard(getUpcard());
-
-        boolean isMoveCorrect = playMove(currentPlayerIdTurn, moveDTO);
-
-        if (!isMoveCorrect) {
-            logger.debug("Incorrect move from a player");
-            return false;
-        }
-
-        return true;
-    }
-
     @Override
     public Object clone() {
         try {

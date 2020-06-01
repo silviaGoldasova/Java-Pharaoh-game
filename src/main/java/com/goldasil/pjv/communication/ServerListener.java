@@ -17,51 +17,53 @@ public class ServerListener implements Runnable {
     private DataInputStream in;
     private ComResource resource;
     private Socket sender;
+    private ClientComObj client;
 
     private static final Logger logger = LoggerFactory.getLogger(ServerListener.class);
 
 
-    public ServerListener(int port, ComResource resource) {
-        this.port = port;
+    public ServerListener(ServerSocket listeningSocket, ClientComObj client, ComResource resource) {
+        logger.debug("ServerListener class");
+        this.listeningSocket = listeningSocket;
+        this.client = client;
         this.resource = resource;
-
-        try {
-            listeningSocket = new ServerSocket(port);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
     }
 
     @Override
     public void run() {
+
+        try {
+            in = new DataInputStream(client.getClientSocket().getInputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         while (resource.isGameOn()) {
 
             try {
-                sender = listeningSocket.accept();
-                in = new DataInputStream(sender.getInputStream());
+                //logger.debug("sender accepted, from port {}", senderSock.getPort());
 
-                String messageRaw = in.readUTF();
+                if (in.available() > 0) {
+                    String messageRaw = in.readUTF();
 
-                //handleReceived(messageRaw);
-                String messageType = decodeMessageType(messageRaw);
-                String messageBody = decodeMessageBody(messageRaw);
-                resource.addMessage(new ComTask(getPlayerIdFromSocketPort(sender.getPort()), messageType, messageBody));
-                resource.setNewReceived(true);
+                    logger.debug("{}", messageRaw);
 
-                stopConnection();
+                    //handleReceived(messageRaw);
+                    String messageType = decodeMessageType(messageRaw);
+                    String messageBody = decodeMessageBody(messageRaw);
+                    resource.addMessage(new ComTask(client.getPlayerID(), messageType, messageBody));
+                    resource.newReceivedProperty().setValue(true);
+                }
+
+                //stopConnection();
             }
             catch(IOException e){
                 logger.debug(e.getMessage());
             }
 
-            try {
-                sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
         }
+        stopConnection();
     }
 
     private int getPlayerIdFromSocketPort(int portNumber) {
@@ -94,6 +96,7 @@ public class ServerListener implements Runnable {
     public void stopConnection() {
         try {
             listeningSocket.close();
+            in.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

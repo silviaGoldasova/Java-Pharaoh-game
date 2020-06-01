@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
+import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,11 +37,17 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
     private ComResource resource = new ComResource();
     int listeningPort = 5556;
     int senderLocalPort = 5555;
+    private ServerSocket listeningSocket;
 
     private static final Logger logger = LoggerFactory.getLogger(GameControllerServerMultiplayer.class);
 
     public GameControllerServerMultiplayer(GameModel game, GameView view) {
         super(game, view);
+        try {
+            listeningSocket = new ServerSocket(listeningPort);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -70,9 +77,11 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         }
 
         // initialize listener
-        ServerListener serverListener = new ServerListener(listeningPort, resource);
-        Thread serverListenerThread = new Thread(serverListener);
-        serverListenerThread.start();
+        for (ClientComObj client : resource.getClientsList()) {
+            ServerListener serverListener = new ServerListener(listeningSocket, client, resource);
+            Thread serverListenerThread = new Thread(serverListener);
+            serverListenerThread.start();
+        }
 
         // initialize listerner to changes in MessageReceivedQueue
         resource.newReceivedProperty().addListener(isNewReceivedChangeListener);
@@ -135,45 +144,30 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
                 }
                 resource.getReceivedMessages().remove();
             }
-            resource.setNewReceived(false);
+            resource.newReceivedProperty().setValue(false);
         }
     }
 
-    public void playOneTurn(MoveDTO moveDTO){
-        if (game.getCurrentPlayerIdTurn() == game.getThisPlayerId()) {
-            logger.debug("Error, this player's move");
-            return;
-        }
-
+    private void playOneTurn(MoveDTO moveDTO){
         logger.debug("\n\nStart of the received move.");
 
-        if (game.runOppTurn(moveDTO)) {
-
-            setChangedSuit();
-
+        //moveDTO.setUpcard(game.getUpcard());
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
             Platform.runLater(()->{
                 view.updatePlayersBoxFromView();
-                view.setNewUpdate();
             });
-
-            try {
-                sleep(2500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            logger.debug("Player's turn has been played (id = {}).", game.getCurrentPlayerIdTurn());
-            game.setNextPlayersTurn();
-
-            Platform.runLater(()->{
-                view.setPenaltyAndTurnLabel();
-            });
+            updateAndPlayNextTurn();
         }
+
+        logger.debug("Player's turn has been played (id = {}).", game.getCurrentPlayerIdTurn());
 
     }
 
     ChangeListener isNewReceivedChangeListener = new ChangeListener() {
         @Override public void changed(ObservableValue o, Object oldVal, Object newVal){
+
+            logger.debug("isNewReceivedChangeListener");
+
             if ((boolean) newVal == true) {
 
                 Platform.runLater( ()-> {
@@ -191,7 +185,7 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
 
     public void getSidePlayers(){
         logger.debug("getSidePlayers()");
-        ChannelGetClients clientsListener = new ChannelGetClients(view.getNewGame().getNumOfOpp(), listeningPort, resource);
+        ChannelGetClients clientsListener = new ChannelGetClients(view.getNewGame().getNumOfOpp(), listeningSocket, resource);
         Thread listenerThread = new Thread(clientsListener);
         listenerThread.start();
     }

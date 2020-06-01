@@ -26,19 +26,18 @@ public class MainTest {
         //senderThread2.start();
 
 
-        ServerListener serverListener = new ServerListener(5556, resource);
-        Thread serverListenerThread = new Thread(serverListener);
-        serverListenerThread.start();
+        //ServerListener serverListener = new ServerListener(5556, resource);
+        //Thread serverListenerThread = new Thread(serverListener);
+        //serverListenerThread.start();
 
 
-        resource.addTask(new ComTask(null, "MOVE", "Hello world"));
-        resource.addTask(new ComTask(null, "MOVE", "Hello there"));
+        //resource.addTask(new ComTask(null, "MOVE", "Hello world"));
+        //resource.addTask(new ComTask(null, "MOVE", "Hello there"));
 
         // get all side players
         /*ChannelGetClients getClients = new ChannelGetClients(1, 5556, resource);
         Thread getClientsThread = new Thread(getClients);
         getClientsThread.start();*/
-
 
 
 
