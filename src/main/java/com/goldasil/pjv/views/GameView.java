@@ -369,7 +369,7 @@ public class GameView extends Application {
         }
     };
 
-    private void setPlayingBoardGui() {
+    public void setPlayingBoardGui() {
         if (pane == null) {
             logger.debug("pane is null");
             setGameScene();

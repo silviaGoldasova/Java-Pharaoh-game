@@ -112,8 +112,9 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
 
                         logger.debug("received game obj: {}", gameInitInfo.toString());
                         initializeGame(gameInitInfo);
+                        view.setGame(gameInitInfo);
+                        view.setPlayingBoardGui();
                         view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
-                        view.updateGameScene();
 
                         break;
                     default:
@@ -240,8 +241,6 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)) {
             setChangedSuit();
             view.setNewUpdate();
-            //game.setNextPlayersTurn();
-            //playTurn();
         }
     }
 

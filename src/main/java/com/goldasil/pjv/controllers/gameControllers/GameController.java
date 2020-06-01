@@ -128,8 +128,6 @@ public class GameController {
     }
 
 
-
-
     public ArrayList<Card> getSelectedCards(List<Node> cardButtons){
         ArrayList<Card> cards = new ArrayList<>();
         for (Node node : cardButtons) {

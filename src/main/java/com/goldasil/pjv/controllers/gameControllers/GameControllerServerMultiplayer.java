@@ -82,19 +82,24 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         GameModel gameObjCopy = (GameModel) game.clone();
 
         for (ClientComObj client : resource.getClientsList()) {
-            gameObjCopy.setThisPlayerId(client.getPlayerID());
 
-            String gameString = gson.toJson(game);
-            ArrayList<ClientComObj> list = new ArrayList<>();
-            list.add(client);
+            if (client.getPlayerID() != 0) {
+                logger.debug("client.getPlayerID(): {}", client.getPlayerID());
+                gameObjCopy.setThisPlayerId(client.getPlayerID());
+                logger.debug("client.getPlayerID(): {}", gameObjCopy.getThisPlayerId());
 
-            sendMessage(list, "INIT", gameString);
-            //sendMessage(resource.getClientsList(), "MOVE", "Hello world");
+                String gameString = gson.toJson(gameObjCopy);
+                ArrayList<ClientComObj> list = new ArrayList<>();
+                list.add(client);
+
+                sendMessage(list, "INIT", gameString);
+                //sendMessage(resource.getClientsList(), "MOVE", "Hello world");
+            }
         }
 
+        view.setPlayingBoardGui();
         view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
-        view.updateGameScene();
-
+        
     }
 
 
@@ -125,6 +130,9 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
                             }
                         }
                         sendMessage(listReceivers, "MOVE", messageObj.getMessageBody());
+
+
+
                         break;
                     case "ERRO":
                         System.out.println("Error switch");
@@ -214,6 +222,7 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         resource.addTask(new ComTask(otherPlayersList, "MOVE", moveDTOstring));
     }
 
+
     public void submitMoveFromView(List<Node> cardButtons, Suit requestedSuit) {
         if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
             return;
@@ -225,15 +234,11 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         sendMoveDTO(moveDTO);
 
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
-            setChangedSuit();
-
-            //view.setNewUpdate();
-            //game.setNextPlayersTurn();
-            logger.debug("randomplayer's move follows");
             updateAndPlayNextTurn();
         }
     }
 
+    @Override
     public void submitMoveFromView(int numberOfCardsDrawn) {
         if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
             return;
@@ -244,10 +249,6 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         sendMoveDTO(moveDTO);
 
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
-            setChangedSuit();
-
-            //view.setNewUpdate();
-            //game.setNextPlayersTurn();
             updateAndPlayNextTurn();
         }
     }
@@ -262,13 +263,31 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         sendMoveDTO(moveDTO);
 
         if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)) {
-            setChangedSuit();
+            //setChangedSuit();
             view.setNewUpdate();
-            //game.setNextPlayersTurn();
-            //playTurn();
         }
     }
 
+    @Override
+    public void updateAndPlayNextTurn() {
+        Runnable runnable = () -> {
 
+            Platform.runLater(()-> {
+                setChangedSuit();
+                view.setNewUpdate();
+                game.setNextPlayersTurn();
+                view.setPenaltyAndTurnLabel();
+            });
+
+            try {
+                sleep(1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            //playOneTurn();
+        };
+        Thread playTurn = new Thread(runnable);
+        playTurn.start();
+    }
 
 }

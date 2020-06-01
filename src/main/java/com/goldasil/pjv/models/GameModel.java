@@ -240,7 +240,6 @@ public class GameModel implements Cloneable {
 
     }
 
-
     public boolean runOppTurn(MoveDTO moveDTO) {
 
         Player player = getPlayerByID(currentPlayerIdTurn);
@@ -254,7 +253,6 @@ public class GameModel implements Cloneable {
         }
 
         return true;
-
     }
 
     @Override
