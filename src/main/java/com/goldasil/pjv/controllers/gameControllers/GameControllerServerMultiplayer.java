@@ -2,20 +2,26 @@ package com.goldasil.pjv.controllers.gameControllers;
 
 import com.goldasil.pjv.communication.*;
 import com.goldasil.pjv.dto.MoveDTO;
+import com.goldasil.pjv.enums.Suit;
+import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.models.GameModel;
+import com.goldasil.pjv.models.Move;
 import com.goldasil.pjv.views.GameView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -85,6 +91,10 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
             sendMessage(list, "INIT", gameString);
             //sendMessage(resource.getClientsList(), "MOVE", "Hello world");
         }
+
+        view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
+        view.updateGameScene();
+
     }
 
 
@@ -115,13 +125,14 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
                             }
                         }
                         sendMessage(listReceivers, "MOVE", messageObj.getMessageBody());
-
+                        break;
                     case "ERRO":
                         System.out.println("Error switch");
-
+                        break;
                     default:
                         System.out.println("Error switch");
                         // request new communication
+                        break;
                 }
                 resource.getReceivedMessages().remove();
             }
@@ -188,6 +199,74 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
 
     private void sendMessage(ArrayList<ClientComObj> clientsList, String messageType, String messageBody) {
         resource.addTask(new ComTask(clientsList, messageType, messageBody));
+    }
+
+    private void sendMoveDTO(MoveDTO moveDTO) {
+        Gson gson = new Gson();
+        String moveDTOstring = gson.toJson(moveDTO);
+
+        ArrayList<ClientComObj> otherPlayersList = new ArrayList<>();
+        for ( ClientComObj client : resource.getClientsList()) {
+            if (client.getPlayerID() != game.getThisPlayerId()) {
+                otherPlayersList.add(client);
+            }
+        }
+        resource.addTask(new ComTask(otherPlayersList, "MOVE", moveDTOstring));
+    }
+
+    public void submitMoveFromView(List<Node> cardButtons, Suit requestedSuit) {
+        if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
+            return;
+        }
+        ArrayList<Card> moveCards = getSelectedCards(cardButtons);
+        MoveDTO moveDTO = new MoveDTO(new Move(moveCards, requestedSuit));
+        moveDTO.setUpcard(game.getUpcard());
+
+        sendMoveDTO(moveDTO);
+
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
+            setChangedSuit();
+
+            //view.setNewUpdate();
+            //game.setNextPlayersTurn();
+            logger.debug("randomplayer's move follows");
+            updateAndPlayNextTurn();
+        }
+    }
+
+    public void submitMoveFromView(int numberOfCardsDrawn) {
+        if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
+            return;
+        }
+        MoveDTO moveDTO = new MoveDTO(new Move(numberOfCardsDrawn));
+        moveDTO.setUpcard(game.getUpcard());
+
+        sendMoveDTO(moveDTO);
+
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
+            setChangedSuit();
+
+            //view.setNewUpdate();
+            //game.setNextPlayersTurn();
+            updateAndPlayNextTurn();
+        }
+    }
+
+    public void submitMoveFromView(MoveDTO moveDTO) {
+        if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
+            return;
+        }
+        // WIN move
+        moveDTO.setUpcard(game.getUpcard());
+
+        sendMoveDTO(moveDTO);
+
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)) {
+            setChangedSuit();
+            view.setNewUpdate();
+            //game.setNextPlayersTurn();
+            //playTurn();
+        }
     }
 
 

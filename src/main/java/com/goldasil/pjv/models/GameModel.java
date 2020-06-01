@@ -43,7 +43,7 @@ public class GameModel implements Cloneable {
     MoveDTO lastMoveDTO = null;
     volatile MoveDTO currentMoveDTO = null;
 
-    private IntegerProperty winnerID = new SimpleIntegerProperty();
+    private SimpleIntegerProperty winnerID = new SimpleIntegerProperty();
 
     private static final Logger logger = LoggerFactory.getLogger(GameModel.class);
 
@@ -427,6 +427,24 @@ public class GameModel implements Cloneable {
         }*/
     }
 
+    @Override
+    public String toString() {
+        return "GameModel{" +
+                "players=" + players +
+                ", stock=" + stock +
+                ", waste=" + waste +
+                ", selectedCards=" + selectedCards +
+                ", currentState=" + currentState +
+                ", upcard=" + upcard +
+                ", moveStateHandler=" + moveStateHandler +
+                ", currentPlayerIdTurn=" + currentPlayerIdTurn +
+                ", thisPlayerId=" + thisPlayerId +
+                ", lastMoveDTO=" + lastMoveDTO +
+                ", currentMoveDTO=" + currentMoveDTO +
+                ", winnerID=" + winnerID +
+                '}';
+    }
+
     public void setPlayers(List<Player> players) {
         this.players = players;
     }
@@ -531,7 +549,7 @@ public class GameModel implements Cloneable {
         return winnerID.get();
     }
 
-    public IntegerProperty winnerIDProperty() {
+    public SimpleIntegerProperty winnerIDProperty() {
         return winnerID;
     }
 

@@ -5,8 +5,10 @@ import com.goldasil.pjv.communication.ComTask;
 import com.goldasil.pjv.communication.Receiver;
 import com.goldasil.pjv.communication.Sender;
 import com.goldasil.pjv.dto.MoveDTO;
+import com.goldasil.pjv.enums.Suit;
 import com.goldasil.pjv.models.Card;
 import com.goldasil.pjv.models.GameModel;
+import com.goldasil.pjv.models.Move;
 import com.goldasil.pjv.views.GameView;
 import com.goldasil.pjv.views.TextFieldsButton;
 import com.google.gson.Gson;
@@ -14,13 +16,16 @@ import com.google.gson.reflect.TypeToken;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.Node;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
 import static java.lang.Thread.sleep;
 
@@ -89,17 +94,16 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
                 Gson gson = new Gson();
                 switch (messageObj.getMessageType()) {
                     case "MOVE":
-
-                        //resource.addMessage(new ComTask(null, messageObj.getMessageType(), messageObj.getMessageBody()));
-
                         Type moveDTOType = new TypeToken<MoveDTO>(){}.getType();
                         MoveDTO moveDTO = gson.fromJson(messageObj.getMessageBody(), moveDTOType);
                         playOneTurn(moveDTO);
-
+                        break;
                     case "ERRO":
                         System.out.println("Error switch");
+                        break;
                     case "OVER":
                         System.out.println("gameControllers over");
+                        break;
                     case "INIT":
                         logger.debug("INIT");
 
@@ -107,13 +111,15 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
                         GameModel gameInitInfo = gson.fromJson(messageObj.getMessageBody(), gameType);
 
                         logger.debug("received game obj: {}", gameInitInfo.toString());
-
                         initializeGame(gameInitInfo);
+                        view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
+                        view.updateGameScene();
 
-
+                        break;
                     default:
                         System.out.println("Error switch");
                         // request new communication
+                        break;
                 }
                 resource.getReceivedMessages().remove();
             }
@@ -155,6 +161,12 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
 
     }
 
+    private void sendMoveDTO(MoveDTO moveDTO) {
+        Gson gson = new Gson();
+        String moveDTOstring = gson.toJson(moveDTO);
+        resource.addTask(new ComTask(null, "MOVE", moveDTOstring));
+    }
+
 
     ChangeListener isNewReceivedChangeListener = new ChangeListener() {
         @Override public void changed(ObservableValue o, Object oldVal, Object newVal){
@@ -175,6 +187,62 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
     public void initializeGame(GameModel gameInitInfo) {
         game = gameInitInfo;
         logger.debug("Game initilizied");
+    }
+
+
+    public void submitMoveFromView(List<Node> cardButtons, Suit requestedSuit) {
+        if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
+            return;
+        }
+        ArrayList<Card> moveCards = getSelectedCards(cardButtons);
+        MoveDTO moveDTO = new MoveDTO(new Move(moveCards, requestedSuit));
+        moveDTO.setUpcard(game.getUpcard());
+
+        sendMoveDTO(moveDTO);
+
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
+            setChangedSuit();
+
+            //view.setNewUpdate();
+            //game.setNextPlayersTurn();
+            logger.debug("randomplayer's move follows");
+            updateAndPlayNextTurn();
+        }
+    }
+
+    public void submitMoveFromView(int numberOfCardsDrawn) {
+        if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
+            return;
+        }
+        MoveDTO moveDTO = new MoveDTO(new Move(numberOfCardsDrawn));
+        moveDTO.setUpcard(game.getUpcard());
+
+        sendMoveDTO(moveDTO);
+
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)){
+            setChangedSuit();
+
+            //view.setNewUpdate();
+            //game.setNextPlayersTurn();
+            updateAndPlayNextTurn();
+        }
+    }
+
+    public void submitMoveFromView(MoveDTO moveDTO) {
+        if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
+            return;
+        }
+        // WIN move
+        moveDTO.setUpcard(game.getUpcard());
+
+        sendMoveDTO(moveDTO);
+
+        if (game.playMove(game.getCurrentPlayerIdTurn(), moveDTO)) {
+            setChangedSuit();
+            view.setNewUpdate();
+            //game.setNextPlayersTurn();
+            //playTurn();
+        }
     }
 
 

@@ -3440,3 +3440,89 @@ Identify and stop the process that's listening on port 8181 or configure this ap
 14:01:31 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Overknave, Leaves, Card: Overknave, Hearts, Card: Nine, Hearts, Card: Seven, Bells, Card: Nine, Bells, Card: King, Leaves, Card: Ten, Hearts, Card: Underknave, Acorns, Card: King, Hearts, Card: Overknave, Acorns, Card: Ten, Leaves, Card: Nine, Acorns, Card: Eight, Bells, Card: Seven, Acorns, Card: Underknave, Leaves, Card: Eight, Hearts, Card: King, Acorns, Card: Ten, Acorns, Card: Seven, Hearts]
 14:01:31 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Overknave, Bells, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Overknave, Bells], drawCards=0, requestedSuit=HEARTS}
 14:01:31 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+14:22:54 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 18156 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+14:22:54 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+14:22:54 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+14:22:57 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+14:22:57 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+14:22:57 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+14:22:57 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+14:22:58 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+14:23:00 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+14:23:00 INFO  [com.goldasil.pjv.Main] - Started Main in 5.94 seconds (JVM running for 6.639)
+14:23:00 INFO  [com.goldasil.pjv.Main] - Main method has started.
+14:23:00 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+14:23:37 DEBUG [com.goldasil.pjv.views.GameView] - Waiting process.
+14:23:37 DEBUG [com.goldasil.pjv.views.GameView] - Starting listening for clients.
+14:23:37 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameControllerServerMultiplayer] - getSidePlayers()
+14:23:37 DEBUG [com.goldasil.pjv.views.GameView] - Starting initializing the game.
+14:23:37 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+14:23:37 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Overknave, Bells, Card: Seven, Hearts, Card: Eight, Leaves, Card: Eight, Hearts, Card: Underknave, Bells, Card: Seven, Leaves, Card: Eight, Acorns, Card: Underknave, Acorns, Card: Nine, Bells, Card: Ten, Leaves, Card: King, Hearts, Card: Overknave, Acorns, Card: Underknave, Hearts, Card: Nine, Leaves, Card: Overknave, Hearts, Card: Nine, Acorns, Card: Ten, Hearts, Card: Eight, Bells, Card: King, Leaves]
+14:23:37 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Ten, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+14:23:37 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+14:23:44 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+14:23:44 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - [ClientComObj{clientSocket=Socket[addr=/192.168.0.104,port=51258,localport=5556], ipAddress='null', port=51258, playerID=1}]
+14:23:44 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameControllerServerMultiplayer] - All clients are connected
+14:23:44 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameControllerServerMultiplayer] - ServerListener has started.
+14:23:45 DEBUG [com.goldasil.pjv.communication.ServerSender] - sent from server sender: {"players":[{"cards":[{"rank":"UNDERKNAVE","suit":"LEAVES"},{"rank":"TEN","suit":"ACORNS"},{"rank":"OVERKNAVE","suit":"LEAVES"},{"rank":"SEVEN","suit":"ACORNS"}],"cardsCount":4,"playerID":0},{"cards":[{"rank":"KING","suit":"ACORNS"},{"rank":"KING","suit":"BELLS"},{"rank":"SEVEN","suit":"BELLS"},{"rank":"NINE","suit":"HEARTS"}],"cardsCount":4,"playerID":1}],"stock":[{"rank":"OVERKNAVE","suit":"BELLS"},{"rank":"SEVEN","suit":"HEARTS"},{"rank":"EIGHT","suit":"LEAVES"},{"rank":"EIGHT","suit":"HEARTS"},{"rank":"UNDERKNAVE","suit":"BELLS"},{"rank":"SEVEN","suit":"LEAVES"},{"rank":"EIGHT","suit":"ACORNS"},{"rank":"UNDERKNAVE","suit":"ACORNS"},{"rank":"NINE","suit":"BELLS"},{"rank":"TEN","suit":"LEAVES"},{"rank":"KING","suit":"HEARTS"},{"rank":"OVERKNAVE","suit":"ACORNS"},{"rank":"UNDERKNAVE","suit":"HEARTS"},{"rank":"NINE","suit":"LEAVES"},{"rank":"OVERKNAVE","suit":"HEARTS"},{"rank":"NINE","suit":"ACORNS"},{"rank":"TEN","suit":"HEARTS"},{"rank":"EIGHT","suit":"BELLS"},{"rank":"KING","suit":"LEAVES"}],"waste":[{"rank":"TEN","suit":"BELLS"}],"selectedCards":[],"currentState":"FIRST_MOVE","upcard":{"rank":"TEN","suit":"BELLS"},"moveStateHandler":{},"currentPlayerIdTurn":0,"thisPlayerId":0,"lastMoveDTO":{"upcard":{"rank":"TEN","suit":"BELLS"},"penaltyForSevens":0,"numAcesPlayed":0,"states":[],"playerIdAcesStarter":0,"moveType":"DRAW","move":[],"drawCards":1,"requestedSuit":"UNSPECIFIED"},"currentMoveDTO":{"upcard":{"rank":"TEN","suit":"BELLS"},"penaltyForSevens":0,"numAcesPlayed":0,"states":[],"playerIdAcesStarter":0,"moveType":"DRAW","move":[],"drawCards":1,"requestedSuit":"UNSPECIFIED"},"winnerID":{"name":"","value":-1,"valid":false}}
+14:27:37 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 1652 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+14:27:37 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+14:27:37 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+14:27:39 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+14:27:39 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+14:27:39 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+14:27:40 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+14:27:40 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+14:27:42 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+14:27:42 INFO  [com.goldasil.pjv.Main] - Started Main in 5.993 seconds (JVM running for 6.737)
+14:27:42 INFO  [com.goldasil.pjv.Main] - Main method has started.
+14:27:43 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+14:28:47 DEBUG [com.goldasil.pjv.views.GameView] - Waiting process.
+14:28:47 DEBUG [com.goldasil.pjv.views.GameView] - Starting listening for clients.
+14:28:47 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameControllerServerMultiplayer] - getSidePlayers()
+14:28:47 DEBUG [com.goldasil.pjv.views.GameView] - Starting initializing the game.
+14:28:47 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+14:28:47 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Overknave, Bells, Card: Underknave, Hearts, Card: Underknave, Bells, Card: King, Hearts, Card: King, Acorns, Card: Underknave, Leaves, Card: Overknave, Acorns, Card: Seven, Bells, Card: Ten, Bells, Card: Seven, Leaves, Card: Seven, Acorns, Card: Eight, Hearts, Card: Underknave, Acorns, Card: Eight, Leaves, Card: Eight, Acorns, Card: Ten, Leaves, Card: Ten, Hearts, Card: Overknave, Leaves, Card: Nine, Leaves]
+14:28:47 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Nine, Acorns, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Nine, Acorns], drawCards=0, requestedSuit=null}
+14:28:47 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+14:28:49 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+14:28:49 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - [ClientComObj{clientSocket=Socket[addr=/192.168.0.104,port=51317,localport=5556], ipAddress='null', port=51317, playerID=1}]
+14:28:50 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameControllerServerMultiplayer] - All clients are connected
+14:28:50 DEBUG [com.goldasil.pjv.controllers.gameControllers.GameControllerServerMultiplayer] - ServerListener has started.
+14:28:51 DEBUG [com.goldasil.pjv.communication.ServerSender] - sent from server sender: {"players":[{"cards":[{"rank":"KING","suit":"LEAVES"},{"rank":"NINE","suit":"BELLS"},{"rank":"TEN","suit":"ACORNS"},{"rank":"SEVEN","suit":"HEARTS"}],"cardsCount":4,"playerID":0},{"cards":[{"rank":"NINE","suit":"HEARTS"},{"rank":"OVERKNAVE","suit":"HEARTS"},{"rank":"EIGHT","suit":"BELLS"},{"rank":"KING","suit":"BELLS"}],"cardsCount":4,"playerID":1}],"stock":[{"rank":"OVERKNAVE","suit":"BELLS"},{"rank":"UNDERKNAVE","suit":"HEARTS"},{"rank":"UNDERKNAVE","suit":"BELLS"},{"rank":"KING","suit":"HEARTS"},{"rank":"KING","suit":"ACORNS"},{"rank":"UNDERKNAVE","suit":"LEAVES"},{"rank":"OVERKNAVE","suit":"ACORNS"},{"rank":"SEVEN","suit":"BELLS"},{"rank":"TEN","suit":"BELLS"},{"rank":"SEVEN","suit":"LEAVES"},{"rank":"SEVEN","suit":"ACORNS"},{"rank":"EIGHT","suit":"HEARTS"},{"rank":"UNDERKNAVE","suit":"ACORNS"},{"rank":"EIGHT","suit":"LEAVES"},{"rank":"EIGHT","suit":"ACORNS"},{"rank":"TEN","suit":"LEAVES"},{"rank":"TEN","suit":"HEARTS"},{"rank":"OVERKNAVE","suit":"LEAVES"},{"rank":"NINE","suit":"LEAVES"}],"waste":[{"rank":"NINE","suit":"ACORNS"}],"selectedCards":[],"currentState":"FIRST_MOVE","upcard":{"rank":"NINE","suit":"ACORNS"},"moveStateHandler":{},"currentPlayerIdTurn":0,"thisPlayerId":0,"lastMoveDTO":{"upcard":{"rank":"NINE","suit":"ACORNS"},"penaltyForSevens":0,"numAcesPlayed":0,"states":[],"playerIdAcesStarter":0,"moveType":"PLAY","move":[{"rank":"NINE","suit":"ACORNS"}],"drawCards":0},"currentMoveDTO":{"upcard":{"rank":"NINE","suit":"ACORNS"},"penaltyForSevens":0,"numAcesPlayed":0,"states":[],"playerIdAcesStarter":0,"moveType":"PLAY","move":[{"rank":"NINE","suit":"ACORNS"}],"drawCards":0},"winnerID":{"name":"","value":-1,"valid":false}}
+14:33:30 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 15800 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+14:33:30 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+14:33:30 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+14:33:33 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+14:33:33 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+14:33:33 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+14:33:33 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+14:33:34 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+14:33:35 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+14:33:36 INFO  [com.goldasil.pjv.Main] - Started Main in 5.682 seconds (JVM running for 6.473)
+14:33:36 INFO  [com.goldasil.pjv.Main] - Main method has started.
+14:33:36 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+14:46:29 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 1460 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+14:46:29 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+14:46:29 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+14:46:32 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+14:46:32 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+14:46:32 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+14:46:32 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+14:46:32 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+14:46:34 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+14:46:35 INFO  [com.goldasil.pjv.Main] - Started Main in 6.11 seconds (JVM running for 7.192)
+14:46:35 INFO  [com.goldasil.pjv.Main] - Main method has started.
+14:46:35 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+14:46:37 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 1
+14:46:37 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Nine, Acorns, Card: Overknave, Bells, Card: Ten, Leaves, Card: Eight, Acorns, Card: Nine, Hearts, Card: Ten, Bells, Card: King, Acorns, Card: Ten, Hearts, Card: Ten, Acorns, Card: Seven, Hearts, Card: Nine, Bells, Card: Seven, Leaves, Card: Overknave, Hearts, Card: King, Hearts, Card: Seven, Acorns, Card: King, Bells, Card: Nine, Leaves, Card: Underknave, Leaves, Card: Underknave, Hearts]
+14:46:37 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Eight, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+14:46:37 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+14:46:37 DEBUG [com.goldasil.pjv.views.GameView] - pane is null
+14:46:37 DEBUG [com.goldasil.pjv.views.GameView] - Block start() entered.
+14:46:37 DEBUG [com.goldasil.pjv.views.GameView] - initializePlayersSection: players: [Player{cards=[Card: Underknave, Acorns, Card: Eight, Leaves, Card: Underknave, Bells, Card: Eight, Hearts], cardsCount=4, playerID=0}, Player{cards=[Card: Overknave, Acorns, Card: King, Leaves, Card: Overknave, Leaves, Card: Seven, Bells], cardsCount=4, playerID=1}], this player id: 0
+14:46:37 DEBUG [com.goldasil.pjv.views.GameLayout] - initialize PlayersBox
+14:46:37 DEBUG [com.goldasil.pjv.views.GameView] - Updating PlayersBox with data: Player{cards=[Card: Underknave, Acorns, Card: Eight, Leaves, Card: Underknave, Bells, Card: Eight, Hearts], cardsCount=4, playerID=0}, MoveDTO{upcard=Card: Eight, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+14:46:38 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: Eight, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+14:46:38 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+14:46:38 DEBUG [com.goldasil.pjv.views.GameView] - Showing scene.

@@ -11,9 +11,9 @@ public class MainTest {
         ComResource resource = new ComResource();
 
         // from notebook / sender
-        Sender sender = new Sender("192.168.0.101", 5556, 5001, resource);
-        Thread senderThread = new Thread(sender);
-        senderThread.start();
+        //Sender sender = new Sender("192.168.0.101", 5556, 5001, resource);
+        //Thread senderThread = new Thread(sender);
+        //senderThread.start();
 
         // from PC / receiver
         /*Receiver receiver = new Receiver(5556, resource);
@@ -21,9 +21,9 @@ public class MainTest {
         clientThread .start();*/
 
         // from notebook / sender 2
-        Sender sender2 = new Sender("192.168.0.101", 5556, 5001, resource);
-        Thread senderThread2 = new Thread(sender2);
-        senderThread2.start();
+        //Sender sender2 = new Sender("192.168.0.101", 5556, 5001, resource);
+        //Thread senderThread2 = new Thread(sender2);
+        //senderThread2.start();
 
 
         ServerListener serverListener = new ServerListener(5556, resource);
