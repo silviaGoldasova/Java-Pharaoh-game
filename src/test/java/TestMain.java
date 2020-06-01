@@ -25,7 +25,6 @@ public class TestMain {
 
     }
 
-
     private static void writeToFile(Result result, String testedClassName){
         File file = new File(pathToTestResultsFolder + testedClassName + ".txt");
         FileWriter fr = null;

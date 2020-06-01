@@ -37,17 +37,16 @@ public class GameController {
         this.view = view;
     }
 
+
+    public void initializeGame() {
+        return;
+    }
+
     /**
      * Sets the players, their order of the game, their playing cards.
      */
     public void initializeGame(int numberOfRandomPlayers) {
         game.initGame(numberOfRandomPlayers);
-
-        /*try {
-            sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
 
         view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
         playOneTurn();
@@ -77,14 +76,16 @@ public class GameController {
 
         if (game.runOppTurn()) {
 
-            checkIfWon();
-
             setChangedSuit();
 
             Platform.runLater(()->{
                 view.updatePlayersBoxFromView();
                 view.setNewUpdate();
             });
+
+            if (checkIfWon()){
+                return;
+            }
 
             try {
                 sleep(2500);
@@ -125,6 +126,9 @@ public class GameController {
         Thread playTurn = new Thread(runnable);
         playTurn.start();
     }
+
+
+
 
     public ArrayList<Card> getSelectedCards(List<Node> cardButtons){
         ArrayList<Card> cards = new ArrayList<>();
@@ -183,11 +187,13 @@ public class GameController {
         }
     }
 
-    private void checkIfWon(){
-
+    private boolean checkIfWon(){
+        if (game.getWinnerID() != -1) {
+            return true;
+        } return false;
     }
 
-    private void setChangedSuit(){
+    protected void setChangedSuit(){
         view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
     }
 

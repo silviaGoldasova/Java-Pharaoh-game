@@ -1,19 +1,25 @@
 package com.goldasil.pjv.communication;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
 import java.net.*;
 import java.util.ArrayList;
 
 /**
- * Represents a communication channel used only for initial listening on port 4444 and finding and connecting to the players willing to play a game.
+ * Represents a communication channel used only for initial listening on port 5555 and finding and connecting to the players willing to play a game.
  * The channel runs in its own separate thread, and creates a new thread for communication with every player that connects.
  */
 public class ChannelGetClients implements Runnable {
 
     private ServerSocket listeningSocket;
-    private ArrayList<Socket> clients;
     private int numOfClients;
-    private int listeningPort = 4444;
+    private int listeningPort;
+    private ComResource resource;
+
+    private static final Logger logger = LoggerFactory.getLogger(ChannelGetClients.class);
+
 
     //Thread getClients = new Thread(new ChannelGetClients(numOfClients, clients_list));
     // getClients.start();
@@ -23,11 +29,11 @@ public class ChannelGetClients implements Runnable {
     /**
      * Creates a new channel for listenning.
      * @param numOfClients number of clients for which to wait to connect
-     * @param clients emptry list of clients passed from the above thread, making the client a shared variable
      */
-    public ChannelGetClients(int numOfClients, ArrayList<Socket> clients) {
+    public ChannelGetClients(int numOfClients, int port, ComResource resource) {
         this.numOfClients = numOfClients;
-        this.clients = clients;
+        this.listeningPort = port;
+        this.resource = resource;
     }
 
     /**
@@ -49,12 +55,23 @@ public class ChannelGetClients implements Runnable {
     public void run() {
         try {
             listeningSocket = new ServerSocket(listeningPort);
-            System.out.println("Server Started. Waiting for connection ...");
-            int numOfFoundClients = 0;
+            logger.debug("Listening for clients has started. Waiting for connection ...");
 
-            while (numOfFoundClients != numOfClients) {
-                clients.add(listeningSocket.accept());
+            int numOfFoundClients = 0;
+            ArrayList<ClientComObj> clientList = new ArrayList<>();
+
+            synchronized (resource) {
+                while (numOfFoundClients != numOfClients) {
+                    Socket newClient = listeningSocket.accept();
+                    clientList.add(new ClientComObj(newClient, numOfFoundClients+1));
+                    logger.debug("Match");
+                    numOfFoundClients++;
+                }
+
+                resource.setClientsList(clientList);
+                logger.debug(clientList.toString());
             }
+
         }
         catch (IOException e) {
             System.out.println(e.getMessage());

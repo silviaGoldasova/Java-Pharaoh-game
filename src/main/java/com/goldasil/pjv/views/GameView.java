@@ -2,6 +2,8 @@ package com.goldasil.pjv.views;
 
 import com.goldasil.pjv.ApplicationContextProvider;
 import com.goldasil.pjv.controllers.gameControllers.GameController;
+import com.goldasil.pjv.controllers.gameControllers.GameControllerClientMultiplayer;
+import com.goldasil.pjv.controllers.gameControllers.GameControllerServerMultiplayer;
 import com.goldasil.pjv.dto.MoveDTO;
 import com.goldasil.pjv.dto.NewGameDTO;
 import com.goldasil.pjv.entity.GameEntity;
@@ -31,6 +33,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.slf4j.Logger;
@@ -129,6 +132,31 @@ public class GameView extends Application {
         stage.show();
     }
 
+    private void chooseNumOfOppMenu() {
+        HBox hbox = new HBox();
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setSpacing(10);
+        GameLabel chooseNumOppLabel = new GameLabel("Choose the number of opponents:");
+
+        ComboBox numOfOppBox = new ComboBox();
+        numOfOppBox.setPrefHeight(40);
+        numOfOppBox.getItems().addAll("1", "2", "3");
+        numOfOppBox.setValue("1");
+        newGame.setNumOfOpp(1);
+        numOfOppBox.valueProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue ov, String oldValue, String newValue) {
+                newGame.setNumOfOpp(Integer.parseInt(newValue));;
+                logger.info("setNumOfOpp: {}", newValue);
+            }
+        });
+        hbox.getChildren().addAll(chooseNumOppLabel, numOfOppBox);
+
+        //ControlButton submit = new ControlButton("Start Game");
+        //submit.setOnAction(startGameButtonHandler);
+        optionsBox.getChildren().addAll(hbox);
+    }
+
     EventHandler<ActionEvent> chooseOptionGameType = new EventHandler<ActionEvent>() {
         @Override
         public void handle(ActionEvent event) {
@@ -138,31 +166,16 @@ public class GameView extends Application {
 
             if (selectedText.equals("vs Computer")) {
                 newGame.setGametype(GameType.VS_COMPUTER);
-
-                HBox hbox = new HBox();
-                hbox.setAlignment(Pos.CENTER);
-                hbox.setSpacing(10);
-                GameLabel chooseNumOppLabel = new GameLabel("Choose the number of opponents:");
-
-                ComboBox numOfOppBox = new ComboBox();
-                numOfOppBox.setPrefHeight(40);
-                numOfOppBox.getItems().addAll("1", "2", "3");
-                numOfOppBox.setValue("1");
-                newGame.setNumOfOpp(1);
-                numOfOppBox.valueProperty().addListener(new ChangeListener<String>() {
-                    @Override
-                    public void changed(ObservableValue ov, String oldValue, String newValue) {
-                        newGame.setNumOfOpp(Integer.parseInt(newValue));;
-                        logger.info("setNumOfOpp: {}", newValue);
-                    }
-                });
-                hbox.getChildren().addAll(chooseNumOppLabel, numOfOppBox);
-
+                chooseNumOfOppMenu();
                 ControlButton submit = new ControlButton("Start Game");
                 submit.setOnAction(startGameButtonHandler);
-                optionsBox.getChildren().addAll(hbox, submit);
+                optionsBox.getChildren().addAll(submit);
+
             } else if (selectedText.equals("vs Player")) {
                 newGame.setGametype(GameType.VS_PLAYER);
+                chooseMultiplayerRoleMenu();
+
+
             } else {    // load a new game
                 logger.info("loading a new game");
                 newGame.setGametype(GameType.LOAD_GAME);
@@ -184,6 +197,128 @@ public class GameView extends Application {
 
             event.consume();
             //logger.debug("Selected a card to play.");
+        }
+    };
+
+    private void chooseMultiplayerRoleMenu() {
+        optionsBox.getChildren().clear();
+
+        GameLabel chooseRoleLabel = new GameLabel("Choose a role in the multiplayer game:");
+
+        HBox hbox = new HBox();
+        hbox.setAlignment(Pos.CENTER);
+        hbox.setSpacing(10);
+
+        ControlButton buttonServer = new ControlButton("Play as a main player");
+        ControlButton buttonClient = new ControlButton("Play as a side player");
+        buttonServer.setOnAction(chooseRoleHandler);
+        buttonClient.setOnAction(chooseRoleHandler);
+        hbox.getChildren().addAll(buttonServer, buttonClient);
+
+        optionsBox.getChildren().addAll(chooseRoleLabel, hbox);
+    }
+
+    EventHandler<ActionEvent> showWaitingScreenHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            optionsBox.getChildren().clear();
+
+            GameLabel waitingLabel = new GameLabel("Waiting for other players...");
+            optionsBox.getChildren().addAll(waitingLabel);
+
+            GameControllerServerMultiplayer controller = new GameControllerServerMultiplayer(game, gameView);
+            gameController = controller;
+
+            logger.debug("Starting listening for clients.");
+            controller.getSidePlayers();
+            logger.debug("Starting initializing the game.");
+            controller.initializeGame();
+        }
+    };
+
+    EventHandler<ActionEvent> chooseRoleHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+
+            ControlButton butSelected = (ControlButton) event.getSource();
+            String selectedText = butSelected.getText();
+            optionsBox.getChildren().clear();
+
+            if (selectedText.equals("Play as a main player")) {
+                chooseNumOfOppMenu();
+                ControlButton submit = new ControlButton("Proceed");
+                submit.setOnAction(showWaitingScreenHandler);
+                optionsBox.getChildren().addAll(submit);
+
+            } else if (selectedText.equals("Play as a side player")) {
+                inputMultiplayerClient();
+            }
+        }
+    };
+
+    private void inputMultiplayerClient(){
+        optionsBox.getChildren().clear();
+        optionsBox.setAlignment(Pos.CENTER);
+
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        GameLabel inputClientLabel = new GameLabel("Input information about the main player in the multiplayer game:");
+
+        GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(20, 150, 10, 10));
+
+        TextField serverIpAddress = new TextField();
+        serverIpAddress.setPromptText("Server IP address");
+        serverIpAddress.setFont(Font.font("Verdana",15));
+
+        TextField serverPort = new TextField();
+        serverPort.setPromptText("Server port");
+        serverPort.setFont(Font.font("Verdana",15));
+
+        TextField myPort = new TextField();
+        myPort.setPromptText("My port number");
+        myPort.setFont(Font.font("Verdana",15));
+
+        grid.add(new Label("Server IP address"), 0, 0);
+        grid.add(serverIpAddress, 1, 0);
+        grid.add(new Label("Server port:"), 0, 1);
+        grid.add(serverPort, 1, 1);
+        grid.add(new Label("My port number:"), 0, 2);
+        grid.add(myPort, 1, 2);
+
+        TextFieldsButton submit = new TextFieldsButton("Proceed");
+        submit.setOnAction(submitClientInfoHandler);
+        submit.addAllTextField(serverIpAddress, serverPort, myPort);
+
+        optionsBox.getChildren().addAll(inputClientLabel, grid, submit);
+
+    }
+
+    EventHandler<ActionEvent> submitClientInfoHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            logger.debug("submitClientInfoHandler");
+
+            TextFieldsButton button = (TextFieldsButton) event.getSource();
+
+            if (!(button.validateFields())) {
+                logger.debug("Invalid validation on client input fields.");
+                return;
+            }
+            logger.debug("Valid validation on client input fields.");
+
+            optionsBox.getChildren().clear();
+            GameLabel waitingLabel = new GameLabel("Waiting for other players...");
+            optionsBox.getChildren().addAll(waitingLabel);
+
+            GameControllerClientMultiplayer controller = new GameControllerClientMultiplayer(game, gameView);
+            gameController = controller;
+            controller.initConnectionToServer(button);
+            controller.initializeGame();
         }
     };
 
@@ -676,5 +811,13 @@ public class GameView extends Application {
 
     public void setNewUpdate() {
         this.newUpdate.set(!this.newUpdate.get());
+    }
+
+    public NewGameDTO getNewGame() {
+        return newGame;
+    }
+
+    public void setNewGame(NewGameDTO newGame) {
+        this.newGame = newGame;
     }
 }

@@ -8,7 +8,6 @@ public class NewGameDTO {
     private GameType gametype;
 
 
-
     public int getNumOfOpp() {
         return numOfOpp;
     }

@@ -18,6 +18,7 @@ public class ChannelClientHandler implements Runnable {
     private DataInputStream in;
     private boolean isStopped = false;
     private int ID;
+    private ComResource resource;
 
     public int getID() {
         return ID;
@@ -31,8 +32,9 @@ public class ChannelClientHandler implements Runnable {
      * Creates a handler of a client.
      * @param sender specifies the sender's socket got by the ChannelGetClients
      */
-    public ChannelClientHandler(Socket sender) {
+    public ChannelClientHandler(Socket sender, ComResource resource) {
         this.sender = sender;
+        this.resource = resource;
     }
 
 
@@ -76,7 +78,7 @@ public class ChannelClientHandler implements Runnable {
     @Override
     public void run() {
         try {
-            listeningSocket = new ServerSocket(4444);
+            listeningSocket = new ServerSocket(5555);
             in = new DataInputStream(new BufferedInputStream(sender.getInputStream()));
             System.out.println("Listening to a client.");
 

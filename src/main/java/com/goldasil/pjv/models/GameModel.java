@@ -132,6 +132,23 @@ public class GameModel {
         logger.debug("Players and stock initialized.");
     }
 
+    public void initGameMultiplayer(int numberOfPlayers) {
+        players = new ArrayList<Player>();
+
+        Player p1 = new Player(0);
+        players.add(p1);
+
+        for (int i = 1; i <= numberOfPlayers; i++) {
+            Player player = new Player(i);
+            players.add(player);
+        }
+
+        // initializes all players with cards and sets the rest of the cards of the pack to the stock
+        dealCardsAndSetStock();
+        winnerID.setValue(-1);
+        logger.debug("Players and stock initialized.");
+    }
+
     public void initGame(List<Player> players, LinkedList<Card> stock, LinkedList<Card> waste, Card upcard, MoveDTO move, int currentPlayerToPlay){
         thisPlayerId = 0;
         players = new ArrayList<Player>();
@@ -221,6 +238,33 @@ public class GameModel {
 
         return true;
 
+    }
+
+
+    public boolean runOppTurn(MoveDTO moveDTO) {
+
+        Player player = getPlayerByID(currentPlayerIdTurn);
+        moveDTO.setUpcard(getUpcard());
+
+        boolean isMoveCorrect = playMove(currentPlayerIdTurn, moveDTO);
+
+        if (!isMoveCorrect) {
+            logger.debug("Incorrect move from a player");
+            return false;
+        }
+
+        return true;
+
+    }
+
+    @Override
+    public Object clone() {
+        try {
+            return super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**

@@ -2132,3 +2132,1089 @@ Action:
 
 Identify and stop the process that's listening on port 8181 or configure this application to listen on another port.
 
+18:57:40 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+18:58:32 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:25:05 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:26:22 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:28:11 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:17 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:17 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:18 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:19 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:20 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:21 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:22 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:23 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:24 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:25 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:26 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:27 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:28 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:29 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:30 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:31 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:32 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:33 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:34 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:35 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:36 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:37 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:38 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:39 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=false, gameOn=true}
+19:29:45 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:45 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=true, gameOn=true}
+19:29:45 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:46 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:46 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=true, gameOn=true}
+19:29:46 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:47 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:47 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=true, gameOn=true}
+19:29:47 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:48 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:48 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=true, gameOn=true}
+19:29:48 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:49 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:49 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=true, gameOn=true}
+19:29:49 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:50 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:50 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=true, gameOn=true}
+19:29:50 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:51 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:51 DEBUG [com.goldasil.pjv.communication.Sender] - resource: ComResource{received='', toSend='World', newReceived=true, newToSend=true, gameOn=true}
+19:29:51 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:56 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:56 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:57 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:57 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:58 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:58 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:29:59 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:29:59 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:30:00 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:30:00 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:31:58 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:31:58 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:31:58 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: Move
+19:31:59 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:31:59 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:31:59 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:    
+19:32:00 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:00 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:00 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: Worl
+19:32:01 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:01 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:01 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: dMov
+19:32:02 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:02 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:02 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: e   
+19:32:03 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:03 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:03 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: Wor
+19:32:04 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:04 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:04 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: ldMo
+19:32:05 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:05 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:05 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: ve  
+19:32:06 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:06 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:06 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  Wo
+19:32:07 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:07 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:07 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: rldM
+19:32:08 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:08 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:08 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: ove 
+19:32:09 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:09 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:09 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:   W
+19:32:10 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:10 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:10 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: orld
+19:32:11 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:11 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:11 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: Move
+19:32:12 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:12 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:12 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:    
+19:32:13 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:13 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:13 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: Worl
+19:32:14 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:32:14 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:32:14 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: dMov
+19:42:32 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:42:32 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:42:32 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  Mo
+19:42:33 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:42:33 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:42:33 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: ve 
+19:42:34 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:42:34 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:42:34 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: Move
+19:42:35 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:42:35 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:42:35 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  Mo
+19:42:36 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:42:36 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:42:36 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: ve 
+19:42:37 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:42:37 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:42:37 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: Move
+19:42:38 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:42:38 DEBUG [com.goldasil.pjv.communication.Receiver] - before decoding
+19:42:38 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  Mo
+19:48:16 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:48:16 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:48:17 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:48:17 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:48:18 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:48:18 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:48:19 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:48:19 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:48:20 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:48:20 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:48:21 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:48:21 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:48:22 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:48:22 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:48:23 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:48:23 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Move
+19:49:20 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:49:20 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: 12:04:48 INFO  [com.goldasil.pjv.Main] - Started Main in 5.305 seconds (JVM running for 6.187)
+12:04:48 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:04:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:04:58 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 3
+12:04:59 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 3
+12:04:59 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 11, stock: [Card: Eight, Acorns, Card: Nine, Acorns, Card: King, Leaves, Card: Overknave, Hearts, Card: Ten, Leaves, Card: Ten, Acorns, Card: Underknave, Acorns, Card: King, Bells, Card: Seven, Bells, Card: Nine, Bells, Card: Seven, Hearts]
+19:49:21 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:49:21 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: 12:04:48 INFO  [com.goldasil.pjv.Main] - Started Main in 5.305 seconds (JVM running for 6.187)
+12:04:48 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:04:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:04:58 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 3
+12:04:59 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 3
+12:04:59 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 11, stock: [Card: Eight, Acorns, Card: Nine, Acorns, Card: King, Leaves, Card: Overknave, Hearts, Card: Ten, Leaves, Card: Ten, Acorns, Card: Underknave, Acorns, Card: King, Bells, Card: Seven, Bells, Card: Nine, Bells, Card: Seven, Hearts]
+19:49:22 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:49:22 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: 12:04:48 INFO  [com.goldasil.pjv.Main] - Started Main in 5.305 seconds (JVM running for 6.187)
+12:04:48 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:04:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:04:58 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 3
+12:04:59 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 3
+12:04:59 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 11, stock: [Card: Eight, Acorns, Card: Nine, Acorns, Card: King, Leaves, Card: Overknave, Hearts, Card: Ten, Leaves, Card: Ten, Acorns, Card: Underknave, Acorns, Card: King, Bells, Card: Seven, Bells, Card: Nine, Bells, Card: Seven, Hearts]
+19:49:23 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:49:23 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: 12:04:48 INFO  [com.goldasil.pjv.Main] - Started Main in 5.305 seconds (JVM running for 6.187)
+12:04:48 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:04:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:04:58 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 3
+12:04:59 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 3
+12:04:59 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 11, stock: [Card: Eight, Acorns, Card: Nine, Acorns, Card: King, Leaves, Card: Overknave, Hearts, Card: Ten, Leaves, Card: Ten, Acorns, Card: Underknave, Acorns, Card: King, Bells, Card: Seven, Bells, Card: Nine, Bells, Card: Seven, Hearts]
+19:49:24 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:49:24 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: 12:04:48 INFO  [com.goldasil.pjv.Main] - Started Main in 5.305 seconds (JVM running for 6.187)
+12:04:48 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:04:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:04:58 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 3
+12:04:59 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 3
+12:04:59 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 11, stock: [Card: Eight, Acorns, Card: Nine, Acorns, Card: King, Leaves, Card: Overknave, Hearts, Card: Ten, Leaves, Card: Ten, Acorns, Card: Underknave, Acorns, Card: King, Bells, Card: Seven, Bells, Card: Nine, Bells, Card: Seven, Hearts]
+19:49:25 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:49:25 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: 12:04:48 INFO  [com.goldasil.pjv.Main] - Started Main in 5.305 seconds (JVM running for 6.187)
+12:04:48 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:04:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:04:58 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 3
+12:04:59 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 3
+12:04:59 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 11, stock: [Card: Eight, Acorns, Card: Nine, Acorns, Card: King, Leaves, Card: Overknave, Hearts, Card: Ten, Leaves, Card: Ten, Acorns, Card: Underknave, Acorns, Card: King, Bells, Card: Seven, Bells, Card: Nine, Bells, Card: Seven, Hearts]
+19:49:26 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:49:26 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: 12:04:48 INFO  [com.goldasil.pjv.Main] - Started Main in 5.305 seconds (JVM running for 6.187)
+12:04:48 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:04:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:04:58 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 3
+12:04:59 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 3
+12:04:59 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 11, stock: [Card: Eight, Acorns, Card: Nine, Acorns, Card: King, Leaves, Card: Overknave, Hearts, Card: Ten, Leaves, Card: Ten, Acorns, Card: Underknave, Acorns, Card: King, Bells, Card: Seven, Bells, Card: Nine, Bells, Card: Seven, Hearts]
+19:55:16 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:16 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  MO
+19:55:17 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:17 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: VE 
+19:55:18 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:18 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+19:55:18 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+19:55:19 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:19 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  MO
+19:55:20 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:20 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: VE 
+19:55:21 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:21 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+19:55:21 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+19:55:22 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:22 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  MO
+19:55:23 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:23 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: VE 
+19:55:24 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:24 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+19:55:24 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+19:55:25 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:25 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  MO
+19:55:26 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:26 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: VE 
+19:55:27 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:27 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+19:55:27 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+19:55:28 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:28 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  MO
+19:55:29 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:29 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: VE 
+19:55:30 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:30 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+19:55:30 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+19:55:31 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:31 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  MO
+19:55:32 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:55:32 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: VE 
+19:56:18 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:56:18 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  MO
+19:56:19 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:56:19 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: VEHi
+19:56:20 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:56:20 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  the
+19:56:21 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:56:21 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: re 
+19:56:22 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:56:22 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+19:59:45 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:59:45 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type:  MOV
+19:59:46 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:59:46 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: EHi t
+19:59:47 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:59:47 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: here 
+19:59:48 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+19:59:48 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:11:09 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:11:09 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi there
+20:11:10 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:11:10 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi there
+20:11:11 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:11:11 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi there
+20:11:12 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:11:12 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi there
+20:11:13 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:11:13 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi there
+20:11:14 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:11:14 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi there
+20:12:15 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:12:15 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi
+20:12:16 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:12:16 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi
+20:12:17 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:12:17 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi
+20:12:18 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:12:18 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: VEHi
+20:12:52 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:12:52 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+20:12:53 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:12:53 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+20:12:54 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:12:54 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+20:12:55 DEBUG [com.goldasil.pjv.communication.Receiver] - New message received.
+20:12:55 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: MOVE
+20:13:44 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Hi there
+20:13:45 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Hi there
+20:13:46 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Hi there
+20:13:47 DEBUG [com.goldasil.pjv.communication.Receiver] - New message: Hi there
+20:19:39 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:19:39 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:19:40 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:19:40 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:19:41 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:19:41 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:22:15 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:22:15 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:22:16 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:22:16 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:22:17 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:22:17 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:22:18 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:22:18 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:22:19 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:22:19 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:22:20 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:22:20 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:22:21 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:22:21 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:23:37 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 
+20:23:37 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:23:37 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:23:38 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:23:38 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:23:39 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:23:39 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:23:40 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:23:40 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:24:04 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 
+20:24:04 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:24:04 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:24:05 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:24:05 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:24:06 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:24:06 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:23 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 
+20:35:23 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:23 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:24 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:24 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:25 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:25 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:26 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:26 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:27 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:27 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:28 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:28 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:29 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:29 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:30 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:30 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:31 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:31 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:32 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:32 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:33 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:33 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:34 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:34 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:35 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:35 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:36 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:36 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:37 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:37 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:38 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:38 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:39 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:39 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:40 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:40 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:41 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:41 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:42 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:42 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:43 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:43 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:35:44 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:35:44 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:17 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 
+20:36:17 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:17 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:18 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:18 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:19 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:19 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:20 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:20 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:21 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:21 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:22 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:22 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:23 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:23 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:24 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:24 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:25 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:25 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:26 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:26 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+20:36:27 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+20:36:27 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:24 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:24 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:25 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 
+21:36:25 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:25 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:26 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 
+21:36:26 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:26 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:27 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 
+21:36:27 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:27 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:28 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 
+21:36:28 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:28 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:36 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:36 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:37 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 5001
+21:36:37 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:37 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:38 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 5001
+21:36:38 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:38 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+21:36:39 DEBUG [com.goldasil.pjv.communication.Receiver] - sender on port: 5001
+21:36:39 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+21:36:39 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+23:17:34 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:17:34 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hi there
+23:21:07 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:22:42 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:22:43 DEBUG [com.goldasil.pjv.communication.Sender] - isNewToSend
+23:24:31 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:24:32 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+23:24:32 DEBUG [com.goldasil.pjv.communication.Sender] - isNewToSend
+23:24:32 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - [ClientComObj{clientSocket=Socket[addr=/192.168.0.101,port=5001,localport=5556], ipAddress='null', port=5001, playerID=0}]
+23:25:17 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:25:18 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+23:25:18 DEBUG [com.goldasil.pjv.communication.Sender] - isNewToSend
+23:25:18 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - [ClientComObj{clientSocket=Socket[addr=/192.168.0.101,port=5001,localport=5556], ipAddress='null', port=5001, playerID=1}]
+23:26:30 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:26:30 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+23:26:30 DEBUG [com.goldasil.pjv.communication.Sender] - isNewToSend
+23:26:30 DEBUG [com.goldasil.pjv.communication.Sender] - isNewToSend
+23:26:30 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+23:26:30 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - [ClientComObj{clientSocket=Socket[addr=/192.168.0.101,port=5002,localport=5556], ipAddress='null', port=5002, playerID=1}, ClientComObj{clientSocket=Socket[addr=/192.168.0.101,port=5001,localport=5556], ipAddress='null', port=5001, playerID=2}]
+23:33:04 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:33:05 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+23:33:13 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:33:14 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+23:33:14 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - [ClientComObj{clientSocket=Socket[addr=/192.168.0.101,port=5001,localport=5556], ipAddress='null', port=5001, playerID=1}]
+23:34:40 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:34:40 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:34:40 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+23:34:40 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:34:40 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - [ClientComObj{clientSocket=Socket[addr=/192.168.0.101,port=5001,localport=5556], ipAddress='null', port=5001, playerID=1}]
+23:44:45 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Listening for clients has started. Waiting for connection ...
+23:44:45 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - Match
+23:44:45 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:44:45 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:44:45 DEBUG [com.goldasil.pjv.communication.ChannelGetClients] - [ClientComObj{clientSocket=Socket[addr=/192.168.0.101,port=5001,localport=5556], ipAddress='null', port=5001, playerID=1}]
+23:45:29 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:45:29 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:45:29 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:45:29 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:45:30 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:45:30 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:46:04 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:46:04 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:46:04 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:46:04 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:46:05 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:46:05 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:46:17 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:46:17 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:46:17 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:46:17 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:46:18 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:46:18 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:47:45 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:47:45 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:47:45 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:45 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:47:46 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:47:46 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:46 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:47:47 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:47:47 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:47 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:47:48 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:48 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:47:48 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:47:49 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:49 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:47:49 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:47:50 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:50 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:47:50 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:47:51 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:47:51 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:51 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:47:52 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:52 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:47:52 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:47:53 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:47:53 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:53 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:47:54 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:47:54 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:54 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:47:55 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:47:55 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:47:55 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:49:11 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:49:11 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:49:11 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:49:11 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:49:11 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:49:12 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:49:12 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:49:12 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:49:12 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:49:13 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:49:13 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:49:13 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:49:13 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:49:14 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:49:14 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:49:14 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:49:14 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:49:15 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:49:15 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:49:15 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:49:15 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:50:40 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 2
+23:50:40 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:50:40 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:50:40 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:50:40 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:50:40 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:50:41 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:50:41 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:50:41 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 2
+23:50:41 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:50:41 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:50:41 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:50:42 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:50:42 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:50:42 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 1
+23:50:42 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:50:42 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:50:43 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:50:43 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:50:43 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:50:43 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:50:43 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:50:44 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:50:44 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:50:44 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:50:45 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 1
+23:50:45 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:50:45 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:50:45 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:50:45 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:52:26 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 2
+23:52:26 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:52:26 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:52:26 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:52:26 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello world
+23:52:26 DEBUG [com.goldasil.pjv.communication.Sender] - length: 0
+23:52:27 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:27 DEBUG [com.goldasil.pjv.communication.Receiver] - decoded type: MOVE
+23:52:27 DEBUG [com.goldasil.pjv.communication.Receiver] - messageBody: Hello there
+23:52:28 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:29 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:30 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:31 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:32 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:33 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:34 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:35 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:36 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:37 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:38 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:39 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:40 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:41 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:42 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:43 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:44 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:45 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:46 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:52:47 DEBUG [com.goldasil.pjv.communication.Sender] - upper, length: 0
+23:57:56 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:57:56 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:58:53 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:58:53 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:58:53 DEBUG [com.goldasil.pjv.communication.ServerListener] - decoded type: MOVE
+23:58:53 DEBUG [com.goldasil.pjv.communication.ServerListener] - messageBody: Hello world
+23:58:54 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:59:19 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:59:19 DEBUG [com.goldasil.pjv.communication.ServerListener] - decoded type: MOVE
+23:59:19 DEBUG [com.goldasil.pjv.communication.ServerListener] - messageBody: Hello world
+23:59:19 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+23:59:19 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:59:44 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+23:59:44 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello there has been sent
+00:00:57 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 19868 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:00:57 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:00:57 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:01:00 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:01:00 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:01:00 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:01:00 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:01:00 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:01:02 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:01:02 INFO  [com.goldasil.pjv.Main] - Started Main in 6.434 seconds (JVM running for 7.273)
+00:01:02 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:01:03 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:01:14 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 3
+00:01:23 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 3
+00:01:23 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 11, stock: [Card: Underknave, Acorns, Card: King, Leaves, Card: Overknave, Acorns, Card: King, Acorns, Card: Overknave, Leaves, Card: Underknave, Hearts, Card: King, Hearts, Card: Nine, Hearts, Card: Eight, Leaves, Card: Overknave, Bells, Card: Seven, Acorns]
+00:01:23 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Overknave, Hearts, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Overknave, Hearts], drawCards=0, requestedSuit=ACORNS}
+00:01:23 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+00:01:23 DEBUG [com.goldasil.pjv.views.GameView] - pane is null
+00:01:23 DEBUG [com.goldasil.pjv.views.GameView] - Block start() entered.
+00:01:23 DEBUG [com.goldasil.pjv.views.GameView] - initializePlayersSection: players: [Player{cards=[Card: Ten, Acorns, Card: King, Bells, Card: Nine, Bells, Card: Nine, Leaves], cardsCount=4, playerID=0}, Player{cards=[Card: Seven, Leaves, Card: Ten, Hearts, Card: Eight, Hearts, Card: Ten, Bells], cardsCount=4, playerID=1}, Player{cards=[Card: Nine, Acorns, Card: Underknave, Bells, Card: Underknave, Leaves, Card: Eight, Bells], cardsCount=4, playerID=2}, Player{cards=[Card: Seven, Bells, Card: Eight, Acorns, Card: Ten, Leaves, Card: Seven, Hearts], cardsCount=4, playerID=3}], this player id: 0
+00:01:23 DEBUG [com.goldasil.pjv.views.GameLayout] - initialize PlayersBox
+00:01:23 DEBUG [com.goldasil.pjv.views.GameView] - Updating PlayersBox with data: Player{cards=[Card: Ten, Acorns, Card: King, Bells, Card: Nine, Bells, Card: Nine, Leaves], cardsCount=4, playerID=0}, MoveDTO{upcard=Card: Overknave, Hearts, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Overknave, Hearts], drawCards=0, requestedSuit=ACORNS}
+00:01:24 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: Overknave, Hearts, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Overknave, Hearts], drawCards=0, requestedSuit=ACORNS}
+00:01:24 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+00:01:24 DEBUG [com.goldasil.pjv.views.GameView] - Showing scene.
+00:01:35 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 15108 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:01:35 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:01:35 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:01:38 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:01:38 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:01:38 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:01:38 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:01:39 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:01:41 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:01:41 INFO  [com.goldasil.pjv.Main] - Started Main in 6.991 seconds (JVM running for 8.404)
+00:01:41 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:01:41 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:07:45 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 22172 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:07:45 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:07:45 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:07:48 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:07:48 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:07:48 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:07:48 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:07:48 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:07:50 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:07:50 INFO  [com.goldasil.pjv.Main] - Started Main in 6.293 seconds (JVM running for 7.134)
+00:07:50 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:07:51 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:08:18 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 9480 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:08:18 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:08:18 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:08:21 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:08:21 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:08:21 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:08:21 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:08:22 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:08:24 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:08:24 INFO  [com.goldasil.pjv.Main] - Started Main in 6.467 seconds (JVM running for 7.738)
+00:08:24 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:08:24 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:10:04 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 18064 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:10:04 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:10:04 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:10:07 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:10:07 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:10:07 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:10:07 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:10:07 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:10:10 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:10:10 INFO  [com.goldasil.pjv.Main] - Started Main in 7.178 seconds (JVM running for 8.151)
+00:10:10 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:10:11 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:10:16 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 2
+00:10:16 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 2
+00:10:16 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 15, stock: [Card: Overknave, Acorns, Card: Nine, Bells, Card: Eight, Hearts, Card: Overknave, Leaves, Card: Seven, Bells, Card: Underknave, Leaves, Card: Nine, Leaves, Card: Seven, Acorns, Card: Overknave, Bells, Card: Underknave, Bells, Card: Ten, Bells, Card: Eight, Acorns, Card: King, Acorns, Card: Underknave, Hearts, Card: Eight, Leaves]
+00:10:16 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: King, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+00:10:16 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+00:10:16 DEBUG [com.goldasil.pjv.views.GameView] - pane is null
+00:10:16 DEBUG [com.goldasil.pjv.views.GameView] - Block start() entered.
+00:10:16 DEBUG [com.goldasil.pjv.views.GameView] - initializePlayersSection: players: [Player{cards=[Card: Ten, Acorns, Card: King, Leaves, Card: Nine, Acorns, Card: Seven, Hearts], cardsCount=4, playerID=0}, Player{cards=[Card: Seven, Leaves, Card: Overknave, Hearts, Card: Eight, Bells, Card: King, Hearts], cardsCount=4, playerID=1}, Player{cards=[Card: Ten, Hearts, Card: Underknave, Acorns, Card: Ten, Leaves, Card: Nine, Hearts], cardsCount=4, playerID=2}], this player id: 0
+00:10:16 DEBUG [com.goldasil.pjv.views.GameLayout] - initialize PlayersBox
+00:10:16 DEBUG [com.goldasil.pjv.views.GameView] - Updating PlayersBox with data: Player{cards=[Card: Ten, Acorns, Card: King, Leaves, Card: Nine, Acorns, Card: Seven, Hearts], cardsCount=4, playerID=0}, MoveDTO{upcard=Card: King, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+00:10:17 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: King, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+00:10:17 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+00:10:17 DEBUG [com.goldasil.pjv.views.GameView] - Showing scene.
+00:10:27 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 19276 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:10:27 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:10:27 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:10:30 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:10:30 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:10:30 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:10:30 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:10:31 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:10:33 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:10:33 INFO  [com.goldasil.pjv.Main] - Started Main in 6.892 seconds (JVM running for 8.684)
+00:10:33 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:10:34 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:13:50 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 1
+00:13:50 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Seven, Bells, Card: Eight, Bells, Card: Overknave, Bells, Card: Seven, Hearts, Card: Underknave, Bells, Card: King, Hearts, Card: Nine, Leaves, Card: King, Bells, Card: Overknave, Leaves, Card: Ten, Leaves, Card: Eight, Hearts, Card: Underknave, Acorns, Card: King, Leaves, Card: Seven, Leaves, Card: Overknave, Acorns, Card: Eight, Acorns, Card: Overknave, Hearts, Card: Underknave, Hearts, Card: Ten, Acorns]
+00:13:50 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Nine, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+00:13:50 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+00:13:50 DEBUG [com.goldasil.pjv.views.GameView] - pane is null
+00:13:50 DEBUG [com.goldasil.pjv.views.GameView] - Block start() entered.
+00:13:50 DEBUG [com.goldasil.pjv.views.GameView] - initializePlayersSection: players: [Player{cards=[Card: Seven, Acorns, Card: Nine, Acorns, Card: Ten, Hearts, Card: Eight, Leaves], cardsCount=4, playerID=0}, Player{cards=[Card: Nine, Hearts, Card: Ten, Bells, Card: Underknave, Leaves, Card: King, Acorns], cardsCount=4, playerID=1}], this player id: 0
+00:13:50 DEBUG [com.goldasil.pjv.views.GameLayout] - initialize PlayersBox
+00:13:50 DEBUG [com.goldasil.pjv.views.GameView] - Updating PlayersBox with data: Player{cards=[Card: Seven, Acorns, Card: Nine, Acorns, Card: Ten, Hearts, Card: Eight, Leaves], cardsCount=4, playerID=0}, MoveDTO{upcard=Card: Nine, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+00:13:51 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: Nine, Bells, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+00:13:51 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+00:13:51 DEBUG [com.goldasil.pjv.views.GameView] - Showing scene.
+00:32:00 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 9436 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:32:00 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:32:00 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:32:02 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:32:02 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:32:02 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:32:03 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:32:03 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:32:05 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:32:05 INFO  [com.goldasil.pjv.Main] - Started Main in 5.917 seconds (JVM running for 6.63)
+00:32:05 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:32:06 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:32:17 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 2
+00:33:10 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 12880 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:33:10 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:33:10 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:33:13 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:33:13 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:33:13 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:33:13 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:33:13 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:33:15 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:33:15 INFO  [com.goldasil.pjv.Main] - Started Main in 5.979 seconds (JVM running for 6.817)
+00:33:15 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:33:16 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:33:21 INFO  [com.goldasil.pjv.views.GameView] - number of  opponents: 1
+00:33:21 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: King, Bells, Card: Seven, Hearts, Card: Seven, Leaves, Card: Nine, Leaves, Card: Eight, Leaves, Card: Nine, Hearts, Card: Overknave, Leaves, Card: Seven, Bells, Card: King, Acorns, Card: Overknave, Bells, Card: Overknave, Acorns, Card: Eight, Bells, Card: Underknave, Leaves, Card: Ten, Bells, Card: Seven, Acorns, Card: Ten, Acorns, Card: Eight, Acorns, Card: Underknave, Hearts, Card: Underknave, Acorns]
+00:33:21 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Overknave, Hearts, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Overknave, Hearts], drawCards=0, requestedSuit=ACORNS}
+00:33:21 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+00:33:21 DEBUG [com.goldasil.pjv.views.GameView] - pane is null
+00:33:21 DEBUG [com.goldasil.pjv.views.GameView] - Block start() entered.
+00:33:21 DEBUG [com.goldasil.pjv.views.GameView] - initializePlayersSection: players: [Player{cards=[Card: King, Leaves, Card: Nine, Bells, Card: Ten, Leaves, Card: Ten, Hearts], cardsCount=4, playerID=0}, Player{cards=[Card: Eight, Hearts, Card: Nine, Acorns, Card: Underknave, Bells, Card: King, Hearts], cardsCount=4, playerID=1}], this player id: 0
+00:33:21 DEBUG [com.goldasil.pjv.views.GameLayout] - initialize PlayersBox
+00:33:21 DEBUG [com.goldasil.pjv.views.GameView] - Updating PlayersBox with data: Player{cards=[Card: King, Leaves, Card: Nine, Bells, Card: Ten, Leaves, Card: Ten, Hearts], cardsCount=4, playerID=0}, MoveDTO{upcard=Card: Overknave, Hearts, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Overknave, Hearts], drawCards=0, requestedSuit=ACORNS}
+00:33:21 INFO  [com.goldasil.pjv.views.GameView] - game.getCurrentMoveDTO(): MoveDTO{upcard=Card: Overknave, Hearts, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Overknave, Hearts], drawCards=0, requestedSuit=ACORNS}
+00:33:21 DEBUG [com.goldasil.pjv.views.GameView] - end of the update GUI
+00:33:21 DEBUG [com.goldasil.pjv.views.GameView] - Showing scene.
+00:33:28 DEBUG [com.goldasil.pjv.views.GameView] - saveAndContinue was chosen
+00:49:14 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 20316 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:49:15 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:49:15 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:49:17 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:49:17 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:49:17 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:49:17 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:49:18 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:49:21 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:49:21 INFO  [com.goldasil.pjv.Main] - Started Main in 6.734 seconds (JVM running for 7.483)
+00:49:21 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:49:21 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:49:42 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 16628 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:49:42 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:49:42 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:49:45 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:49:45 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:49:45 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:49:45 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:49:46 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:49:49 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:49:49 INFO  [com.goldasil.pjv.Main] - Started Main in 7.457 seconds (JVM running for 8.32)
+00:49:49 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:49:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:50:40 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 13264 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:50:40 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:50:40 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:50:42 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:50:42 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:50:42 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:50:43 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:50:43 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:50:45 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:50:45 INFO  [com.goldasil.pjv.Main] - Started Main in 6.098 seconds (JVM running for 6.966)
+00:50:45 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:50:46 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:52:25 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 20532 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:52:25 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:52:25 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:52:27 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:52:27 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:52:27 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:52:28 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:52:28 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:52:30 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:52:30 INFO  [com.goldasil.pjv.Main] - Started Main in 6.113 seconds (JVM running for 6.936)
+00:52:30 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:52:31 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:53:18 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 10388 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:53:18 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:53:18 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:53:21 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:53:21 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:53:21 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:53:21 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:53:22 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:53:24 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:53:24 INFO  [com.goldasil.pjv.Main] - Started Main in 6.195 seconds (JVM running for 6.974)
+00:53:24 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:53:24 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:54:00 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 23520 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:54:00 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:54:00 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:54:02 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:54:02 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:54:02 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:54:02 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:54:03 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:54:05 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:54:05 INFO  [com.goldasil.pjv.Main] - Started Main in 6.001 seconds (JVM running for 6.895)
+00:54:05 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:54:05 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:54:43 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 20724 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:54:43 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:54:43 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:54:47 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:54:47 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:54:47 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:54:48 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:54:49 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:54:52 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:54:52 INFO  [com.goldasil.pjv.Main] - Started Main in 9.19 seconds (JVM running for 10.413)
+00:54:52 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:54:52 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:55:32 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+00:55:51 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 17532 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+00:55:51 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+00:55:51 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+00:55:54 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+00:55:54 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+00:55:54 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+00:55:54 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+00:55:55 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+00:55:57 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+00:55:57 INFO  [com.goldasil.pjv.Main] - Started Main in 6.388 seconds (JVM running for 7.424)
+00:55:57 INFO  [com.goldasil.pjv.Main] - Main method has started.
+00:55:57 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+00:56:10 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:30:08 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 11880 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+01:30:08 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+01:30:08 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+01:30:11 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+01:30:11 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+01:30:11 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+01:30:11 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+01:30:12 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+01:30:14 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+01:30:14 INFO  [com.goldasil.pjv.Main] - Started Main in 6.85 seconds (JVM running for 7.732)
+01:30:14 INFO  [com.goldasil.pjv.Main] - Main method has started.
+01:30:15 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+01:30:32 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:30:39 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 18992 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+01:30:39 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+01:30:39 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+01:30:43 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+01:30:43 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+01:30:43 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+01:30:43 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+01:30:44 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+01:30:45 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+01:30:46 INFO  [com.goldasil.pjv.Main] - Started Main in 6.862 seconds (JVM running for 7.676)
+01:30:46 INFO  [com.goldasil.pjv.Main] - Main method has started.
+01:30:46 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+01:30:57 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:31:38 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 23076 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+01:31:38 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+01:31:38 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+01:31:41 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+01:31:41 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+01:31:41 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+01:31:42 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+01:31:42 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+01:31:45 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+01:31:45 INFO  [com.goldasil.pjv.Main] - Started Main in 7.144 seconds (JVM running for 7.941)
+01:31:45 INFO  [com.goldasil.pjv.Main] - Main method has started.
+01:31:46 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+01:32:11 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 11108 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+01:32:11 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+01:32:11 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+01:32:13 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+01:32:13 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+01:32:13 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+01:32:14 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+01:32:14 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+01:32:17 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+01:32:17 INFO  [com.goldasil.pjv.Main] - Started Main in 7.149 seconds (JVM running for 8.173)
+01:32:17 INFO  [com.goldasil.pjv.Main] - Main method has started.
+01:32:17 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+01:32:29 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:32:29 DEBUG [com.goldasil.pjv.views.GameView] - Valid validation on client input fields.
+01:33:23 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 12708 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+01:33:23 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+01:33:23 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+01:33:26 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+01:33:26 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+01:33:26 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+01:33:26 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+01:33:27 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+01:33:29 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+01:33:30 INFO  [com.goldasil.pjv.Main] - Started Main in 6.816 seconds (JVM running for 7.647)
+01:33:30 INFO  [com.goldasil.pjv.Main] - Main method has started.
+01:33:30 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+01:33:35 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:33:35 DEBUG [com.goldasil.pjv.views.GameView] - Valid validation on client input fields.
+01:34:36 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 3784 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+01:34:36 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+01:34:36 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+01:34:39 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+01:34:39 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+01:34:39 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+01:34:39 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+01:34:40 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+01:34:42 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+01:34:42 INFO  [com.goldasil.pjv.Main] - Started Main in 6.834 seconds (JVM running for 7.584)
+01:34:42 INFO  [com.goldasil.pjv.Main] - Main method has started.
+01:34:43 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+01:34:48 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:34:48 DEBUG [com.goldasil.pjv.views.GameView] - Valid validation on client input fields.
+01:36:30 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 14548 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+01:36:30 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+01:36:30 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+01:36:33 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+01:36:33 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+01:36:33 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+01:36:33 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+01:36:33 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+01:36:36 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+01:36:36 INFO  [com.goldasil.pjv.Main] - Started Main in 7.167 seconds (JVM running for 8.805)
+01:36:36 INFO  [com.goldasil.pjv.Main] - Main method has started.
+01:36:36 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+01:36:43 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:36:43 DEBUG [com.goldasil.pjv.views.GameView] - Invalid validation on client input fields.
+01:36:52 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:36:52 DEBUG [com.goldasil.pjv.views.GameView] - Invalid validation on client input fields.
+01:37:03 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+01:37:03 DEBUG [com.goldasil.pjv.views.GameView] - Valid validation on client input fields.
+01:37:13 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 13188 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+01:37:13 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+01:37:13 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+01:37:15 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+01:37:15 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+01:37:15 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+01:37:15 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+01:37:16 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+01:37:17 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+01:37:18 INFO  [com.goldasil.pjv.Main] - Started Main in 5.746 seconds (JVM running for 6.731)
+01:37:18 INFO  [com.goldasil.pjv.Main] - Main method has started.
+01:37:18 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+10:19:14 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 16428 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+10:19:14 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+10:19:14 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+10:19:17 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+10:19:17 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+10:19:17 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+10:19:17 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+10:19:18 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+10:19:20 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+10:19:20 INFO  [com.goldasil.pjv.Main] - Started Main in 6.912 seconds (JVM running for 7.982)
+10:19:20 INFO  [com.goldasil.pjv.Main] - Main method has started.
+10:19:20 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+10:19:27 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 2
+11:27:45 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 15760 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+11:27:45 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+11:27:45 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+11:27:48 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+11:27:48 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+11:27:48 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+11:27:48 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+11:27:49 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+11:27:51 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+11:27:51 INFO  [com.goldasil.pjv.Main] - Started Main in 6.339 seconds (JVM running for 7.405)
+11:27:51 INFO  [com.goldasil.pjv.Main] - Main method has started.
+11:27:51 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+11:27:57 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Seven, Leaves, Card: Nine, Leaves, Card: Ten, Bells, Card: Ten, Leaves, Card: King, Hearts, Card: Underknave, Bells, Card: Ten, Acorns, Card: King, Bells, Card: Underknave, Acorns, Card: Seven, Bells, Card: Underknave, Hearts, Card: Nine, Acorns, Card: Overknave, Hearts, Card: Eight, Leaves, Card: Ten, Hearts, Card: Eight, Bells, Card: King, Acorns, Card: Underknave, Leaves, Card: Seven, Hearts]
+11:27:57 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Nine, Hearts, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+11:27:57 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+11:30:37 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 12196 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+11:30:37 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+11:30:37 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+11:30:40 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+11:30:40 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+11:30:40 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+11:30:40 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+11:30:41 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+11:30:43 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+11:30:43 INFO  [com.goldasil.pjv.Main] - Started Main in 5.966 seconds (JVM running for 6.659)
+11:30:43 INFO  [com.goldasil.pjv.Main] - Main method has started.
+11:30:43 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+11:30:47 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: King, Hearts, Card: Ten, Leaves, Card: Eight, Bells, Card: Nine, Acorns, Card: Ten, Acorns, Card: King, Bells, Card: Underknave, Acorns, Card: Seven, Hearts, Card: Overknave, Bells, Card: Underknave, Bells, Card: Eight, Acorns, Card: Overknave, Acorns, Card: King, Acorns, Card: Seven, Acorns, Card: Overknave, Leaves, Card: King, Leaves, Card: Ten, Bells, Card: Nine, Bells, Card: Seven, Bells]
+11:30:47 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Eight, Leaves, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+11:30:47 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+11:31:41 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 2848 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+11:31:41 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+11:31:41 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+11:31:44 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+11:31:44 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+11:31:44 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+11:31:44 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+11:31:44 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+11:31:47 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+11:31:47 INFO  [com.goldasil.pjv.Main] - Started Main in 6.727 seconds (JVM running for 7.57)
+11:31:47 INFO  [com.goldasil.pjv.Main] - Main method has started.
+11:31:47 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+11:31:50 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Nine, Bells, Card: Eight, Hearts, Card: Ten, Acorns, Card: Seven, Hearts, Card: Nine, Hearts, Card: Underknave, Leaves, Card: Ten, Hearts, Card: Underknave, Hearts, Card: Seven, Acorns, Card: Nine, Acorns, Card: King, Bells, Card: Overknave, Hearts, Card: Overknave, Bells, Card: Seven, Leaves, Card: Overknave, Leaves, Card: Eight, Acorns, Card: Underknave, Acorns, Card: Ten, Bells, Card: Eight, Bells]
+11:31:50 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: King, Leaves, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+11:31:50 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+11:37:20 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 3336 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+11:37:20 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+11:37:20 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+11:37:23 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+11:37:23 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+11:37:23 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+11:37:23 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+11:37:24 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+11:37:26 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+11:37:27 INFO  [com.goldasil.pjv.Main] - Started Main in 7.26 seconds (JVM running for 8.135)
+11:37:27 INFO  [com.goldasil.pjv.Main] - Main method has started.
+11:37:27 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+11:37:33 DEBUG [com.goldasil.pjv.views.GameView] - Starting listening for clients.
+11:37:33 DEBUG [com.goldasil.pjv.views.GameView] - Starting initializing the game.
+11:37:33 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Underknave, Hearts, Card: King, Bells, Card: Nine, Bells, Card: Ten, Hearts, Card: Eight, Bells, Card: Seven, Hearts, Card: Nine, Leaves, Card: Overknave, Leaves, Card: Ten, Bells, Card: Eight, Acorns, Card: Underknave, Acorns, Card: Overknave, Hearts, Card: Nine, Acorns, Card: Overknave, Bells, Card: Underknave, Leaves, Card: King, Acorns, Card: Seven, Bells, Card: Underknave, Bells, Card: Eight, Leaves]
+11:37:33 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Overknave, Acorns, penaltyForSevens=0, states=[], moveType=PLAY, move=[Card: Overknave, Acorns], drawCards=0, requestedSuit=LEAVES}
+11:37:33 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+11:37:45 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 17380 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+11:37:45 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+11:37:45 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+11:37:47 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+11:37:47 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+11:37:47 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+11:37:48 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+11:37:48 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+11:37:50 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+11:37:50 INFO  [com.goldasil.pjv.Main] - Started Main in 5.758 seconds (JVM running for 6.452)
+11:37:50 INFO  [com.goldasil.pjv.Main] - Main method has started.
+11:37:51 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+11:37:53 DEBUG [com.goldasil.pjv.views.GameView] - Starting listening for clients.
+11:37:53 DEBUG [com.goldasil.pjv.views.GameView] - Starting initializing the game.
+11:37:53 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Seven, Bells, Card: Underknave, Hearts, Card: Underknave, Acorns, Card: King, Acorns, Card: King, Hearts, Card: Overknave, Acorns, Card: Eight, Bells, Card: Ten, Hearts, Card: Eight, Leaves, Card: Ten, Acorns, Card: Seven, Acorns, Card: Overknave, Leaves, Card: King, Leaves, Card: Overknave, Hearts, Card: King, Bells, Card: Nine, Hearts, Card: Nine, Bells, Card: Nine, Acorns, Card: Underknave, Leaves]
+11:37:53 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Eight, Acorns, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+11:37:53 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+11:37:59 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 7436 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+11:37:59 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+11:37:59 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+11:38:02 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+11:38:02 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+11:38:02 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+11:38:02 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+11:38:03 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+11:38:05 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+11:38:05 INFO  [com.goldasil.pjv.Main] - Started Main in 6.414 seconds (JVM running for 7.247)
+11:38:05 INFO  [com.goldasil.pjv.Main] - Main method has started.
+11:38:06 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+11:38:52 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+11:38:52 DEBUG [com.goldasil.pjv.views.GameView] - Valid validation on client input fields.
+11:41:43 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 17316 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+11:41:43 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+11:41:43 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+11:41:45 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+11:41:45 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+11:41:45 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+11:41:45 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+11:41:46 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+11:41:48 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+11:41:48 INFO  [com.goldasil.pjv.Main] - Started Main in 6.225 seconds (JVM running for 7.028)
+11:41:48 INFO  [com.goldasil.pjv.Main] - Main method has started.
+11:41:49 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+11:42:10 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+11:42:10 DEBUG [com.goldasil.pjv.views.GameView] - Valid validation on client input fields.
+11:46:48 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 12856 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+11:46:48 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+11:46:48 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+11:46:51 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+11:46:51 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+11:46:51 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+11:46:51 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+11:46:52 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+11:46:54 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+11:46:54 INFO  [com.goldasil.pjv.Main] - Started Main in 5.816 seconds (JVM running for 7.279)
+11:46:54 INFO  [com.goldasil.pjv.Main] - Main method has started.
+11:46:54 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+11:47:12 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
+11:47:12 DEBUG [com.goldasil.pjv.views.GameView] - Valid validation on client input fields.
+11:47:12 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent

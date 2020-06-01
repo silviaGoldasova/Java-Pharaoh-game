@@ -25,8 +25,6 @@ public class Main {
 
         logger.info("Main method has started.");
 
-
-
         startUpPharaoh();
     }
 
