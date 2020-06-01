@@ -180,9 +180,10 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
     };
 
     public void getSidePlayers(){
-        ServerListener serverListener = new ServerListener(listeningPort, resource);
-        Thread serverListenerThread = new Thread(serverListener);
-        serverListenerThread.start();
+        logger.debug("getSidePlayers()");
+        ChannelGetClients clientsListener = new ChannelGetClients(view.getNewGame().getNumOfOpp(), listeningPort, resource);
+        Thread listenerThread = new Thread(clientsListener);
+        listenerThread.start();
     }
 
     private void sendMessage(ArrayList<ClientComObj> clientsList, String messageType, String messageBody) {

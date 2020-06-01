@@ -37,8 +37,9 @@ public class Sender implements Runnable {
         try {
             // connect to the client
 
-            InetAddress addr = InetAddress.getByName(destIpAddress);
-            clientSocket = new Socket(addr, destPort, addr, localPort);
+            //InetAddress addr = InetAddress.getByName(destIpAddress);
+            //clientSocket = new Socket(addr, destPort, addr, localPort);
+            clientSocket = new Socket(destIpAddress, destPort);
             out = new DataOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -55,6 +56,8 @@ public class Sender implements Runnable {
 
             if (resource.getTaskList().size() != 0) {
                 synchronized (resource) {
+
+                    logger.debug("Sending to: {}, {}, from {}, {}", clientSocket.getInetAddress().toString(), clientSocket.getPort(), clientSocket.getLocalAddress(), clientSocket.getLocalPort());
 
                     LinkedList<ComTask> tasks = resource.getTaskList();
                     for (ComTask task : new LinkedList<ComTask>(tasks)) {

@@ -226,8 +226,11 @@ public class GameView extends Application {
             GameLabel waitingLabel = new GameLabel("Waiting for other players...");
             optionsBox.getChildren().addAll(waitingLabel);
 
+            logger.debug("Waiting process.");
+
             GameControllerServerMultiplayer controller = new GameControllerServerMultiplayer(game, gameView);
             gameController = controller;
+
 
             logger.debug("Starting listening for clients.");
             controller.getSidePlayers();

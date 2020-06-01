@@ -3266,3 +3266,35 @@ Identify and stop the process that's listening on port 8181 or configure this ap
 13:01:18 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Overknave, Leaves, Card: Ten, Acorns, Card: Underknave, Leaves, Card: Seven, Bells, Card: Seven, Acorns, Card: Seven, Leaves, Card: Nine, Hearts, Card: Overknave, Hearts, Card: Underknave, Hearts, Card: Eight, Acorns, Card: Underknave, Bells, Card: Nine, Leaves, Card: Eight, Bells, Card: Ten, Bells, Card: Seven, Hearts, Card: Eight, Leaves, Card: Overknave, Acorns, Card: Overknave, Bells, Card: Nine, Bells]
 13:01:18 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: King, Leaves, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
 13:01:18 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+13:18:52 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 5780 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+13:18:52 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+13:18:52 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+13:18:54 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+13:18:54 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+13:18:54 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+13:18:54 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+13:18:55 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+13:18:57 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+13:18:57 INFO  [com.goldasil.pjv.Main] - Started Main in 5.827 seconds (JVM running for 6.524)
+13:18:57 INFO  [com.goldasil.pjv.Main] - Main method has started.
+13:18:57 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+13:20:49 DEBUG [com.goldasil.pjv.views.GameView] - Starting listening for clients.
+13:20:49 DEBUG [com.goldasil.pjv.views.GameView] - Starting initializing the game.
+13:20:49 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Ten, Acorns, Card: Nine, Leaves, Card: Eight, Acorns, Card: Nine, Hearts, Card: Seven, Acorns, Card: Overknave, Hearts, Card: King, Bells, Card: Underknave, Leaves, Card: Overknave, Acorns, Card: Eight, Hearts, Card: King, Leaves, Card: Underknave, Hearts, Card: Ten, Leaves, Card: Nine, Bells, Card: Ten, Bells, Card: Seven, Hearts, Card: Eight, Bells, Card: Seven, Bells, Card: King, Hearts]
+13:20:49 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Seven, Leaves, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+13:20:49 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+13:32:28 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 17960 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+13:32:28 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+13:32:28 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+13:34:48 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 18680 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+13:34:48 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+13:34:48 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+13:34:50 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+13:34:50 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+13:34:50 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+13:34:50 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+13:34:51 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+13:34:53 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+13:34:53 INFO  [com.goldasil.pjv.Main] - Started Main in 6.148 seconds (JVM running for 7.032)
+13:34:53 INFO  [com.goldasil.pjv.Main] - Main method has started.
+13:34:54 DEBUG [com.goldasil.pjv.Main] - View has been launched.
