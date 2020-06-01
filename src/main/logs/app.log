@@ -3218,3 +3218,51 @@ Identify and stop the process that's listening on port 8181 or configure this ap
 11:47:12 DEBUG [com.goldasil.pjv.views.GameView] - submitClientInfoHandler
 11:47:12 DEBUG [com.goldasil.pjv.views.GameView] - Valid validation on client input fields.
 11:47:12 DEBUG [com.goldasil.pjv.communication.Sender] - Message Hello world has been sent
+12:21:48 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 12580 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+12:21:48 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+12:21:48 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+12:21:51 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+12:21:51 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+12:21:51 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+12:21:51 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+12:21:51 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+12:21:53 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+12:21:54 INFO  [com.goldasil.pjv.Main] - Started Main in 5.8 seconds (JVM running for 6.656)
+12:21:54 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:21:54 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:55:58 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 19260 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+12:55:58 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+12:55:58 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+12:56:01 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+12:56:01 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+12:56:01 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+12:56:01 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+12:56:01 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+12:56:03 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+12:56:03 INFO  [com.goldasil.pjv.Main] - Started Main in 5.863 seconds (JVM running for 6.61)
+12:56:03 INFO  [com.goldasil.pjv.Main] - Main method has started.
+12:56:04 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+12:58:03 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 2
+12:58:06 INFO  [com.goldasil.pjv.views.GameView] - setNumOfOpp: 1
+12:58:06 DEBUG [com.goldasil.pjv.views.GameView] - Starting listening for clients.
+12:58:06 DEBUG [com.goldasil.pjv.views.GameView] - Starting initializing the game.
+12:58:06 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Ten, Acorns, Card: Eight, Acorns, Card: Ten, Hearts, Card: Ten, Bells, Card: Eight, Hearts, Card: King, Acorns, Card: Nine, Hearts, Card: King, Bells, Card: Eight, Leaves, Card: Seven, Acorns, Card: Underknave, Acorns, Card: Seven, Bells, Card: Overknave, Leaves, Card: Overknave, Hearts, Card: Eight, Bells, Card: Overknave, Bells, Card: Seven, Leaves, Card: King, Hearts, Card: Underknave, Hearts]
+12:58:06 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: Ten, Leaves, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+12:58:06 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.
+13:00:24 INFO  [com.goldasil.pjv.Main] - Starting Main on DESKTOP-8B065K5 with PID 13516 (C:\Users\sisag\IdeaProjects\goldasil\target\classes started by sisag in C:\Users\sisag\IdeaProjects\goldasil)
+13:00:24 DEBUG [com.goldasil.pjv.Main] - Running with Spring Boot v2.3.0.RELEASE, Spring v5.2.6.RELEASE
+13:00:24 INFO  [com.goldasil.pjv.Main] - No active profile set, falling back to default profiles: default
+13:00:27 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Initializing ProtocolHandler ["http-nio-8181"]
+13:00:27 INFO  [org.apache.catalina.core.StandardService] - Starting service [Tomcat]
+13:00:27 INFO  [org.apache.catalina.core.StandardEngine] - Starting Servlet engine: [Apache Tomcat/9.0.35]
+13:00:27 INFO  [org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/]] - Initializing Spring embedded WebApplicationContext
+13:00:27 DEBUG [org.jboss.logging] - Logging Provider: org.jboss.logging.Log4j2LoggerProvider
+13:00:29 INFO  [org.apache.coyote.http11.Http11NioProtocol] - Starting ProtocolHandler ["http-nio-8181"]
+13:00:29 INFO  [com.goldasil.pjv.Main] - Started Main in 5.84 seconds (JVM running for 6.618)
+13:00:29 INFO  [com.goldasil.pjv.Main] - Main method has started.
+13:00:30 DEBUG [com.goldasil.pjv.Main] - View has been launched.
+13:01:18 DEBUG [com.goldasil.pjv.views.GameView] - Starting listening for clients.
+13:01:18 DEBUG [com.goldasil.pjv.views.GameView] - Starting initializing the game.
+13:01:18 DEBUG [com.goldasil.pjv.models.GameModel] - stock size: 19, stock: [Card: Overknave, Leaves, Card: Ten, Acorns, Card: Underknave, Leaves, Card: Seven, Bells, Card: Seven, Acorns, Card: Seven, Leaves, Card: Nine, Hearts, Card: Overknave, Hearts, Card: Underknave, Hearts, Card: Eight, Acorns, Card: Underknave, Bells, Card: Nine, Leaves, Card: Eight, Bells, Card: Ten, Bells, Card: Seven, Hearts, Card: Eight, Leaves, Card: Overknave, Acorns, Card: Overknave, Bells, Card: Nine, Bells]
+13:01:18 DEBUG [com.goldasil.pjv.models.GameModel] - Prev moveDTO: MoveDTO{upcard=Card: King, Leaves, penaltyForSevens=0, states=[], moveType=DRAW, move=[], drawCards=1, requestedSuit=UNSPECIFIED}
+13:01:18 DEBUG [com.goldasil.pjv.models.GameModel] - Players and stock initialized.

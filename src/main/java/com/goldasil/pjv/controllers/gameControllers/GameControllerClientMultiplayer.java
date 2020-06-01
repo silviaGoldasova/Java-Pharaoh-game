@@ -61,7 +61,7 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
         Sender sender = new Sender(serverIpAddress, Integer.parseInt(serverPort), clientPort, resource);
         Thread senderThread = new Thread(sender);
         senderThread.start();
-        //resource.addTask(new ComTask(null, "MOVE", "Hello world"));
+        resource.addTask(new ComTask(null, "MOVE", "Hello world"));
 
     }
 
@@ -164,6 +164,7 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
      */
     public void initializeGame(GameModel gameInitInfo) {
         game = gameInitInfo;
+        logger.debug("Game initilizied");
     }
 
 

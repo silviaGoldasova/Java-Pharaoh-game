@@ -318,7 +318,6 @@ public class GameView extends Application {
             GameControllerClientMultiplayer controller = new GameControllerClientMultiplayer(game, gameView);
             gameController = controller;
             controller.initConnectionToServer(button);
-            controller.initializeGame();
         }
     };
 
