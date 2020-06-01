@@ -24,7 +24,6 @@ public class Main {
         SpringApplication.run(Main.class, args);
 
         logger.info("Main method has started.");
-
         startUpPharaoh();
     }
 

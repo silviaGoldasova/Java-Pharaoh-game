@@ -34,6 +34,11 @@ public class ControlButton extends Button {
         this.savedGameInfo = savedGameInfo;
     }
 
+    public void setAdditionalStyle(String text) {
+        String newStyle = "-fx-font-size: 1.5em; -fx-background-color: #faf0e6; -fx-border-width: 0px; -fx-background-radius: 10;" + text;
+        setStyle(newStyle);
+    }
+
     public String getInfo() {
         return info;
     }

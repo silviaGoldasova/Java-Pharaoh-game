@@ -32,6 +32,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -90,14 +91,50 @@ public class GameView extends Application {
 
     /**
      * Generates a new FXML application
+     *
      * @param stage Stage stage
      * @throws Exception e
      */
     @Override
     public void start(Stage stage) throws Exception {
         this.stage = stage;
-        setChooseGameTypeScene();
+        displayWelcomeScreen();
+        //setChooseGameTypeScene();
     }
+
+    private void displayWelcomeScreen(){
+
+        BorderPane borderPane = new BorderPane();
+
+        String path = "/cards/pharaoh3.jpg";
+        Image backgroundImage = new Image(GameLayout.class.getResourceAsStream(path));
+        BackgroundImage background = new BackgroundImage(backgroundImage,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, new BackgroundSize(BackgroundSize.AUTO, BackgroundSize.AUTO, true, true, true, true));
+        borderPane.setBackground(new Background(background));
+
+        AnchorPane box = new AnchorPane();
+
+        ControlButton button = new ControlButton("Play Pharaoh Card Game");
+        button.setAdditionalStyle("-fx-font-size: 4em;");
+        AnchorPane.setLeftAnchor(button, 30.0);
+        AnchorPane.setTopAnchor(button, 100.0);
+
+        button.setOnAction(goToMenuHandler);
+        box.getChildren().addAll(button);
+        borderPane.setCenter(box);
+
+        Scene scene = new Scene(borderPane, 1400, 900);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    EventHandler<ActionEvent> goToMenuHandler = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(ActionEvent event) {
+            setChooseGameTypeScene();
+        }
+    };
+
 
     private void setChooseGameTypeScene(){
 
@@ -494,14 +531,12 @@ public class GameView extends Application {
 
             layout.getThisPlayerCards().getChildren().add(butSelectedCard);
             butSelectedCard.setOnAction(selectCardToPlayHandler);
-            //butSelectedCard.setStyle("");
 
             if (layout.getSelectedCardsBox().getChildren().size() == 0) {
                 layout.getSelectedCardsLabel().setVisible(false);
             }
 
             event.consume();
-            //logger.debug("Unselected a card.");
         }
     };
 
@@ -526,18 +561,7 @@ public class GameView extends Application {
                 gameController.submitMoveFromView(layout.getSelectedCardsBox().getChildren(), requestedSuit);
             }
 
-            /*List<ButtonCard> selectedCards = new ArrayList<>();
-            for (Node card : p1CardsBox.getChildren()) {
-                if ( ((ButtonCard)card).isSelected() ) {
-                    selectedCards.add((ButtonCard)card);
-                }
-            }
-            if (selectedCards.size() != 0) {
-                gameController.submitMoveFromView(selectedCards, requestedSuit);
-            }*/
-
             event.consume();
-            //logger.debug("Move submitted.");
         }
     };
 
@@ -598,6 +622,7 @@ public class GameView extends Application {
                 //Platform.exit();
                 //Main.startUpNewGameProcess(game.getPlayers().size()-1);
                 logger.debug("New Game to play chosen");
+                gameController = new GameController(game, gameView);
                 gameController.initializeGame(game.getPlayers().size()-1);
                 setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
             }

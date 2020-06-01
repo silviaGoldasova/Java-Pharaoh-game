@@ -47,13 +47,14 @@ public class GameController {
      */
     public void initializeGame(int numberOfRandomPlayers) {
         game.initGame(numberOfRandomPlayers);
-
         view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
+        view.setNewUpdate();
         playOneTurn();
     }
 
     public void initializeGame(List<Player> players, LinkedList<Card> stock, LinkedList<Card> waste, Card upcard, MoveDTO moveDTO, int currentPlayerToPlay){
         game.initGame(players, stock, waste, upcard, moveDTO, currentPlayerToPlay);
+        view.setNewUpdate();
         playOneTurn();
 
         // requested suit is already set in view, not needed: view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());

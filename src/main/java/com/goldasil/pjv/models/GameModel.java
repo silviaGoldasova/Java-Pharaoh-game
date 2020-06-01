@@ -34,7 +34,7 @@ public class GameModel implements Cloneable {
     LinkedList <Card> waste;
     LinkedList <Card> selectedCards;
     GameState currentState = GameState.FIRST_MOVE;
-    static final int CARDS_TO_DEAL = 4;
+    static final int CARDS_TO_DEAL = 5;
     Card upcard;
     MoveStateHandler moveStateHandler;
     int currentPlayerIdTurn = 0;
