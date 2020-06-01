@@ -43,6 +43,7 @@ public class ServerSender implements Runnable  {
      */
     private void startConnection(Socket socket) {
         try {
+            clientSocket = socket;
             out = new DataOutputStream(socket.getOutputStream());
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -65,6 +66,7 @@ public class ServerSender implements Runnable  {
                             startConnection(socketObj.getClientSocket());
 
                             sendMessage(task.getMessageType(), task.getMessageBody());
+                            logger.debug("sent from server sender: {}", task.getMessageBody());
 
                             stopConnection();
                         }

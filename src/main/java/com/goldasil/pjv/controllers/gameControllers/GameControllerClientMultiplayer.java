@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.Socket;
 import java.util.LinkedList;
 
 import static java.lang.Thread.sleep;
@@ -52,13 +53,20 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
         // initialize listerner to changes in MessageReceivedQueue
         resource.newReceivedProperty().addListener(isNewReceivedChangeListener);
 
+        Socket clientSocket = null;
+        try {
+            clientSocket = new Socket(serverIpAddress, Integer.parseInt(serverPort));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         // initialize listener to messsages
-        Receiver receiver = new Receiver(clientPort, resource);
+        Receiver receiver = new Receiver(clientSocket, clientPort, resource);
         Thread clientListenerThread = new Thread(receiver);
         clientListenerThread.start();
 
         //Sender sender = new Sender("192.168.0.101", 5556, clientPort, resource);
-        Sender sender = new Sender(serverIpAddress, Integer.parseInt(serverPort), clientPort, resource);
+        Sender sender = new Sender(clientSocket, serverIpAddress, Integer.parseInt(serverPort), clientPort, resource);
         Thread senderThread = new Thread(sender);
         senderThread.start();
         resource.addTask(new ComTask(null, "MOVE", "Hello world"));
@@ -71,6 +79,8 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
      * @throws IOException
      */
     private void proccessReceived() {
+
+        logger.debug("proccessReceived() has started");
 
         synchronized (resource) {
             for (ComTask messageObj : new LinkedList<ComTask>(resource.getReceivedMessages())) {

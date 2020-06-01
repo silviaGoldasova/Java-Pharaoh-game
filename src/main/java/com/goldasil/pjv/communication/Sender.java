@@ -23,7 +23,8 @@ public class Sender implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(Sender.class);
 
 
-    public Sender(String destIpAddress, int destPort, int localPort, ComResource resource) {
+    public Sender(Socket socket, String destIpAddress, int destPort, int localPort, ComResource resource) {
+        clientSocket = socket;
         this.destIpAddress = destIpAddress;
         this.destPort = destPort;
         this.localPort = localPort;
@@ -38,8 +39,9 @@ public class Sender implements Runnable {
             // connect to the client
 
             //InetAddress addr = InetAddress.getByName(destIpAddress);
+            //InetAddress localAddr = InetAddress.getByName("192.168.0.104");
             //clientSocket = new Socket(addr, destPort, addr, localPort);
-            clientSocket = new Socket(destIpAddress, destPort);
+            //clientSocket = new Socket(destIpAddress, destPort);
             out = new DataOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
             System.out.println(e.getMessage());

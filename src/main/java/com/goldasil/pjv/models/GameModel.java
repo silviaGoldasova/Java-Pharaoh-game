@@ -27,7 +27,7 @@ import java.util.*;
  * Represents model for the game play.
  * Holds the states of the basic entity in the game - players, a stock, a waste.
  */
-public class GameModel {
+public class GameModel implements Cloneable {
 
     List<Player> players; // set to the current player
     LinkedList <Card> stock;

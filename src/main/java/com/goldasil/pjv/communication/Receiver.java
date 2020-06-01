@@ -10,11 +10,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import static java.lang.Thread.dumpStack;
 import static java.lang.Thread.sleep;
 
 public class Receiver implements Runnable {
 
     private ServerSocket listeningSocket;
+    private Socket socket;
     private int port;
     private DataInputStream in;
     private ComResource resource;
@@ -23,25 +25,28 @@ public class Receiver implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(Receiver.class);
 
 
-    public Receiver(int portNumber, ComResource resource) {
+    public Receiver(Socket clientSocket, int portNumber, ComResource resource) {
+        this.socket = clientSocket;
         this.port = portNumber;
         this.resource = resource;
 
-        try {
+        /*try {
             listeningSocket = new ServerSocket(portNumber);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 
     @Override
     public void run() {
         try {
-            sender = listeningSocket.accept();
-            in = new DataInputStream(sender.getInputStream());
+            //sender = listeningSocket.accept();
+            in = new DataInputStream(socket.getInputStream());
 
             while (resource.isGameOn()) {
+
+                logger.debug("Listening");
 
                 String messageRaw = in.readUTF();
                 //handleReceived(messageRaw);
@@ -50,6 +55,8 @@ public class Receiver implements Runnable {
                 String messageBody = decodeMessageBody(messageRaw);
                 resource.addMessage(new ComTask(null, messageType, messageBody));
                 resource.setNewReceived(true);
+
+                logger.debug("Message received: {}", messageBody);
 
                 try {
                     sleep(1000);
@@ -131,7 +138,9 @@ public class Receiver implements Runnable {
      */
     public void stopConnection() {
         try {
-            listeningSocket.close();
+            in.close();
+            socket.close();
+            //listeningSocket.close();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
