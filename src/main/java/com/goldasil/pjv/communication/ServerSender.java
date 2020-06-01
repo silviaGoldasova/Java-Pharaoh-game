@@ -13,16 +13,20 @@ import static java.lang.Thread.sleep;
 
 public class ServerSender implements Runnable  {
 
-    private Socket clientSocket;
+    private Socket clientSocket = null;
     private DataOutputStream out;
     private final ComResource resource;
     private int localPort;
+    private int threadClientPlayerID;
 
     private static final Logger logger = LoggerFactory.getLogger(ServerSender.class);
 
-    public ServerSender(int localPort, ComResource resource) {
+    public ServerSender(int threadClientPlayerID, Socket clientSocket, int localPort, ComResource resource) {
+        this.threadClientPlayerID = threadClientPlayerID;
+        this.clientSocket = clientSocket;
         this.resource = resource;
         this.localPort = localPort;
+        startConnection();
     }
 
     /**
@@ -41,10 +45,9 @@ public class ServerSender implements Runnable  {
     /**
      * Starts connection to the specified socket.
      */
-    private void startConnection(Socket socket) {
+    private void startConnection() {
         try {
-            clientSocket = socket;
-            out = new DataOutputStream(socket.getOutputStream());
+            out = new DataOutputStream(clientSocket.getOutputStream());
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -62,26 +65,27 @@ public class ServerSender implements Runnable  {
                     LinkedList<ComTask> tasks = resource.getTaskList();
                     for (ComTask task : new LinkedList<ComTask>(tasks)) {
 
-                        for (ClientComObj socketObj : task.getReceivers()) {
-                            startConnection(socketObj.getClientSocket());
+                        if (task.getPlayerID() == this.threadClientPlayerID) {
 
                             sendMessage(task.getMessageType(), task.getMessageBody());
                             logger.debug("sent from server sender: {}", task.getMessageBody());
 
-                            stopConnection();
+
+                            tasks.remove();
                         }
-                        tasks.remove();
                     }
                     //resource.getTaskList().clear();
                 }
             }
 
             try {
-                sleep(1000);
+                sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
         }
+        stopConnection();
     }
 
 

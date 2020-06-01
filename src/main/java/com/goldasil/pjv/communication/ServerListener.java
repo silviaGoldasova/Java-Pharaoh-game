@@ -46,13 +46,13 @@ public class ServerListener implements Runnable {
                 //handleReceived(messageRaw);
                 String messageType = decodeMessageType(messageRaw);
                 String messageBody = decodeMessageBody(messageRaw);
-                resource.addMessage(new ComTask(null, messageType, messageBody));
+                resource.addMessage(new ComTask(getPlayerIdFromSocketPort(sender.getPort()), messageType, messageBody));
                 resource.setNewReceived(true);
 
                 stopConnection();
             }
             catch(IOException e){
-                System.out.println(e.getMessage());
+                logger.debug(e.getMessage());
             }
 
             try {
@@ -62,6 +62,15 @@ public class ServerListener implements Runnable {
             }
 
         }
+    }
+
+    private int getPlayerIdFromSocketPort(int portNumber) {
+        for (ClientComObj client : resource.getClientsList()) {
+            if (client.getPort() == portNumber) {
+                return client.getPlayerID();
+            }
+        }
+        return -1;
     }
 
 

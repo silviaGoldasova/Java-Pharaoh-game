@@ -42,21 +42,22 @@ public class Receiver implements Runnable {
     public void run() {
         try {
             //sender = listeningSocket.accept();
-            in = new DataInputStream(socket.getInputStream());
-
             while (resource.isGameOn()) {
 
+                in = new DataInputStream(socket.getInputStream());
                 logger.debug("Listening");
 
-                String messageRaw = in.readUTF();
-                //handleReceived(messageRaw);
+                if (in.available() > 0) {
+                    String messageRaw = in.readUTF();
+                    //handleReceived(messageRaw);
 
-                String messageType = decodeMessageType(messageRaw);
-                String messageBody = decodeMessageBody(messageRaw);
-                resource.addMessage(new ComTask(null, messageType, messageBody));
-                resource.setNewReceived(true);
+                    String messageType = decodeMessageType(messageRaw);
+                    String messageBody = decodeMessageBody(messageRaw);
+                    resource.addMessage(new ComTask(0, messageType, messageBody));
+                    resource.setNewReceived(true);
 
-                logger.debug("Message received: {}", messageBody);
+                    logger.debug("Message received: {}", messageBody);
+                }
 
                 try {
                     sleep(1000);

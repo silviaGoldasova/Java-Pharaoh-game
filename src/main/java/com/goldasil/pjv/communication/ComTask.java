@@ -5,24 +5,22 @@ import java.util.ArrayList;
 
 public class ComTask {
 
-    private ArrayList<ClientComObj> receivers = new ArrayList<>();
+    private int playerID;
     private String messageType;
     private String messageBody;
 
-    public ComTask(ArrayList<ClientComObj> receiversList, String messageType, String messageBody) {
-        receivers = receiversList;
+    public ComTask(int playerID, String messageType, String messageBody) {
+        this.playerID = playerID;
         this.messageType = messageType;
         this.messageBody = messageBody;
     }
 
-
-
-    public ArrayList<ClientComObj> getReceivers() {
-        return receivers;
+    public int getPlayerID() {
+        return playerID;
     }
 
-    public void setReceivers(ArrayList<ClientComObj> receivers) {
-        this.receivers = receivers;
+    public void setPlayerID(int playerID) {
+        this.playerID = playerID;
     }
 
     public String getMessageType() {

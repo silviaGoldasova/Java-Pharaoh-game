@@ -74,7 +74,7 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
         Sender sender = new Sender(clientSocket, serverIpAddress, Integer.parseInt(serverPort), clientPort, resource);
         Thread senderThread = new Thread(sender);
         senderThread.start();
-        resource.addTask(new ComTask(null, "MOVE", "Hello world"));
+        resource.addTask(new ComTask(-1, "MOVE", "Hello world"));
 
     }
 
@@ -165,7 +165,7 @@ public class GameControllerClientMultiplayer extends GameControllerMultiplayer {
     private void sendMoveDTO(MoveDTO moveDTO) {
         Gson gson = new Gson();
         String moveDTOstring = gson.toJson(moveDTO);
-        resource.addTask(new ComTask(null, "MOVE", moveDTOstring));
+        resource.addTask(new ComTask(game.getCurrentPlayerIdTurn(), "MOVE", moveDTOstring));
     }
 
 

@@ -62,10 +62,12 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
 
         logger.debug("All clients are connected");
 
-        // initialize sender
-        ServerSender sender = new ServerSender(senderLocalPort, resource);
-        Thread senderThread = new Thread(sender);
-        senderThread.start();
+        // initialize sender for each client
+        for (ClientComObj client : resource.getClientsList()) {
+            ServerSender sender = new ServerSender(client.getPlayerID(), client.getClientSocket(), senderLocalPort, resource);
+            Thread senderThread = new Thread(sender);
+            senderThread.start();
+        }
 
         // initialize listener
         ServerListener serverListener = new ServerListener(listeningPort, resource);
@@ -83,23 +85,16 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
 
         for (ClientComObj client : resource.getClientsList()) {
 
-            if (client.getPlayerID() != 0) {
-                logger.debug("client.getPlayerID(): {}", client.getPlayerID());
-                gameObjCopy.setThisPlayerId(client.getPlayerID());
-                logger.debug("client.getPlayerID(): {}", gameObjCopy.getThisPlayerId());
+            gameObjCopy.setThisPlayerId(client.getPlayerID());
+            String gameString = gson.toJson(gameObjCopy);
 
-                String gameString = gson.toJson(gameObjCopy);
-                ArrayList<ClientComObj> list = new ArrayList<>();
-                list.add(client);
+            sendMessage(client.getPlayerID(), "INIT", gameString);
 
-                sendMessage(list, "INIT", gameString);
-                //sendMessage(resource.getClientsList(), "MOVE", "Hello world");
-            }
         }
 
         view.setPlayingBoardGui();
         view.setRequestedSuit(game.getCurrentMoveDTO().getRequestedSuit());
-        
+
     }
 
 
@@ -123,15 +118,11 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
                         playOneTurn(moveDTO);
 
                         // send moveDTO to the other players
-                        ArrayList<ClientComObj> listReceivers = new ArrayList<>();
                         for (ClientComObj client : resource.getClientsList()) {
                             if (client.getPlayerID() != game.getCurrentPlayerIdTurn()) {
-                                listReceivers.add(client);
+                                sendMessage(client.getPlayerID(), "MOVE", messageObj.getMessageBody());
                             }
                         }
-                        sendMessage(listReceivers, "MOVE", messageObj.getMessageBody());
-
-
 
                         break;
                     case "ERRO":
@@ -205,21 +196,20 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         listenerThread.start();
     }
 
-    private void sendMessage(ArrayList<ClientComObj> clientsList, String messageType, String messageBody) {
-        resource.addTask(new ComTask(clientsList, messageType, messageBody));
+    private void sendMessage(int playerID, String messageType, String messageBody) {
+        resource.addTask(new ComTask(playerID, messageType, messageBody));
     }
 
     private void sendMoveDTO(MoveDTO moveDTO) {
         Gson gson = new Gson();
         String moveDTOstring = gson.toJson(moveDTO);
 
-        ArrayList<ClientComObj> otherPlayersList = new ArrayList<>();
         for ( ClientComObj client : resource.getClientsList()) {
-            if (client.getPlayerID() != game.getThisPlayerId()) {
-                otherPlayersList.add(client);
+            logger.debug("game.getCurrentPlayerIdTurn(): {}", game.getCurrentPlayerIdTurn());
+            if (client.getPlayerID() != game.getCurrentPlayerIdTurn()) {
+                resource.addTask(new ComTask(client.getPlayerID(), "MOVE", moveDTOstring));
             }
         }
-        resource.addTask(new ComTask(otherPlayersList, "MOVE", moveDTOstring));
     }
 
 
