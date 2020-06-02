@@ -619,6 +619,7 @@ public class GameView extends Application {
             Optional<ButtonType> result = alert.showAndWait();
 
             if (result.get() == optionNewGame) {
+                gameController.closeResource();
                 //Platform.exit();
                 //Main.startUpNewGameProcess(game.getPlayers().size()-1);
                 logger.debug("New Game to play chosen");

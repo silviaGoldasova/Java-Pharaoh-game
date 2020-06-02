@@ -32,11 +32,19 @@ public class MoveDTO extends Move {
         states = new ArrayList<MoveState>();
     }
 
+    /**
+     * Creates a new moveDTO object
+     * @param move
+     */
     public MoveDTO(Move move) {
         super(move.getMoveType(), move.getMove(), move.getDrawCards(), move.getRequestedSuit());
         states = new ArrayList<MoveState>();
     }
 
+    /**
+     * Creates a new moveDTO object
+     * @param move
+     */
     public MoveDTO(Move move, Card upcard, int penaltyForSevens) {
         super(move.getMoveType(), move.getMove(), move.getDrawCards(), move.getRequestedSuit());
         this.upcard = upcard;
@@ -44,6 +52,10 @@ public class MoveDTO extends Move {
         states = new ArrayList<MoveState>();
     }
 
+    /**
+     * Creates a new moveDTO object
+     * @param move
+     */
     public MoveDTO(Move move, Card upcard, int penaltyForSevens, ArrayList<MoveState> states) {
         super(move.getMoveType(), move.getMove(), move.getDrawCards(), move.getRequestedSuit());
         this.upcard = upcard;
@@ -169,10 +181,10 @@ public class MoveDTO extends Move {
     }
 
     /**
-     * Gets the state specified for the situation when an OVERKNAVE has been played, and a suit is requested.
+     * Gets the Suit state specified for the situation when an OVERKNAVE has been played, and a suit is requested.
+     * @param suit requested suit
      * @return the state specified to the suit requested in the previous move
      */
-
     public MoveState getMoveStateForSuit(Suit suit) {
         switch(suit){
             case HEARTS:
@@ -187,6 +199,11 @@ public class MoveDTO extends Move {
         return MoveState.NONSPECIAL_SITUATION;
     }
 
+    /**
+     * Gets the Overknave state specified for the situation when an OVERKNAVE has been played, and a suit is requested.
+     * @param suit requested suit
+     * @return the state specified by the OVERKNAVE
+     */
     public MoveState getMoveStateForOverknave(Suit suit) {
         switch(suit) {
             case HEARTS:
@@ -201,6 +218,11 @@ public class MoveDTO extends Move {
         return MoveState.NONSPECIAL_SITUATION;
     }
 
+    /**
+     * Gets the movestate based on rank of the upcard.
+     * @param rank
+     * @return movestate
+     */
     public MoveState getMoveStateFromRank(Rank rank) {
         switch(rank) {
             case SEVEN:
@@ -274,6 +296,11 @@ public class MoveDTO extends Move {
         return false;
     }
 
+    /**
+     * Calculates penalty for the move to be submitted
+     * @param numPenaltyCardsFromPrev previous level of penalty
+     * @return calculated penalty
+     */
     public int getPenaltyForDesired(int numPenaltyCardsFromPrev) {
         if (moveType == MoveType.DRAW) {
             return numPenaltyCardsFromPrev;

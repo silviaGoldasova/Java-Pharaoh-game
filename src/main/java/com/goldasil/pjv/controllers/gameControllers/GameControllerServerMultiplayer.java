@@ -50,9 +50,8 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         }
     }
 
-
     /**
-     * Sets the players, their order of the game, their playing cards.
+     * Sets the server listener, initialize sender for each client, players, their order, their playing cards.
      */
     public void initializeGame() {
         game.initGameMultiplayer(view.getNewGame().getNumOfOpp());
@@ -106,10 +105,8 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
 
     }
 
-
     /**
      * Processes a received message based on the decoded message type.
-     * @return message body
      * @throws IOException
      */
     private void proccessReceived() throws IOException {
@@ -132,7 +129,6 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
                                 sendMessage(client.getPlayerID(), "MOVE", messageObj.getMessageBody());
                             }
                         }
-
                         break;
                     case "ERRO":
                         System.out.println("Error switch");
@@ -148,6 +144,10 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         }
     }
 
+    /**
+     * Plays a move based on received mesage.
+     * @param moveDTO move to be played
+     */
     private void playOneTurn(MoveDTO moveDTO){
         logger.debug("\n\nStart of the received move.");
 
@@ -183,6 +183,9 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         }
     };
 
+    /**
+     * Listens to opponents and create a list of their sockets
+     */
     public void getSidePlayers(){
         logger.debug("getSidePlayers()");
         ChannelGetClients clientsListener = new ChannelGetClients(view.getNewGame().getNumOfOpp(), listeningSocket, resource);
@@ -190,10 +193,20 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         listenerThread.start();
     }
 
+    /**
+     * Send a message to another player
+     * @param playerID
+     * @param messageType
+     * @param messageBody
+     */
     private void sendMessage(int playerID, String messageType, String messageBody) {
         resource.addTask(new ComTask(playerID, messageType, messageBody));
     }
 
+    /**
+     * Send a message with move information to another player
+     * @param moveDTO move to be send
+     */
     private void sendMoveDTO(MoveDTO moveDTO) {
         Gson gson = new Gson();
         String moveDTOstring = gson.toJson(moveDTO);
@@ -206,7 +219,11 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         }
     }
 
-
+    /**
+     * Process the submitted move
+     * @param cardButtons
+     * @param requestedSuit
+     */
     public void submitMoveFromView(List<Node> cardButtons, Suit requestedSuit) {
         if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
             return;
@@ -222,6 +239,10 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         }
     }
 
+    /**
+     * Process the submitted move
+     * @param numberOfCardsDrawn
+     */
     @Override
     public void submitMoveFromView(int numberOfCardsDrawn) {
         if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
@@ -237,6 +258,10 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         }
     }
 
+    /**
+     * Process the submitted move
+     * @param moveDTO
+     */
     public void submitMoveFromView(MoveDTO moveDTO) {
         if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
             return;
@@ -252,6 +277,9 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         }
     }
 
+    /**
+     * Update GUI after a new move has been processed
+     */
     @Override
     public void updateAndPlayNextTurn() {
         Runnable runnable = () -> {
@@ -272,6 +300,13 @@ public class GameControllerServerMultiplayer extends GameControllerMultiplayer {
         };
         Thread playTurn = new Thread(runnable);
         playTurn.start();
+    }
+
+    /**
+     * Set end of network communication
+     */
+    public void closeResource() {
+        resource.setGameOn(false);
     }
 
 }

@@ -6,9 +6,11 @@ import javafx.beans.property.SimpleBooleanProperty;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
+/**
+ * Represents a shared resource object acting like a monitor for network communication.
+ */
 public class ComResource {
 
-    //private volatile boolean newReceived;
     private volatile BooleanProperty newReceived;
     private volatile boolean gameOn;
 
@@ -16,7 +18,9 @@ public class ComResource {
     private volatile LinkedList<ComTask> receivedMessages;
     private volatile ArrayList<ClientComObj> clientsList;
 
-
+    /**
+     * Create a new shared resource object.
+     */
     public ComResource() {
         gameOn = true;
         taskList = new LinkedList<>();  //remove and add
@@ -63,7 +67,6 @@ public class ComResource {
     public synchronized ComTask removeTask() {
         return taskList.remove();
     }
-
 
     public LinkedList<ComTask> getReceivedMessages() {
         return receivedMessages;

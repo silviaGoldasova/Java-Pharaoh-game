@@ -32,6 +32,11 @@ public class GameController {
 
     private static final Logger logger = LoggerFactory.getLogger(GameController.class);
 
+    /**
+     * Create a new Controller
+     * @param game
+     * @param view
+     */
     public GameController(GameModel game, GameView view) {
         this.game = game;
         this.view = view;
@@ -52,6 +57,15 @@ public class GameController {
         playOneTurn();
     }
 
+    /**
+     * Sets the players, their order of the game, their playing cards when a saved game is loaded
+     * @param players
+     * @param stock
+     * @param waste
+     * @param upcard
+     * @param moveDTO
+     * @param currentPlayerToPlay
+     */
     public void initializeGame(List<Player> players, LinkedList<Card> stock, LinkedList<Card> waste, Card upcard, MoveDTO moveDTO, int currentPlayerToPlay){
         game.initGame(players, stock, waste, upcard, moveDTO, currentPlayerToPlay);
         view.setNewUpdate();
@@ -67,7 +81,9 @@ public class GameController {
      * The game ends when it gets to the Final State.
      */
 
-    // play for randomplayer
+    /**
+     * Play a turn for a randomplayer
+     */
     public void playOneTurn(){
         if (game.getCurrentPlayerIdTurn() == game.getThisPlayerId()) {
             return;
@@ -106,6 +122,9 @@ public class GameController {
         playOneTurn();
     }
 
+    /**
+     * Update GUI
+     */
     public void updateAndPlayNextTurn() {
 
         Runnable runnable = () -> {
@@ -138,6 +157,11 @@ public class GameController {
         return cards;
     }
 
+    /**
+     * Process move
+     * @param cardButtons
+     * @param requestedSuit
+     */
     public void submitMoveFromView(List<Node> cardButtons, Suit requestedSuit) {
         if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
             return;
@@ -156,6 +180,10 @@ public class GameController {
         }
     }
 
+    /**
+     * Process move
+     * @param numberOfCardsDrawn
+     */
     public void submitMoveFromView(int numberOfCardsDrawn) {
         if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
             return;
@@ -172,6 +200,10 @@ public class GameController {
         }
     }
 
+    /**
+     * Process move
+     * @param moveDTO
+     */
     public void submitMoveFromView(MoveDTO moveDTO) {
         if (game.getCurrentPlayerIdTurn() != game.getThisPlayerId()) {
             return;
@@ -186,10 +218,20 @@ public class GameController {
         }
     }
 
+    /**
+     * Check if victory
+     * @return
+     */
     private boolean checkIfWon(){
         if (game.getWinnerID() != -1) {
             return true;
         } return false;
+    }
+
+    /**
+     * Close network communication
+     */
+    public void closeResource() {
     }
 
     protected void setChangedSuit(){

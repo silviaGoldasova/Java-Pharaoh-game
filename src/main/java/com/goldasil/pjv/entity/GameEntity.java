@@ -6,6 +6,9 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
 
+/**
+ * Represents a current state of the game.
+ */
 @Entity
 @Table(name = "games")
 public class GameEntity {
@@ -45,6 +48,17 @@ public class GameEntity {
     public GameEntity() {
     }
 
+    /**
+     * Create a new game.
+     * @param mainPlayerName
+     * @param playersInfo
+     * @param stock
+     * @param waste
+     * @param upcard
+     * @param lastMoveDTO
+     * @param currentPlayerToPlay
+     * @param password
+     */
     public GameEntity(String mainPlayerName, String playersInfo, String stock, String waste, String upcard, String lastMoveDTO, int currentPlayerToPlay, String password) {
         this.currentPlayerToPlay = currentPlayerToPlay;
         this.mainPlayerName = mainPlayerName;

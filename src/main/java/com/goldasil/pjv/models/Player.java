@@ -149,6 +149,12 @@ public class Player {
         return list;
     }
 
+    /**
+     * Compares 2 moves
+     * @param moveA
+     * @param moveB
+     * @return true if the moves are the same
+     */
     public static boolean compareMoves(Move moveA, Move moveB) {
         if (moveA.moveType != moveB.moveType || moveA.drawCards != moveB.drawCards) {
             return false;

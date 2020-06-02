@@ -8,8 +8,9 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import static java.lang.Thread.sleep;
-
+/**
+ * Listener for server.
+ */
 public class ServerListener implements Runnable {
 
     private ServerSocket listeningSocket;
@@ -22,6 +23,12 @@ public class ServerListener implements Runnable {
     private static final Logger logger = LoggerFactory.getLogger(ServerListener.class);
 
 
+    /**
+     * Create a new listener
+     * @param listeningSocket
+     * @param client socket object of the sender
+     * @param resource shared resource
+     */
     public ServerListener(ServerSocket listeningSocket, ClientComObj client, ComResource resource) {
         logger.debug("ServerListener class");
         this.listeningSocket = listeningSocket;
@@ -29,6 +36,9 @@ public class ServerListener implements Runnable {
         this.resource = resource;
     }
 
+    /**
+     * Listen to any incomming messages and add them to the shared resourcde.
+     */
     @Override
     public void run() {
 
@@ -79,12 +89,16 @@ public class ServerListener implements Runnable {
     /**
      * Decodes the received message type.
      * @return type of the message received as a String
-     * @throws IOException
      */
     private String decodeMessageType(String messageRaw) {
         return messageRaw.substring(0, 4);
     }
 
+    /**
+     * Decodes the received message body.
+     * @param messageRaw
+     * @return message body
+     */
     private String decodeMessageBody(String messageRaw) {
         return messageRaw.substring(4);
     }

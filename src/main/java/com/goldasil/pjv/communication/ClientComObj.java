@@ -3,6 +3,9 @@ package com.goldasil.pjv.communication;
 import java.net.Socket;
 import java.util.ArrayList;
 
+/**
+* Represents a client socket object (is player specific), encompasses it with additional information: playerId, ipAddress, port.
+*/
 public class ClientComObj {
 
     private Socket clientSocket;
@@ -10,6 +13,11 @@ public class ClientComObj {
     private int port;
     private int playerID;
 
+    /**
+     * Creates a new ClientComObj object
+     * @param clientSocket clientSocket to be associated with the object
+     * @param playerID ID of the player on the other side of the socket
+     */
     public ClientComObj(Socket clientSocket, int playerID) {
         this.clientSocket = clientSocket;
         this.playerID = playerID;
@@ -17,6 +25,10 @@ public class ClientComObj {
     }
 
 
+    /**
+     * Puts ClientComObj to string
+     * @return string
+     */
     @Override
     public String toString() {
         return "ClientComObj{" +
@@ -27,7 +39,8 @@ public class ClientComObj {
                 '}';
     }
 
-    public static ClientComObj getClientObjForPlayerId(ArrayList<ClientComObj> clients, int seekedPlayerSocket){
+
+    /*public static ClientComObj getClientObjForPlayerId(ArrayList<ClientComObj> clients, int seekedPlayerSocket){
         for (ClientComObj obj : clients) {
             if (seekedPlayerSocket == obj.playerID) {
                 return obj;
@@ -43,8 +56,7 @@ public class ClientComObj {
             }
         }
         return null;
-    }
-
+    }*/
 
     public Socket getClientSocket() {
         return clientSocket;

@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.util.Set;
 import static java.lang.Thread.sleep;
 
+
 @SpringBootApplication
 public class Main {
 
@@ -26,7 +27,6 @@ public class Main {
         logger.info("Main method has started.");
         startUpPharaoh();
     }
-
 
 
     public static void startUpPharaoh(){
@@ -51,6 +51,9 @@ public class Main {
     }
 
 
+    /**
+     * Shows information about running threads
+     */
     private static void getRunningThreadsInfo() {
         Set<Thread> threads = Thread.getAllStackTraces().keySet();
         for (Thread t : threads) {

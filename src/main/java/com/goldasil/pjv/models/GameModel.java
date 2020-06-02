@@ -103,18 +103,33 @@ public class GameModel implements Cloneable {
         return true;
     }
 
+    /**
+     * Sets requested suit based on previous move
+     * @param prevMoveDTO
+     * @param desiredMove
+     */
     private void checkRequestedSuit(MoveDTO prevMoveDTO, Move desiredMove) {
         if (desiredMove.getDrawCards() == 1) {
             desiredMove.setRequestedSuit(prevMoveDTO.getRequestedSuit());
         }
     }
 
+    /**
+     * Saved the current state of the game
+     * @param mainPlayerName
+     * @param password
+     * @param requestedSuit
+     */
     @Bean
     public void saveGame(String mainPlayerName, String password, Suit requestedSuit) {
         GameService service  = ApplicationContextProvider.getBean(GameService.class);
         service.save(mainPlayerName, players, stock, waste, upcard, lastMoveDTO, currentPlayerIdTurn, password);
     }
 
+    /**
+     * Initializes the game
+     * @param numberOfRandomPlayers
+     */
     public void initGame(int numberOfRandomPlayers) {
         players = new ArrayList<Player>();
 
@@ -132,6 +147,10 @@ public class GameModel implements Cloneable {
         logger.debug("Players and stock initialized.");
     }
 
+    /**
+     * Initializes the game in a multiplayer mode
+     * @param numberOfPlayers
+     */
     public void initGameMultiplayer(int numberOfPlayers) {
         players = new ArrayList<Player>();
 
@@ -149,6 +168,15 @@ public class GameModel implements Cloneable {
         logger.debug("Players and stock initialized.");
     }
 
+    /**
+     * Initialized a game in a load game mode
+     * @param players
+     * @param stock
+     * @param waste
+     * @param upcard
+     * @param move
+     * @param currentPlayerToPlay
+     */
     public void initGame(List<Player> players, LinkedList<Card> stock, LinkedList<Card> waste, Card upcard, MoveDTO move, int currentPlayerToPlay){
         thisPlayerId = 0;
         players = new ArrayList<Player>();
@@ -174,6 +202,10 @@ public class GameModel implements Cloneable {
         logger.debug("Players initialized as follows: {}, current player id: {}, current move:{}", players.toString(), currentPlayerIdTurn, currentMoveDTO);
     }
 
+    /**
+     * Generates the previous move before the first move
+     * @return previous move
+     */
     private MoveDTO getPrevFirstMoveDTO(){
 
         Card lastCard;
@@ -220,6 +252,10 @@ public class GameModel implements Cloneable {
         return moveDTO;
     }
 
+    /**
+     * Processes an opponents turn
+     * @return
+     */
     public boolean runOppTurn() {
 
         Player player = getPlayerByID(currentPlayerIdTurn);
@@ -240,6 +276,10 @@ public class GameModel implements Cloneable {
 
     }
 
+    /**
+     * Return a clone of the object
+     * @return
+     */
     @Override
     public Object clone() {
         try {

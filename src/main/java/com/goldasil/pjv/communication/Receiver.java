@@ -8,11 +8,11 @@ import org.slf4j.LoggerFactory;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-
-import static java.lang.Thread.dumpStack;
 import static java.lang.Thread.sleep;
 
+/**
+ * Receiver for a client
+ */
 public class Receiver implements Runnable {
 
     private ServerSocket listeningSocket;
@@ -24,20 +24,21 @@ public class Receiver implements Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger(Receiver.class);
 
-
+    /**
+     * Create a new Receiver
+     * @param clientSocket socket of the sender
+     * @param portNumber port number of the sender
+     * @param resource shared resource
+     */
     public Receiver(Socket clientSocket, int portNumber, ComResource resource) {
         this.socket = clientSocket;
         this.port = portNumber;
         this.resource = resource;
-
-        /*try {
-            listeningSocket = new ServerSocket(portNumber);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }*/
-
     }
 
+    /**
+     * Listen to any incomming messages and add them to the shared resourcde.
+     */
     @Override
     public void run() {
         try {
@@ -77,58 +78,18 @@ public class Receiver implements Runnable {
     }
 
     /**
-     * Processes a received message based on the decoded message type.
-     * @return message body
-     * @throws IOException
-     */
-    /*private String handleReceived(String messageRaw) throws IOException {
-        String messageType = decodeMessageType(messageRaw);
-        String messageBody = decodeMessageBody(messageRaw);
-
-        logger.debug("decoded type: {}", messageType);
-
-        switch (messageType) {
-            case "MOVE":
-                logger.debug("messageBody: {}", messageBody);
-
-                synchronized (resource) {
-                    resource.setNewReceived(true);
-                    resource.addMessage(new ComTask(null, messageType, messageBody));
-                }
-
-                return "Move";
-            case "ERRO":
-                System.out.println("Error switch");
-                return "Error";
-            case "OVER":
-                System.out.println("gameControllers over");
-                return "gameControllers over";
-            case "INIT":
-
-
-
-                System.out.println("INIT");
-
-
-
-                return "";
-            default:
-                System.out.println("Error switch");
-                // request new communication
-                return "Error";
-        }
-    }*/
-
-
-    /**
      * Decodes the received message type.
      * @return type of the message received as a String
-     * @throws IOException
      */
     private String decodeMessageType(String messageRaw) {
         return messageRaw.substring(0, 4);
     }
 
+    /**
+     * Decodes the received message body.
+     * @param messageRaw
+     * @return message body
+     */
     private String decodeMessageBody(String messageRaw) {
         return messageRaw.substring(4);
     }

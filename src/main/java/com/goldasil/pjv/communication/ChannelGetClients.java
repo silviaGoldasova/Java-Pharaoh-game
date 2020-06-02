@@ -8,8 +8,8 @@ import java.net.*;
 import java.util.ArrayList;
 
 /**
- * Represents a communication channel used only for initial listening on port 5555 and finding and connecting to the players willing to play a game.
- * The channel runs in its own separate thread, and creates a new thread for communication with every player that connects.
+ * Represents a communication channel used only for initial listening, finding and connecting to the players willing to play a game.
+ * The channel runs in its own separate thread and puts all the players that have connected to a list of sockets.
  */
 public class ChannelGetClients implements Runnable {
 
@@ -18,12 +18,6 @@ public class ChannelGetClients implements Runnable {
     private ComResource resource;
 
     private static final Logger logger = LoggerFactory.getLogger(ChannelGetClients.class);
-
-
-    //Thread getClients = new Thread(new ChannelGetClients(numOfClients, clients_list));
-    // getClients.start();
-    // Thread client0 = new Thread(new ChannelClientHandler(listOfSockets.get(i));
-    // client0.start();
 
     /**
      * Creates a new channel for listenning.
@@ -36,7 +30,7 @@ public class ChannelGetClients implements Runnable {
     }
 
     /**
-     * Stops listening on the socket.
+     * Stops listening on the socket and close it.
      */
     public void stopConnection() {
         try {
@@ -77,32 +71,5 @@ public class ChannelGetClients implements Runnable {
 
         //stopConnection();
     }
-
-
-
-    /*public void startConnection(int listeningPort){
-        initializeListening(listeningPort);
-    }
-    protected void initializeListening(int listeningPort) {
-        try {
-            listeningSocket = new ServerSocket(listeningPort);
-            System.out.println("Server Started. Waiting for connection ...");
-
-            sender = listeningSocket.accept();
-            System.out.println("Got connection from client.");
-
-            // set streams for communication
-            in = new DataInputStream(new BufferedInputStream(sender.getInputStream()));
-        }
-        catch(IOException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-    public static void main(String args[]) {
-
-        ChannelGetClients server = new ChannelFromClient();
-        server.startConnection(4444);
-        server.stopConnection();
-    }*/
 
 }

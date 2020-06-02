@@ -1,5 +1,8 @@
 package com.goldasil.pjv.enums;
 
+/**
+ * Containes game types
+ */
 public enum GameType {
 
     LOAD_GAME,

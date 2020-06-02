@@ -11,6 +11,9 @@ import java.util.LinkedList;
 
 import static java.lang.Thread.sleep;
 
+/**
+ * A sender that sends messages to the given socket whenever a new one is available in the shared resource.
+ */
 public class Sender implements Runnable {
 
     private Socket clientSocket;
@@ -22,7 +25,14 @@ public class Sender implements Runnable {
 
     private static final Logger logger = LoggerFactory.getLogger(Sender.class);
 
-
+    /**
+     * Create a new sender
+     * @param socket destination socket
+     * @param destIpAddress
+     * @param destPort
+     * @param localPort
+     * @param resource shared resource
+     */
     public Sender(Socket socket, String destIpAddress, int destPort, int localPort, ComResource resource) {
         clientSocket = socket;
         this.destIpAddress = destIpAddress;
@@ -48,7 +58,9 @@ public class Sender implements Runnable {
         }
     }
 
-
+    /**
+     * Sends all the messages in the task list in a shared resource.
+     */
     @Override
     public void run() {
         startConnection();
@@ -69,16 +81,7 @@ public class Sender implements Runnable {
                     }
 
                 }
-                //logger.debug("length: {}", resource.getTaskList().size());
             }
-
-
-            /*if (resource.isNewToSend()) {
-                logger.debug("isNewToSend");
-
-                sendMessage("MOVE", resource.getToSend());
-                resource.setNewToSend(false);
-            }*/
 
             try {
                 sleep(1000);

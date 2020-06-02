@@ -18,6 +18,9 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+/**
+ * Evaluates moves, determines their validity
+ */
 public class MoveStateHandler {
 
     /*MoveState state;
@@ -27,6 +30,9 @@ public class MoveStateHandler {
     private static Map<MoveState, List<MoveState>> neighbours = new HashMap<MoveState, List<MoveState>>();
     private static Collection<MoveState> allSuitMoveStates;
 
+    /**
+     * Create a new MoveHandler
+     */
     public MoveStateHandler() {
         initNeighbours();
         allSuitMoveStates = new ArrayList<>();
@@ -36,6 +42,9 @@ public class MoveStateHandler {
         allSuitMoveStates.add(MoveState.BELLS_PLAYED);
     }
 
+    /**
+     * Sets the relationships between movestates, the rules
+     */
     public void initNeighbours() {
         ArrayList<MoveStateDTO> statesObj = null;
         try {
@@ -57,6 +66,13 @@ public class MoveStateHandler {
         //logger.debug("Initialization of neighbours successful.");
     }
 
+    /**
+     * A general function calling other to determine the validity of a move
+     * @param prevMove
+     * @param desiredMove
+     * @param cardsCount
+     * @return
+     */
     public boolean isValidMove(MoveDTO prevMove, MoveDTO desiredMove, int cardsCount) {
         List<MoveState> previousStates = getMoveStatesPrev(prevMove);
         List<MoveState> desiredStates = getMoveStatesDesired(desiredMove, cardsCount);
@@ -195,6 +211,11 @@ public class MoveStateHandler {
         return states;
     }
 
+    /**
+     * Gets the upper card after a move has been performed
+     * @param moveDTO
+     * @return
+     */
     public static Card getUpperCard(MoveDTO moveDTO) {
         if(moveDTO.getMoveType() == MoveType.PLAY) {
             return moveDTO.getMove().get(moveDTO.getMove().size()-1);
@@ -202,6 +223,12 @@ public class MoveStateHandler {
         return moveDTO.getUpcard();
     }
 
+    /**
+     * Check move for victory
+     * @param previousStates
+     * @param desiredStates
+     * @return
+     */
     private static boolean checkIfWon(List<MoveState> previousStates, List<MoveState> desiredStates){
         if (!isStateInList(MoveState.SEVEN_HEARTS_RETURN_PLAYED, previousStates) && isStateInList(MoveState.WIN, desiredStates)) {
             return true;

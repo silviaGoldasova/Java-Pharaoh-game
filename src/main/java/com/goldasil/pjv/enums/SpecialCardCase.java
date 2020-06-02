@@ -1,5 +1,8 @@
 package com.goldasil.pjv.enums;
 
+/**
+ * Contains special card cases.
+ */
 public enum SpecialCardCase {
 
     RETURN_TO_GAME,

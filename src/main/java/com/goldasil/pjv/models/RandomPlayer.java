@@ -31,7 +31,7 @@ public class RandomPlayer extends Player {
     static MoveStateHandler stateHandler;
 
     /**
-     * Generates a player with the specified ID and playing cards in hand.
+     * Generates a player with the specified ID.
      * @param playerID ID number of the player
      */
     public RandomPlayer(int playerID) {
@@ -39,11 +39,21 @@ public class RandomPlayer extends Player {
         stateHandler = new MoveStateHandler();
     }
 
+    /**
+     * Generates a player with the specified ID and playing cards in hand.
+     * @param cards
+     * @param playerID
+     */
     public RandomPlayer(ArrayList<Card> cards, int playerID) {
         super(cards, playerID);
         stateHandler = new MoveStateHandler();
     }
 
+    /**
+     * Generates a move based on previous one
+     * @param prevMove
+     * @return
+     */
     public Move chooseMove(MoveDTO prevMove){
         //SpecialCardCase specialCase = specialCardCaseCheck(oppMove.isNewUpcard(), oppMove.getUpcard(), 1);
         List<MoveState> prevStates = MoveStateHandler.getMoveStatesPrev(prevMove);
@@ -60,6 +70,12 @@ public class RandomPlayer extends Player {
         return selectedMove;
     }
 
+    /**
+     * Generates a list of possible moves based on previous states
+     * @param prevMove
+     * @param prevStates
+     * @return
+     */
     private List<Move> getPossibleMoves(MoveDTO prevMove, List<MoveState> prevStates) {
         List<Move> possibleMoves = new ArrayList<>();
 
@@ -142,6 +158,11 @@ public class RandomPlayer extends Player {
         return possibleMoves;
     }
 
+    /**
+     * Sets requested suit if needed
+     * @param prevMoveDTO
+     * @param desiredMove
+     */
     private void checkRequestedSuit(MoveDTO prevMoveDTO, Move desiredMove){
         if (desiredMove.getDrawCards() == 1) {
             desiredMove.setRequestedSuit(prevMoveDTO.getRequestedSuit());
@@ -151,6 +172,12 @@ public class RandomPlayer extends Player {
         }
     }
 
+    /**
+     * Chooses the best move out of the possible ones
+     * @param posMoves
+     * @param prevMove
+     * @return
+     */
     private Move getBestPosssibleMove(List<Move> posMoves, MoveDTO prevMove){
         if (posMoves.size() == 1) {
             return posMoves.get(0);
@@ -170,6 +197,11 @@ public class RandomPlayer extends Player {
         return posMoves.get(0);
     }
 
+    /**
+     * Checks whether the player has the card in hand
+     * @param seekedCard
+     * @return
+     */
     private boolean isCardInHand(Card seekedCard) {
         for (Card card : cards) {
             if (card.getRank() == seekedCard.getRank() && card.getSuit() == seekedCard.getSuit()) {
