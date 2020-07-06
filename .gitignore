@@ -1,0 +1,8 @@
+pharaon.iml
+.idea/
+database.txt
+logback.xml
+Javadoc/
+target/
+classes/
+moveStates/
